@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card border shadow">
+      <h5 class="card-header">
+        New <%= schema.human_singular %>
+      </h5>
+      <div class="card-body">
+        <%%= render "form.html", Map.put(assigns, :action, Routes.<%= schema.route_helper %>_path(@conn, :create)) %>
+      </div>
+    </div>
+  </div>
+</div>
