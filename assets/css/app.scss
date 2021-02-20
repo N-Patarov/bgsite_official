@@ -1,0 +1,10 @@
+@import "bootstrap/scss/bootstrap";
+@import "shards-ui/src/scss/shards";
+
+main {
+  margin-top: 5.5rem;
+}
+
+.alert:empty {
+  display: none;
+}
