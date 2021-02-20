@@ -7,7 +7,44 @@
 main {
   margin-top: 5.5rem;
 }
-
+.search-box{
+  position: absolute;
+  top:3.1%;
+  left:83%;
+  transform: translate(-50%,-50%);
+  background: grey;
+  border-radius:40px;
+  height: 40px;
+}
+.search-btn{
+  color:black;
+  width:40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-txt{
+  border:none;
+  background: none;
+  outline:none;
+  float:left;
+  padding: 0;
+  color:white;
+  font-size:16px;
+  transition:0.4s;
+  line-height:40px;
+  width:0px;
+}
+.search-box:hover > .search-txt{
+  width:240px;
+  padding: 0 6px;
+}
+.search-box:hover > .search.btn{
+  background: black;
+}
 .alert:empty {
   display: none;
 }
@@ -30,7 +67,7 @@ nav ul li a{
   color: black;
   font-size: 24px;
   padding: 24px 14px;
-  padding-top: 14px;
+  padding-top: 4%;
   padding-bottom: 3px;
   padding-left: 14px;
   padding-right: 14px;
