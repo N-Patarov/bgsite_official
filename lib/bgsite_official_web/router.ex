@@ -18,6 +18,7 @@ defmodule BgsiteOfficialWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    resources "/websites", WebsitesController
   end
 
   # Other scopes may use custom stacks.
