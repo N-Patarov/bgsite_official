@@ -33,6 +33,7 @@ defmodule BgsiteOfficial.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       {:sobelow, "~> 0.8", only: :dev},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
 
@@ -40,6 +41,7 @@ defmodule BgsiteOfficial.MixProject do
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
+      {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:phoenix_live_view, "~> 0.15.0"},
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_html, "~> 2.11"},

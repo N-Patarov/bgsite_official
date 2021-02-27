@@ -1,0 +1,29 @@
+<h1>Show Websites</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @websites.title %>
+  </li>
+
+  <li>
+    <strong>Banner:</strong>
+    <%= @websites.banner %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @websites.description %>
+  </li>
+
+  <li>
+    <strong>Likes:</strong>
+    <%= @websites.likes %>
+  </li>
+
+</ul>
+<%= if @current_admin do %>
+  <span><%= link "Edit", to: Routes.websites_path(@conn, :edit, @websites) %></span>
+<% end %>
+<span><%= link "Back", to: Routes.websites_path(@conn, :index) %></span>
