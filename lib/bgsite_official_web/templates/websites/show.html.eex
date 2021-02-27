@@ -23,6 +23,7 @@
   </li>
 
 </ul>
-
-<span><%= link "Edit", to: Routes.websites_path(@conn, :edit, @websites) %></span>
+<%= if @current_admin do %>
+  <span><%= link "Edit", to: Routes.websites_path(@conn, :edit, @websites) %></span>
+<% end %>
 <span><%= link "Back", to: Routes.websites_path(@conn, :index) %></span>
