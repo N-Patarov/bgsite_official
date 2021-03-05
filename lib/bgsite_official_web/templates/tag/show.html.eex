@@ -1,0 +1,28 @@
+<h1>Show Tag</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @tag.title %>
+  </li>
+
+  <li>
+    <strong>Banner:</strong>
+    <%= @tag.banner %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @tag.description %>
+  </li>
+
+  <li>
+    <strong>Likes:</strong>
+    <%= @tag.likes %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.tag_path(@conn, :edit, @tag) %></span>
+<span><%= link "Back", to: Routes.tag_path(@conn, :index) %></span>
