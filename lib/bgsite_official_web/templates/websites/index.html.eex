@@ -18,7 +18,7 @@
       <td><%= websites.banner %></td>
       <td><%= websites.description %></td>
       <td><%= websites.likes %></td>
-
+  </div>
       <td>
 
         <span><%= link "Show", to: Routes.websites_path(@conn, :show, websites) %></span>
