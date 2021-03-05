@@ -22,6 +22,7 @@ defmodule BgsiteOfficialWeb.Router do
 
     live "/", PageLive, :index
     resources "/websites", WebsitesController
+    resources "/TagsController", CategoriesController
   end
 
   # Other scopes may use custom stacks.
