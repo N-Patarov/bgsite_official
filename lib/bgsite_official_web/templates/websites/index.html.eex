@@ -1,5 +1,29 @@
 <h1>Listing Websites</h1>
 
+<div class="container">
+  <div class="row">
+
+    <%= for websites <- @websites do %>
+
+  <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+          <img src="" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title"><%= websites.title %></h5>
+          <p class="card-text"><%= websites.description %></p>
+          <p class="card-text"><small class="text-muted">Likes count: <%= websites.likes %></small></p>
+        </div>
+      </div>
+    <br>
+  </div>
+
+    <% end %>
+  </div>
+</div>
+
+
+
 <table class="table">
   <thead>
     <tr>
