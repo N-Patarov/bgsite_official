@@ -22,6 +22,10 @@
     <%= @websites.likes %>
   </li>
 
+  <strong>Image</strong>
+    <img src="<%= FileUploader.Image.url({ @websites.image, @websites }) %>" width="300"
+    />
+
 </ul>
 <%= if @current_admin do %>
   <span><%= link "Edit", to: Routes.websites_path(@conn, :edit, @websites) %></span>
