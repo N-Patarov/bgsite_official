@@ -51,4 +51,5 @@ defmodule BgsiteOfficialWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug BgsiteOfficialWeb.Router
+  plug Plug.Static, at: "/uploads", from: "uploads"
 end

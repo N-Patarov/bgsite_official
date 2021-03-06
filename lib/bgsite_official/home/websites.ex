@@ -1,6 +1,8 @@
 defmodule BgsiteOfficial.Home.Websites do
   use Ecto.Schema
+  use Arc.Ecto.Schema
   import Ecto.Changeset
+  alias FileUploader.Storage.Picture
 
   schema "websites" do
     field :banner, :string

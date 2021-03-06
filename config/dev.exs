@@ -30,6 +30,8 @@ config :bgsite_official, BgsiteOfficialWeb.Endpoint,
     ]
   ]
 
+config :arc, storage: Arc.Storage.Local  
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
