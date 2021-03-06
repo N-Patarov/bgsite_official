@@ -1,6 +1,35 @@
 <h1>Listing Websites</h1>
 
-<table class="table">
+<div class="container">
+  <div class="row">
+
+    <%= for websites <- @websites do %>
+
+  <div class="col-sm">
+
+      <div class="card" style="width: 18rem;">
+          <img src="" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title"><%= websites.title %></h5>
+          <p class="card-text"><%= websites.description %></p>
+          <p class="card-text"><small class="text-muted">Likes count: <%= websites.likes %></small></p>
+          <p class="card-text"><%= link "Show", to: Routes.websites_path(@conn, :show, websites) %></p>
+          <%= if @current_admin do %>
+            <p class="card-text"><span><%= link "Edit", to: Routes.websites_path(@conn, :edit, websites) %></span></p>
+            <p class="card-text"><span><%= link "Delete", to: Routes.websites_path(@conn, :delete, websites), method: :delete, data: [confirm: "Are you sure?"] %></span> </p>
+          <% end %>
+        </div>
+      </div>
+    <br>
+  </div>
+
+    <% end %>
+  </div>
+</div>
+
+
+
+<!-- <table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -10,9 +39,7 @@
 
       <th></th>
     </tr>
-  </thead
-
-
+  </thead>
 
 
   <tbody>
@@ -23,14 +50,7 @@
       <td><%= websites.description %></td>
       <td><%= websites.likes %></td>
   </div>
-   <div class="card">
-    <img src="" class="card-img-top" alt="snimka">
-    <div class="card-body">
-      <h5 class="card-title"><%= websites.title %></h5>
-      <p class="card-text"><%= websites.description %></p>
-      <p class="card-text"><small class="text-muted"><%= websites.likes %></small></p>
-    </div>
-  </div>
+
 
       <td>
 
@@ -43,7 +63,7 @@
     </tr>
 <% end %>
   </tbody>
-</table>
+</table> -->
 <%= if @current_admin do %>
   <span><%= link "New Websites", to: Routes.websites_path(@conn, :new) %></span>
 <% end %>
