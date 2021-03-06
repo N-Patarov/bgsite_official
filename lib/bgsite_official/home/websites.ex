@@ -20,7 +20,7 @@ defmodule BgsiteOfficial.Home.Websites do
     |> validate_required([:title, :banner, :description, :likes])
   end
 
-  def banner_changeset(user, attrs) do
+  def banner_changeset(website, attrs) do
    user
    |> cast(attrs, [])
    |> cast_attachments(attrs, [:banner])

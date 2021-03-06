@@ -17,6 +17,17 @@ defmodule BgsiteOfficial.Home do
       [%Websites{}, ...]
 
   """
+
+  def update_websites_banner(%Website{} = website, attrs) do
+    user
+    |> Website.banner_changeset(attrs)
+    |> Repo.update()
+  end
+
+  def change_websites_banner(%Website{} = website) do
+    Website.banner_changeset(user, %{})
+  end
+
   def list_websites do
     Repo.all(Websites)
   end
