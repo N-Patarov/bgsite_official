@@ -24,7 +24,7 @@
 
 
 
-<table class="table">
+<!-- <table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -34,9 +34,7 @@
 
       <th></th>
     </tr>
-  </thead
-
-
+  </thead>
 
 
   <tbody>
@@ -47,7 +45,7 @@
       <td><%= websites.description %></td>
       <td><%= websites.likes %></td>
   </div>
-   
+
 
       <td>
 
@@ -60,7 +58,7 @@
     </tr>
 <% end %>
   </tbody>
-</table>
+</table> -->
 <%= if @current_admin do %>
   <span><%= link "New Websites", to: Routes.websites_path(@conn, :new) %></span>
 <% end %>
