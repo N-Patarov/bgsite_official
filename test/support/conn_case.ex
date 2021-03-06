@@ -41,6 +41,12 @@ defmodule BgsiteOfficialWeb.ConnCase do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 
+  setup tags do
+    on_exit fn ->
+      FileUploader.FileTests.remove_test_files
+    end
+  end  
+
   @doc """
   Setup helper that registers and logs in admin.
 

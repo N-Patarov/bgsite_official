@@ -6,6 +6,10 @@ defmodule BgsiteOfficialWeb.WebsitesControllerTest do
   @create_attrs %{banner: "some banner", description: "some description", likes: 42, title: "some title"}
   @update_attrs %{banner: "some updated banner", description: "some updated description", likes: 43, title: "some updated title"}
   @invalid_attrs %{banner: nil, description: nil, likes: nil, title: nil}
+  @create_attrs %{title: "some title", image: %Plug.Upload{path: "test/fixtures/image.png", filename: "image.png"}}
+  @update_attrs %{title: "some updated title", image: %Plug.Upload{path: "test/fixtures/image.png", filename: "image.png"}}
+  @invalid_attrs %{title: nil}
+
 
   def fixture(:websites) do
     {:ok, websites} = Home.create_websites(@create_attrs)

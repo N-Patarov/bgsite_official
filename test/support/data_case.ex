@@ -37,6 +37,13 @@ defmodule BgsiteOfficial.DataCase do
     :ok
   end
 
+
+  setup tags do
+    on_exit fn ->
+      FileUploader.FileTests.remove_test_files
+    end
+  end  
+
   @doc """
   A helper that transforms changeset errors into a map of messages.
 

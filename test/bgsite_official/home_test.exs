@@ -3,6 +3,15 @@ defmodule BgsiteOfficial.HomeTest do
 
   alias BgsiteOfficial.Home
 
+  describe "pictures" do
+    alias FileUploader.Storage.Picture
+
+    @valid_attrs %{title: "some title", image: %Plug.Upload{path: "test/fixtures/image.png", filename: "image.png"}}
+    @update_attrs %{title: "some updated title", image: %Plug.Upload{path: "test/fixtures/image.png", filename: "image.png"}}
+
+  end  
+
+
   describe "websites" do
     alias BgsiteOfficial.Home.Websites
 

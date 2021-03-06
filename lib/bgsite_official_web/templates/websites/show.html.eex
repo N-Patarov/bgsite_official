@@ -23,7 +23,7 @@
   </li>
 
   <strong>Image</strong>
-    <img src="<%= FileUploader.Image.url({ @websites.image, @websites }) %>" width="300"
+    <img src="<%= FileUploader.banner.url({ @websites.banner, @websites }) %>" width="300"
     />
 
 </ul>
