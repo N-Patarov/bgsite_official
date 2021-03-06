@@ -23,14 +23,7 @@
       <td><%= websites.description %></td>
       <td><%= websites.likes %></td>
   </div>
-   <div class="card">
-    <img src="" class="card-img-top" alt="snimka">
-    <div class="card-body">
-      <h5 class="card-title"><%= websites.title %></h5>
-      <p class="card-text"><%= websites.description %></p>
-      <p class="card-text"><small class="text-muted"><%= websites.likes %></small></p>
-    </div>
-  </div>
+   
 
       <td>
 
