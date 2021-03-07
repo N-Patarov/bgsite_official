@@ -5,7 +5,7 @@ defmodule BgsiteOfficial.Home.Websites do
 
   @derive {Inspect, except: [:password]}
   schema "websites" do
-    field :banner, Tutorial.BannerUploader.Type
+    field :banner, BgsiteOfficial.BannerUploader.Type
     field :description, :string
     field :likes, :integer
     field :title, :string
