@@ -23,6 +23,7 @@ defmodule BgsiteOfficialWeb.Router do
     live "/", PageLive, :index
     resources "/websites", WebsitesController
     resources "/tags", TagController
+    put "/websites/settings/update_banner", WebsitesController, :update_banner
   end
 
   # Other scopes may use custom stacks.

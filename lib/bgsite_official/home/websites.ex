@@ -1,11 +1,11 @@
 defmodule BgsiteOfficial.Home.Websites do
   use Ecto.Schema
   import Ecto.Changeset
-  use Waffle.Ecto.Schema
+  # use Waffle.Ecto.Schema
 
   @derive {Inspect, except: [:password]}
   schema "websites" do
-    field :banner, Tutorial.AvatarUploader.Type
+    field :banner, Tutorial.BannerUploader.Type
     field :description, :string
     field :likes, :integer
     field :title, :string
