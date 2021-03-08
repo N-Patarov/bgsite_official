@@ -9,7 +9,9 @@
 
   <li>
     <strong>Banner:</strong>
-    <%= @websites.banner %>
+    <%= if @websites.banner do %>
+        <%= img_tag BgsiteOfficial.BannerUploader.url(@websites.banner) %>
+      <% end %>
   </li>
 
   <li>

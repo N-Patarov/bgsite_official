@@ -62,27 +62,27 @@ defmodule BgsiteOfficialWeb.WebsitesController do
 
   # S3
 
-  def update_banner(conn, %{"websites" => websites_params}) do
-    websites = conn.assigns.current_websites
+  # def update_banner(conn, %{"websites" => websites_params}) do
+  #   websites = conn.assigns.current_websites
+  #
+  #   case Accounts.update_websites_banner(websites, websites_params) do
+  #     {:ok, websites} ->
+  #       conn
+  #       |> put_flash(:info, "banner updated successfully.")
+  #       |> redirect(to: Routes.websites_settings_path(conn, :edit))
+  #
+  #   {:error, changeset} ->
+  #     render(conn, "edit.html", banner_changeset: changeset)
+  #   end
+  # end
 
-    case Accounts.update_websites_banner(websites, websites_params) do
-      {:ok, websites} ->
-        conn
-        |> put_flash(:info, "banner updated successfully.")
-        |> redirect(to: Routes.websites_settings_path(conn, :edit))
-
-    {:error, changeset} ->
-      render(conn, "edit.html", banner_changeset: changeset)
-    end
-  end
-
-  defp assign_email_and_password_changesets(conn, _opts) do
-    websites = conn.assigns.current_websites
-
-    conn
-    |> assign(:banner_changeset, Accounts.change_websites_banner(websites))
-    |> assign(:websites, websites)
-
-  end
+  # defp assign_email_and_password_changesets(conn, _opts) do
+  #   websites = conn.assigns.current_websites
+  #
+  #   conn
+  #   |> assign(:banner_changeset, Accounts.change_websites_banner(websites))
+  #   |> assign(:websites, websites)
+  #
+  # end
 
 end

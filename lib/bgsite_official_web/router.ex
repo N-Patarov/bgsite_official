@@ -21,9 +21,6 @@ defmodule BgsiteOfficialWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
-    resources "/websites", WebsitesController
-    resources "/tags", TagController
-    put "/websites/settings/update_banner", WebsitesController, :update_banner
   end
 
   # Other scopes may use custom stacks.
@@ -68,6 +65,13 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/settings", AdminSettingsController, :edit
     put "/admin/settings", AdminSettingsController, :update
     get "/admin/settings/confirm_email/:token", AdminSettingsController, :confirm_email
+  end
+
+  scope "/", BgsiteOfficialWeb do
+    pipe_through [:browser, :require_authenticated_admin]
+
+    resources "/websites", WebsitesController
+    resources "/tags", TagController
   end
 
   scope "/", BgsiteOfficialWeb do

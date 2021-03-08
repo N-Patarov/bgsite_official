@@ -53,6 +53,7 @@ defmodule BgsiteOfficial.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:waffle, "~> 1.1"},
+      {:waffle_ecto, "~> 0.0.10"},
       # S3
       {:ex_aws, "~> 2.1.2"},
       {:ex_aws_s3, "~> 2.0"},
