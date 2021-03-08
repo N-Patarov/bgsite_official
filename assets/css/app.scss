@@ -76,7 +76,7 @@ nav ul li a{
 nav ul li ul{
   display:none;
   position: absolute;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 10px;
   border-radius:0px 0px 10px 10px;
 }
@@ -125,13 +125,12 @@ transition: width .3s;
   transition: width .3s;
 }
 .pad{
-  background-image: url("/images/logo.png");
+  background-image: url("/images/image.png");
   background-position: center;
   max-width:80px;
   height: 50px;
-  background-size: 100%;
+  background-size: 80%;
   object-fit: contain;
-  border-radius: 50%;
   overflow: hidden;
 }
 .pad1{
@@ -141,4 +140,8 @@ transition: width .3s;
 .card-img{
   size: 50px;
   background-clip: 50%;
+}
+.footer{
+  margin-bottom: -8%;
+  size: 20vh;
 }
