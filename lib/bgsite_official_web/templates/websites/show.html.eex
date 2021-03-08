@@ -10,7 +10,7 @@
   <li>
     <strong>Banner:</strong>
     <%= if @websites.banner do %>
-        <%= img_tag BgsiteOfficial.BannerUploader.url(@websites.banner) %>
+        <%= img_tag BgsiteOfficial.BannerUploader.url(@websites.banner, :thumb) %>
       <% end %>
   </li>
 

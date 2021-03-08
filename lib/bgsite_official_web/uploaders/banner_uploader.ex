@@ -4,7 +4,7 @@ defmodule BgsiteOfficial.BannerUploader do
   # Include ecto support (requires package waffle_ecto installed):
   use Waffle.Ecto.Definition
 
-  @versions [:original]
+  @versions [:original, :thumb]
 
   # To add a thumbnail version:
   # @versions [:original, :thumb]
@@ -20,9 +20,9 @@ defmodule BgsiteOfficial.BannerUploader do
   end
 
   # Define a thumbnail transformation:
-  # def transform(:thumb, _) do
-  #   {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
-  # end
+  def transform(:thumb, _) do
+    {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
+  end
 
   # Override the persisted filenames:
   # def filename(version, _) do

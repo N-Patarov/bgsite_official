@@ -10,6 +10,7 @@
       <div class="card" style="width: 18rem;">
           <img src="" class="card-img-top">
         <div class="card-body">
+          <%= img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb) %>
           <h5 class="card-title"><%= websites.title %></h5>
           <p class="card-text"><%= websites.description %></p>
           <p class="card-text"><small class="text-muted">Likes count: <%= websites.likes %></small></p>
