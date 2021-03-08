@@ -10,6 +10,7 @@
       <div class="card" style="width: 18rem;">
           <img src="" class="card-img-top">
         <div class="card-body">
+          <%= img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb) %>
           <h5 class="card-title"><%= websites.title %></h5>
           <p class="card-text"><%= websites.description %></p>
           <p class="card-text"><small class="text-muted">Likes count: <%= websites.likes %></small></p>
@@ -27,43 +28,6 @@
   </div>
 </div>
 
-
-
-<!-- <table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Banner</th>
-      <th>Description</th>
-      <th>Likes</th>
-
-      <th></th>
-    </tr>
-  </thead>
-
-
-  <tbody>
-<%= for websites <- @websites do %>
-    <tr>
-      <td><%= websites.title %></td>
-      <td><%= websites.banner %></td>
-      <td><%= websites.description %></td>
-      <td><%= websites.likes %></td>
-  </div>
-
-
-      <td>
-
-        <span><%= link "Show", to: Routes.websites_path(@conn, :show, websites) %></span>
-        <%= if @current_admin do %>
-          <span><%= link "Edit", to: Routes.websites_path(@conn, :edit, websites) %></span>
-          <span><%= link "Delete", to: Routes.websites_path(@conn, :delete, websites), method: :delete, data: [confirm: "Are you sure?"] %></span>
-        <% end %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table> -->
 <%= if @current_admin do %>
   <span><%= link "New Websites", to: Routes.websites_path(@conn, :new) %></span>
 <% end %>
