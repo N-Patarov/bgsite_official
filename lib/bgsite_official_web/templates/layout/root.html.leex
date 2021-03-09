@@ -11,12 +11,12 @@
   </head>
   <body class="d-flex flex-column h-100 bg-light">
     <header>
-
+<!--
     <nav>
  <ul>
 <li class = "active1"><a href="#"><img src = "/images/image.png" width="50px"height = "60px"> Sites.bg</a></li>
 <li class = "active"><a href = "/"><i class="fas fa-home"></i></a></li>
-<!-- <li class = "active"><a href = "#"><i class="fas fa-user"></i></a></li> -->
+
 <li class><a href = "#"><i class="fas fa-user"></i></a>
 
 <%= render "_admin_menu.html", assigns %>
@@ -24,7 +24,20 @@
 </ul>
 
 
-      </nav>
+      </nav> -->
+
+
+      <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="/images/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      SITES.BG
+    </a>
+    <form class="form-inline my-2 my-lg-0 btn-toolbar">
+      <h1> Logged as: </h1>
+      <button class="btn btn-outline-success mx-2" type="submit">Sign in</button>
+      <button type="button" class="btn btn-success">Register</button>
+    </form>
+  </nav>
 
     </header>
 
