@@ -25,4 +25,16 @@ defmodule BgsiteOfficial.Home.Websites do
   #  |> cast(attrs, [])
   #  |> cast_attachments(attrs, [:banner])
   # end
+
+  
+
+  many_to_many
+  (
+      :tags,
+      Tag,
+      join_through: "tag_project",
+      on_replace: :delete
+  )
+
+
 end
