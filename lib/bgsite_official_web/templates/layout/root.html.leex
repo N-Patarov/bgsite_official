@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "BgsiteOfficial", suffix: " · Phoenix Framework" %>
+    <%= live_title_tag assigns[:page_title] || "Sites.bg", suffix: "" %>
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
@@ -16,7 +16,7 @@
 
     <nav class="navbar navbar-light bg-light navbar-desktop fixed-top">
       <a class="navbar-brand" href="/">
-        <img src="/images/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
         SITES.BG
       </a>
 
@@ -40,7 +40,7 @@
       <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"> -->
       <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top font-navbar">
         <a class="navbar-brand" href="/">
-          <img src="/images/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
           SITES.BG
         </a>
 
