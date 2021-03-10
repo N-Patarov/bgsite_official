@@ -27,6 +27,23 @@ defmodule BgsiteOfficial.Home.Websites do
     on_replace: :delete
   )
 
+  def upsert_tag_websites(tag, website_ids) when is_list(website_ids) do
+    websites =
+      Website
+      |> where([website], website.id in ^website_ids)
+      |> Repo.all()
+
+    with {:ok, _struct} <-
+           tag
+           |> Tag.changeset_update_website(websites)
+           |> Repo.update() do
+      {:ok, Accounts.get_tag(tag.id)}
+    else
+      error ->
+        error
+    end
+  end
+
 
   # def banner_changeset(website, attrs) do
   #  website
