@@ -17,4 +17,12 @@ defmodule BgsiteOfficial.Categories.Tag do
     |> cast(attrs, [:title, :banner, :description, :likes])
     |> validate_required([:title, :banner, :description, :likes])
   end
+
+  many_to_many(
+     :websites,
+     Website,
+     join_through: "tag_website",
+     on_replace: :delete
+   )
+
 end

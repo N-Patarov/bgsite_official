@@ -20,6 +20,14 @@ defmodule BgsiteOfficial.Home.Websites do
     |> validate_required([:title, :description, :likes])
   end
 
+  many_to_many(
+    :tag,
+    Tag,
+    join_through: "tag_website",
+    on_replace: :delete
+  )
+
+
   # def banner_changeset(website, attrs) do
   #  website
   #  |> cast(attrs, [])
