@@ -24,7 +24,8 @@ defmodule BgsiteOfficialWeb.Endpoint do
     at: "/",
     from: :bgsite_official,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only_matching: ~w(css fonts images js favicon robots.txt)
+
 
   plug Plug.Static,
     at: "/uploads",
