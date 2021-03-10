@@ -25,4 +25,11 @@ defmodule BgsiteOfficial.Categories.Tag do
      on_replace: :delete
    )
 
+   def changeset_update_tag(%Tag{} = tag, websites) do
+      tag
+      |> cast(%{}, @required_fields)
+      # associate websites to the tag
+      |> put_assoc(:websites, websites)
+    end
+
 end
