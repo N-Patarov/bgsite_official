@@ -9,53 +9,50 @@
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
+
   <body class="d-flex flex-column h-100 bg-light">
+
     <header>
 
- <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src = "/images/image.png" width = "30" heigh = "30">Sitesbg</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="navbar navbar-light bg-light navbar-desktop fixed-top">
+      <a class="navbar-brand" href="/">
+        <img src="/images/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        SITES.BG
+      </a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/"><i class="fas fa-user"></i></a>
-      </li>
-       <%= render "_admin_menu.html", assigns %>
+      <form class="form-inline my-2 my-lg-0 btn-toolbar">
+        <%= if @current_admin do %>
+          <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button>
+          <button type"button" class="btn btn-outline-info mx-2"><%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "fucking-blue-link-color" %></button>
+          <button type"button" class="btn btn-outline-danger"><%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "fucking-blue-link-color", method: :delete %></button>
 
-    </ul>
-   <form class="form-inline my-2 my-lg-0">
-      <div class = "search-box">
-     <input class="search-txt" type="text" name="" placeholder="type to search">
-    <a class="search-btn" href = "#"><i class="fas fa-search"></i>
-    </a>
-    </form>
-  </div>
-</nav>
--->
-    <nav>
- <ul>
-<li class = "active1"><a href="#"><img src = "/images/image.png" width="50px"height = "60px"> Sites.bg</a></li>
-<li class = "active"><a href = "/"><i class="fas fa-home"></i></a></li>
-<!-- <li class = "active"><a href = "#"><i class="fas fa-user"></i></a></li> -->
-<li class><a href = "#"><i class="fas fa-user"></i></a>
+        <% else %>
+          <button class="btn btn-outline-success mx-2" type="submit"><%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "fucking-blue-link-color" %></button>
+          <button type="button" class="btn btn-success hui-2"><%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "fucking-blue-link-color" %></button>
+        <% end %>
+      </form>
+    </nav>
 
-<%= render "_admin_menu.html", assigns %>
 
-</ul>
-<!--<div class = "search-box">
-<input class="search-txt" type="text" name="" placeholder="type to search">
-<a class="search-btn" href = "#"><i class="fas fa-search"></i>
-</a>-->
 
-      </nav>
+    <div class="mobile-navbar">
 
-    </header>
+      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"> -->
+      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top font-navbar">
+        <a class="navbar-brand" href="/">
+          <img src="/images/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          SITES.BG
+        </a>
+
+
+
+
+
+
+    </div>
+  </nav>
+
+  </header>
 
     <%= @inner_content %>
 
