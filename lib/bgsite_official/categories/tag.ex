@@ -21,7 +21,7 @@ defmodule BgsiteOfficial.Categories.Tag do
   many_to_many(
      :websites,
      Website,
-     join_through: "tag_website",
+     join_through: "website_tag",
      on_replace: :delete
    )
 

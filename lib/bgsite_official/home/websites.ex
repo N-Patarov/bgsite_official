@@ -23,7 +23,7 @@ defmodule BgsiteOfficial.Home.Websites do
   many_to_many(
     :tag,
     Tag,
-    join_through: "tag_website",
+    join_through: "website_tag",
     on_replace: :delete
   )
 
