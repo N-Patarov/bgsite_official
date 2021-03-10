@@ -2,13 +2,14 @@
 
 <%= form_for :admin, Routes.admin_reset_password_path(@conn, :create), fn f -> %>
   <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= email_input f, :email, required: true, class: "form-control" %><br>
 
   <div>
-    <%= submit "Send instructions to reset password" %>
+    <%= submit "Send instructions to reset password",class: "btn btn-primary" %>
+    <br>
   </div>
 <% end %>
-
+<br>
 <p>
   <%= link "Register", to: Routes.admin_registration_path(@conn, :new) %> |
   <%= link "Log in", to: Routes.admin_session_path(@conn, :new) %>
