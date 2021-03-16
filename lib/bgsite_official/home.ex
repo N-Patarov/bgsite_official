@@ -32,6 +32,11 @@ defmodule BgsiteOfficial.Home do
     Repo.all(Websites)
   end
 
+  def send_welcome_email do
+    Email.welcome_email()   # Create your email
+    |> Mailer.deliver_now!() # Send your email
+  end
+
   @doc """
   Gets a single websites.
 

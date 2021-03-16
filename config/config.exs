@@ -18,6 +18,13 @@ config :bgsite_official, BgsiteOfficialWeb.Endpoint,
   pubsub_server: BgsiteOfficial.PubSub,
   live_view: [signing_salt: "ZGDyDgzZ"]
 
+config :bgsite_official, MyApp.Mailer,
+  adapter: Bamboo.MandrillAdapter,
+  api_key: "my_api_key"
+    hackney_opts: [
+    recv_timeout: :timer.minutes(1),
+    connect_timeout: :timer.minutes(1)
+    ]
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
