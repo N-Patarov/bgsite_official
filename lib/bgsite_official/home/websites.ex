@@ -3,7 +3,7 @@ defmodule BgsiteOfficial.Home.Websites do
   import Ecto.Changeset
   use Waffle.Ecto.Schema
 
-  @derive {Inspect, except: [:password]}
+  # @derive {Inspect, except: [:password]}
   schema "websites" do
     field :banner, BgsiteOfficial.BannerUploader.Type
     field :description, :string
@@ -13,7 +13,6 @@ defmodule BgsiteOfficial.Home.Websites do
     timestamps()
   end
 
-  @doc false
   def changeset(websites, attrs) do
     websites
     |> cast(attrs, [:title, :banner, :description, :likes])
@@ -26,15 +25,12 @@ defmodule BgsiteOfficial.Home.Websites do
   #  |> cast_attachments(attrs, [:banner])
   # end
 
-  
-
-  many_to_many
-  (
-      :tags,
-      Tag,
-      join_through: "tag_project",
-      on_replace: :delete
-  )
-
+  # many_to_many
+  # (
+  #     :tags,
+  #     Tag,
+  #     join_through: "tag_project",
+  #     on_replace: :delete
+  # )
 
 end
