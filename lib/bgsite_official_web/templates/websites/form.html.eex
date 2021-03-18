@@ -27,4 +27,3 @@
     <%= submit "Save" %>
   </div>
 <% end %>
-<h3>Choose tags for this website</h3>
