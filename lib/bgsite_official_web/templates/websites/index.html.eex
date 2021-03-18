@@ -25,5 +25,6 @@
 </div>
 
 <%= if @current_admin do %>
-  <span><%= link "New Websites", to: Routes.websites_path(@conn, :new) %></span>
+  <span><%= link "New Websites", to: Routes.websites_path(@conn, :new), class: "btn btn-secondary" %></span>
+  <br><br>
 <% end %>
