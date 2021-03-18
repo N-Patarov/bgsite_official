@@ -11,14 +11,10 @@
           <img src="" class="card-img-top">
         <div class="card-body">
           <%= img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb) %>
-          <h5 class="card-title"><%= websites.title %></h5>
+          <h5 class="card-title"><%= link websites.title , to: Routes.websites_path(@conn, :show, websites) %></h5>
           <p class="card-text"><%= websites.description %></p>
           <p class="card-text"><small class="text-muted">Likes count: <%= websites.likes %></small></p>
-          <p class="card-text"><%= link "Show", to: Routes.websites_path(@conn, :show, websites) %></p>
-          <%= if @current_admin do %>
-            <p class="card-text"><span><%= link "Edit", to: Routes.websites_path(@conn, :edit, websites) %></span></p>
-            <p class="card-text"><span><%= link "Delete", to: Routes.websites_path(@conn, :delete, websites), method: :delete, data: [confirm: "Are you sure?"] %></span> </p>
-          <% end %>
+
         </div>
       </div>
     <br>
@@ -29,5 +25,6 @@
 </div>
 
 <%= if @current_admin do %>
-  <span><%= link "New Websites", to: Routes.websites_path(@conn, :new) %></span>
+  <span><%= link "New Websites", to: Routes.websites_path(@conn, :new), class: "btn btn-secondary" %></span>
+  <br><br>
 <% end %>

@@ -13,6 +13,7 @@
   <%= label f, :password %>
   <%= password_input f, :password, required: true, class: "form-control"  %>
   <%= error_tag f, :password %>
+  <small id="emailHelp" class="form-text text-muted">Don't reuse your bank password, we didn't spend a lot on security for this app.</small>
 <br>
   <div>
     <%= submit "Register", class: "btn btn-primary" %>
