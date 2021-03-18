@@ -6,9 +6,10 @@
   <% end %>
 
   <%= label f, :title %>
-  <%= text_input f, :title %>
+  <%= text_input f, :title, class: "form-control" %>
   <%= error_tag f, :title %>
 
+  <br>
   <div class="form-group">
     <%= label f, :banner %>
     <%= file_input f, :banner %>
@@ -16,14 +17,15 @@
   </div>
 
   <%= label f, :description %>
-  <%= text_input f, :description %>
+  <%= text_input f, :description, class: "form-control" %>
   <%= error_tag f, :description %>
 
   <%= label f, :likes %>
-  <%= number_input f, :likes %>
+  <%= number_input f, :likes, class: "form-control" %>
   <%= error_tag f, :likes %>
-
+<br>
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-secondary" %>
   </div>
+  <br>
 <% end %>

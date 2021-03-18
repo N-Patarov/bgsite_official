@@ -21,7 +21,7 @@ defmodule BgsiteOfficial.BannerUploader do
 
   # Define a thumbnail transformation:
   def transform(:thumb, _) do
-    {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
+    {:convert, "-strip -thumbnail 275x250^ -gravity center -extent 275x250 -format png", :png}
   end
 
   # Override the persisted filenames:
