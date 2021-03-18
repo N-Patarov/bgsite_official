@@ -1,4 +1,13 @@
-# BgsiteOfficial
+# Sites.bg
+
+Sites.bg is a website displaying bulgarian websites sorted on categories. This way you can easily support bulgarian developers by using their products.
+
+
+
+
+
+
+
 
 To start your Phoenix server:
 
@@ -11,10 +20,5 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-## Learn more
+![Screenshot](readmelogo.png)
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
