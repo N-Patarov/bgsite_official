@@ -15,10 +15,6 @@
           <p class="card-text"><%= websites.description %></p>
           <p class="card-text"><small class="text-muted">Likes count: <%= websites.likes %></small></p>
 
-          <%= if @current_admin do %>
-            <p class="card-text"><span><%= link "Edit", to: Routes.websites_path(@conn, :edit, websites) %></span></p>
-            <p class="card-text"><span><%= link "Delete", to: Routes.websites_path(@conn, :delete, websites), method: :delete, data: [confirm: "Are you sure?"] %></span> </p>
-          <% end %>
         </div>
       </div>
     <br>
