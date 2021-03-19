@@ -21,21 +21,24 @@
 
     <header>
 
-    <nav class="navbar navbar-light bg-light navbar-desktop fixed-top">
+    <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
+      <div>
+        <%= link "Предложи сайт", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+    </div>
       <a class="navbar-brand" href="/">
-        <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <!-- <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
         SITES.BG
       </a>
-
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
         <%= if @current_admin do %>
-          <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button>
-          <button type="button" class="btn btn-outline-info mx-2"><%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "fucking-blue-link-color" %></button>
-          <button type="button" class="btn btn-outline-danger"><%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "fucking-blue-link-color", method: :delete %></button>
+          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
+
+          <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
+          <%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
 
         <% else %>
-          <button class="btn btn-outline-success mx-2" type="submit"><%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "fucking-blue-link-color" %></button>
-          <button type="button" class="btn btn-success hui-2"><%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "fucking-blue-link-color" %></button>
+          <%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
+          <%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
         <% end %>
       </form>
     </nav>
@@ -43,31 +46,40 @@
 
 
     <div class="mobile-navbar">
-      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"> -->
-      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top font-navbar">
-        <a class="navbar-brand" href="/">
-          <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
-          SITES.BG
-        </a>
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Accaunt
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%= if @current_admin do %>
-          <!--<button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button>-->
-          <button type="button" class="btn btn-outline-info mx-2"><%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "fucking-blue-link-color" %></button>
-          <button type="button" class="btn btn-outline-danger" class="buton"><%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "fucking-blue-link-color", method: :delete %></button>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="/">Sites.bg</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <% else %>
-          <button class="btn btn-outline-success mx-2" type="submit"><%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "fucking-blue-link-color" %></button>
-          <button type="button" class="btn btn-success hui-2"><%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "fucking-blue-link-color" %></button>
-        <% end %>
-  </div>
-</div>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Всички уебсайтове <span class="sr-only">(current)</span></a>
+          </li>
+          <%= if @current_admin do %>
+          <li class="nav-item">
+            <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info my-2 blue-link-color" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success my-2" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
+          </li>
+          <% end %>
+        </ul>
+
+      </div>
+    </nav>
+
 
     </div>
-  </nav>
+
 
   </header>
 
@@ -83,6 +95,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-facebook-f"></i
       ></a>
@@ -92,6 +105,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-twitter"></i
       ></a>
@@ -100,6 +114,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-instagram"></i
       ></a>
@@ -108,6 +123,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-github"></i
       ></a>
@@ -116,17 +132,20 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="https://www.binance.com/en/my/wallet/account/main/deposit/crypto/BTC"
+        target="_blank"
         role="button"
       ><i class="fab fa-bitcoin"></i>
       </a>
     </section>
     <!-- Section: Social media -->
+    <%= link "Свържи се със Sites.bg", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
+
   </div>
   <!-- Grid container -->
-
+  <p><u> Logged as: <%= @current_admin.email %> </u></p>
   <!-- Copyright -->
   <div class="text-center p-3" style="">
-    © 2021 Copyright
+    © 2021 Copyright | Sites.bg <br> All Rights Reserved
   </div>
   <div class="text-muted p-3" style="text-muted;">
     Support us: 1eEM6yC9by4mS1wLQs8fQy99MheBcuP9u (BTC)
