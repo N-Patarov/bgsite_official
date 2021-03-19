@@ -32,6 +32,7 @@
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
         <%= if @current_admin do %>
           <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
+
           <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
           <%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
 
@@ -138,9 +139,10 @@
     </section>
     <!-- Section: Social media -->
     <%= link "Свържи се със Sites.bg", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
+
   </div>
   <!-- Grid container -->
-
+  <p><u> Logged as: <%= @current_admin.email %> </u></p>
   <!-- Copyright -->
   <div class="text-center p-3" style="">
     © 2021 Copyright | Sites.bg <br> All Rights Reserved
