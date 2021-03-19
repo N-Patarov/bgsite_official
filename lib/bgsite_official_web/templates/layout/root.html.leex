@@ -21,17 +21,19 @@
 
     <header>
 
-    <nav class="navbar navbar-light bg-light navbar-desktop fixed-top">
+    <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
+      <div>
+        <%= link "Предложи сайт", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-secondary mx-2 fucking-blue-link-color" %>
+    </div>
       <a class="navbar-brand" href="/">
-        <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <!-- <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
         SITES.BG
       </a>
-
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
         <%= if @current_admin do %>
-          <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button>
-          <button type="button" class="btn btn-outline-info mx-2"><%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "fucking-blue-link-color" %></button>
-          <button type="button" class="btn btn-outline-danger"><%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "fucking-blue-link-color", method: :delete %></button>
+          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
+          <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 fucking-blue-link-color" %>
+          <%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger fucking-blue-link-color", method: :delete %>
 
         <% else %>
           <button class="btn btn-outline-success mx-2" type="submit"><%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "fucking-blue-link-color" %></button>
@@ -83,6 +85,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-facebook-f"></i
       ></a>
@@ -92,6 +95,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-twitter"></i
       ></a>
@@ -100,6 +104,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-instagram"></i
       ></a>
@@ -108,6 +113,7 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="#!"
+        target="_blank"
         role="button"
         ><i class="fab fa-github"></i
       ></a>
@@ -116,17 +122,19 @@
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
         href="https://www.binance.com/en/my/wallet/account/main/deposit/crypto/BTC"
+        target="_blank"
         role="button"
       ><i class="fab fa-bitcoin"></i>
       </a>
     </section>
     <!-- Section: Social media -->
+    <%= link "Свържи се със Sites.bg", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-primary mx-2 fucking-blue-link-color" %>
   </div>
   <!-- Grid container -->
 
   <!-- Copyright -->
   <div class="text-center p-3" style="">
-    © 2021 Copyright
+    © 2021 Copyright | Sites.bg <br> All Rights Reserved
   </div>
   <div class="text-muted p-3" style="text-muted;">
     Support us: 1eEM6yC9by4mS1wLQs8fQy99MheBcuP9u (BTC)
