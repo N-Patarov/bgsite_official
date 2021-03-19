@@ -1,32 +1,30 @@
-<!-- <h1>Listing Websites</h1> -->
-
 <div class="container">
   <div class="row">
 
     <%= for websites <- @websites do %>
 
-  <div class="col-sm">
+      <div class="col-sm">
 
-      <div class="card" style="width: 20rem;">
+        <div class="card" style="width: 20rem;">
           <img src="" class="card-img-top">
-        <div class="card-body">
+          <div class="card-body">
 
-          <%= img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded" %>
-          <br><br>
-          <h5 class="card-title text-center"><%= link websites.title , to: Routes.websites_path(@conn, :show, websites) %></h5>
-          <p class="card-text text-center"><%= websites.description %></p>
-          <p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>
+            <%= img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded" %>
+            <br><br>
+            <h5 class="card-title text-center"><%= link websites.title , to: Routes.websites_path(@conn, :show, websites) %></h5>
+            <p class="card-text text-center"><%= websites.description %></p>
+            <p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>
 
+          </div>
         </div>
+        <br>
       </div>
-    <br>
-  </div>
 
     <% end %>
   </div>
 </div>
 
 <%= if @current_admin do %>
-  <span><%= link "New Websites", to: Routes.websites_path(@conn, :new), class: "btn btn-secondary" %></span>
+  <span><%= link "New Website", to: Routes.websites_path(@conn, :new), class: "btn btn-secondary" %></span>
   <br><br>
 <% end %>
