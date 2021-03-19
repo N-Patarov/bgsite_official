@@ -5,9 +5,9 @@
 
     <%= for websites <- @websites do %>
 
-  <div class="col-sm">
+  <div class="col-sm rounded">
 
-      <div class="card" style="width: 20rem;">
+      <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
         <div class="card-body">
 
