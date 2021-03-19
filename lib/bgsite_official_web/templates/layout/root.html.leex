@@ -29,10 +29,18 @@
         <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
         SITES.BG
       </a>
+
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
+ <div class="input-group rounded">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" />
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</div>
+</div>
         <%= if @current_admin do %>
           <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
-
           <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
           <%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
 
