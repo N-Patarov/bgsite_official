@@ -6,7 +6,7 @@ defmodule BgsiteOfficial.Repo.Migrations.CreateTags do
       add :title, :string
       add :banner, :string
       add :description, :string
-      add :likes, :string
+      add :likes, :integer
 
       timestamps()
     end
