@@ -23,9 +23,14 @@
   <%= label f, :likes %>
   <%= number_input f, :likes, class: "form-control" %>
   <%= error_tag f, :likes %>
+
+  <%= label f, :url %>
+  <%= text_input f, :url, class: "form-control" %>
+  <%= error_tag f, :url %>
 <br>
   <div>
     <%= submit "Save", class: "btn btn-secondary" %>
   </div>
   <br>
+
 <% end %>

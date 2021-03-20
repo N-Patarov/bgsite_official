@@ -7,6 +7,7 @@ defmodule BgsiteOfficial.Repo.Migrations.CreateWebsites do
       add :banner, :string
       add :description, :string
       add :likes, :integer
+      add :url, :string
 
       timestamps()
     end

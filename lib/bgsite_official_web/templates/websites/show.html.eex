@@ -19,13 +19,23 @@
     <%= @websites.description %>
   </h3>
   </li>
-<!--
+
   <li>
     <strong>Likes:</strong>
     <%= @websites.likes %>
-  </li> -->
+  </li>
+
+
+<br>
+
+<li>
+    <h3>
+    <%= @websites.url %>
+  </h3>
+  </li>
 
 </ul>
+
 <%= if @current_admin do %>
   <span><%= link "Edit", to: Routes.websites_path(@conn, :edit, @websites), class: "btn btn-primary" %></span>
   <span><%= link "Delete", to: Routes.websites_path(@conn, :delete, @websites), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %></span>
