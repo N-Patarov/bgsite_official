@@ -1,0 +1,19 @@
+<div class="text-center">
+  <h2><%= @websites.title %></h2>
+
+  <%= if @websites.banner do %>
+    <%= img_tag BgsiteOfficial.BannerUploader.url(@websites.banner, :thumb), class: "rounded" %>
+  <% end %>
+  <br>
+  <p><%= @websites.description %></p>
+
+  <%= for tag <- @tags do %>
+    <p><%= tag.title %></p>
+
+  <% end %>
+
+  <%# <%= if @current_admin do %> %>
+  <%#   <span><%= link "Edit", to: Routes.websites_path(@conn, :edit, @websites), class: "btn btn-primary" %></span> %>
+  <%#   <span><%= link "Delete", to: Routes.websites_path(@conn, :delete, @websites), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %></span> %>
+  <%# <% end %> %>
+</div>
