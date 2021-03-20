@@ -1,6 +1,5 @@
 defmodule BgsiteOfficialWeb.WebsiteLive do
   use BgsiteOfficialWeb, :live_view
-  require IEx
 
   alias BgsiteOfficialWeb.WebsitesView
   alias BgsiteOfficial.Categories
@@ -12,9 +11,7 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
   end
 
   @impl true
-  # def mount(params, %{"admin_id" => admin_id} = session, socket) do
-  def mount(params, session, socket) do
-    %{"admin_token" => admin_token} = session
+  def mount(params, %{"admin_token" => admin_token} = session, socket) do
     website = Home.get_websites!(params["id"])
     tags = Categories.list_tags
     admin = Accounts.get_admin_by_session_token(admin_token)
@@ -22,8 +19,7 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
         socket,
         websites: website,
         tags: tags,
-      current_admin: admin,
-      # conn: conn
+        current_admin: admin
       )
     {:ok, socket}
   end

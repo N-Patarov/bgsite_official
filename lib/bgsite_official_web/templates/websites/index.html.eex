@@ -11,7 +11,7 @@
 
             <%= img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded" %>
             <br><br>
-            <h5 class="card-title text-center"><%= link websites.title , to: Routes.websites_path(@conn, :show, websites) %></h5>
+            <h5 class="card-title text-center"><%= link websites.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, websites) %></h5>
             <p class="card-text text-center"><%= websites.description %></p>
             <p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>
 
