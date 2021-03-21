@@ -48,8 +48,6 @@
     </div>
     <%= submit "Search"%>
   <%end%>
-
-  <% @inner_content %>
         <%= if @current_admin do %>
           <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
           <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
