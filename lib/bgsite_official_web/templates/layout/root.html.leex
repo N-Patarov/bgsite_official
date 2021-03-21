@@ -39,13 +39,13 @@
     <i class="fas fa-search"></i>
   </span>-->
 </div>
-  <class="search">
+  <div class="search">
   <%= form_for @conn, Routes.websites_path(@conn, :index),[
     method: :get,
     class: "pull-right"], fn f -> %>
     <class="input-group-text border-0" id="search-addon">
     <%= search_input f, :query%>
-    </class>
+    </div>
     <%= submit "Search"%>
   <%end%>
 
