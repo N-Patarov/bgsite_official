@@ -30,6 +30,7 @@ defmodule BgsiteOfficial.Home.Websites do
     wildcard_search = "%#{search_term}"
 
     from websites in query,
-    where: ilike(websites.title,^wildcard_search)
+    where: ilike(websites.title,^wildcard_search),
+    or_where: ilike(websites.description,^wildcard_search)
   end
 end
