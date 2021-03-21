@@ -9,15 +9,15 @@ defmodule BgsiteOfficial.Home.Websites do
     field :description, :string
     field :likes, :integer
     field :title, :string
-
+    field :urls, :string
     timestamps()
   end
 
   @doc false
   def changeset(websites, attrs) do
     websites
-    |> cast(attrs, [:title, :banner, :description, :likes])
-    |> validate_required([:title, :description, :likes])
+    |> cast(attrs, [:title, :banner, :description, :likes, :urls])
+    |> validate_required([:title, :description, :likes, :urls])
   end
 
   # def banner_changeset(website, attrs) do

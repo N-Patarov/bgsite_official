@@ -25,7 +25,11 @@
     <strong>Likes:</strong>
     <%= @websites.likes %>
   </li> -->
-
+<li>
+    <h4>
+    <%= @websites.urls %>
+  </h4>
+  </li>
 </ul>
 <%= if @current_admin do %>
   <span><%= link "Edit", to: Routes.websites_path(@conn, :edit, @websites), class: "btn btn-primary" %></span>
