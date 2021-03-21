@@ -2,6 +2,7 @@ defmodule BgsiteOfficial.Home.Websites do
   use Ecto.Schema
   import Ecto.Changeset
   use Waffle.Ecto.Schema
+  import Ecto.Query, only: [from: 2]
 
   @derive {Inspect, except: [:password]}
   schema "websites" do
@@ -25,4 +26,11 @@ defmodule BgsiteOfficial.Home.Websites do
   #  |> cast(attrs, [])
   #  |> cast_attachments(attrs, [:banner])
   # end
+  def search(query, search_term)do
+    wildcard_search = "%#{search_term}"
+
+    from websites in query,
+    where: ilike(websites.title,^wildcard_search),
+    or_where: ilike(websites.description,^wildcard_search)
+  end
 end

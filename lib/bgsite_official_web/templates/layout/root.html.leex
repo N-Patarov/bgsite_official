@@ -21,6 +21,7 @@
 
     <header>
 
+
     <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
       <div>
         <%= link "Предложи сайт", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
@@ -31,13 +32,22 @@
       </a>
 
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
- <div class="input-group rounded">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+ <!--<div class="input-group rounded">
+  <input type="search" class="form-control rounded"  placeholder="Search" aria-label="Search"
     aria-describedby="search-addon" />
   <span class="input-group-text border-0" id="search-addon">
     <i class="fas fa-search"></i>
-  </span>
+  </span>-->
 </div>
+  <div class="search">
+  <%= form_for @conn, Routes.websites_path(@conn, :index),[
+    method: :get,
+    class: "pull-right"], fn f -> %>
+    <class="input-group-text border-0" id="search-addon">
+    <%= search_input f, :query%>
+    </div>
+    <%= submit "Search"%>
+  <%end%>
         <%= if @current_admin do %>
           <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
           <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
