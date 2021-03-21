@@ -16,7 +16,7 @@
           <h5 class="card-title text-center"><%= link websites.title , to: Routes.websites_path(@conn, :show, websites) %></h5>
           <p class="card-text text-center"><%= websites.description %></p>
           <p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>
-
+          <p class="card-text "><small class="text-muted">URL: <%= websites.urls %></small></p>
         </div>
       </div>
     <br>
