@@ -33,18 +33,22 @@
 
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
  <!--<div class="input-group rounded">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+  <input type="search" class="form-control rounded"  placeholder="Search" aria-label="Search"
     aria-describedby="search-addon" />
   <span class="input-group-text border-0" id="search-addon">
     <i class="fas fa-search"></i>
   </span>-->
 </div>
+  <class="search">
   <%= form_for @conn, Routes.websites_path(@conn, :index),[
     method: :get,
     class: "pull-right"], fn f -> %>
+    <class="input-group-text border-0" id="search-addon">
     <%= search_input f, :query%>
+    </class>
     <%= submit "Search"%>
   <%end%>
+
   <% @inner_content %>
         <%= if @current_admin do %>
           <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
