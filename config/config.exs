@@ -23,6 +23,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+
+  config :kaffy,
+  otp_app: :bgsite_official,
+  ecto_repo: BgsiteOfficial.Repo,
+  router: BgsiteOfficialWeb.Router
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
