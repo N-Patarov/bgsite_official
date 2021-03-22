@@ -1,5 +1,6 @@
 defmodule BgsiteOfficialWeb.Router do
   use BgsiteOfficialWeb, :router
+  use Kaffy.Routes, scope: "/admin", pipe_through: [:browser, :require_authenticated_admin]
 
   import BgsiteOfficialWeb.AdminAuth
 
@@ -11,6 +12,14 @@ defmodule BgsiteOfficialWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_admin
+  end
+
+  pipeline :kaffy_browser do
+    plug :accepts, ["html", "json"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
   end
 
   pipeline :api do
@@ -71,7 +80,9 @@ defmodule BgsiteOfficialWeb.Router do
     
     resources "/websites", WebsitesController
     resources "/tags", TagController
+
   end
+
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
@@ -80,5 +91,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/confirm", AdminConfirmationController, :new
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
+    resources "/requests/", RequestController
+
   end
 end

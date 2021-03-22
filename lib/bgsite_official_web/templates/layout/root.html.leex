@@ -20,11 +20,13 @@
   <body class="d-flex flex-column h-100 bg-light">
 
     <header>
-
-
     <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
-      <div>
-        <%= link "Предложи сайт", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+      <div >
+      <%= if @current_admin do %>
+        <%= link "Предложи сайт", to: Routes.request_path(@conn, :index), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+        <%else%>
+          <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+          <%end%>
     </div>
       <a class="navbar-brand" href="/">
         <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
