@@ -10,8 +10,11 @@
       <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
         <div class="card-body">
-
-          <%= img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded" %>
+          <%=
+            link to: Routes.websites_path(@conn, :show, websites) do
+              img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded"
+            end
+            %>
           <br><br>
           <h5 class="card-title text-center"><%= link websites.title , to: Routes.websites_path(@conn, :show, websites) %></h5>
           <p class="card-text text-center"><%= websites.description %></p>
