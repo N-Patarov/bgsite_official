@@ -49,6 +49,7 @@ defmodule BgsiteOfficialWeb.Router do
     scope "/" do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: BgsiteOfficialWeb.Telemetry
+
     end
   end
 
@@ -77,7 +78,7 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_admin]
-    
+    resources "/requests", RequestsController, except: [:new, :create, :update]
     resources "/websites", WebsitesController
     resources "/tags", TagController
 
@@ -91,7 +92,9 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/confirm", AdminConfirmationController, :new
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
-    resources "/requests/", RequestController
+    resources "/requests", RequestController, only: [:new, :create, :update]
+
+     
 
   end
 end
