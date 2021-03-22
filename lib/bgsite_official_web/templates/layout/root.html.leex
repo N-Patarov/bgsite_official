@@ -21,13 +21,8 @@
 
     <header>
     <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
-
-      <%= if @current_admin do %>
-        <%= link "Предложи сайт", to: Routes.request_path(@conn, :index), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
-        <%else%>
-          <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
-          <%end%>
-          <div>
+        <%= link "Предложи сайт", to: Routes.request_path(@conn, :create), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+      <div>
       <a class="navbar-brand" href="/">
         <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
         SITES.BG
@@ -145,13 +140,7 @@
     </section>
     <!-- Section: Social media -->
 
-         <%= if @current_admin do %>
-          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
-          <%= link "FeedBacks", to: Routes.feedback_path(@conn, :index), class: "btn btn-outline-primary mx-2 blue-link-color" %>
-          <%= link "Requests", to: Routes.request_path(@conn, :index), class: "btn btn-outline-primary mx-2 blue-link-color" %>
-        <% else %>
           <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
-          <% end %>
   </div>
   <!-- Grid container -->
   <%= if @current_admin do %>
