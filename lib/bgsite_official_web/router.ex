@@ -80,7 +80,9 @@ defmodule BgsiteOfficialWeb.Router do
 
     resources "/websites", WebsitesController
     resources "/tags", TagController
+
   end
+
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
@@ -89,5 +91,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/confirm", AdminConfirmationController, :new
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
+    resources "/requests/", RequestController
+
   end
 end
