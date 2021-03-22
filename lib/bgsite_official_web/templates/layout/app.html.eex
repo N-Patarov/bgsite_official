@@ -1,7 +1,18 @@
 <main role="main" class="container">
   <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
   <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-  <%= @inner_content %>
 
-  
+  <form class="form-inline input-group">
+    <div class="search input-group">
+      <%= form_for @conn, Routes.websites_path(@conn, :index),[method: :get, class: "form-control rounded"], fn f -> %>
+        <%= search_input f, :query, class: "form-control rounded" %>
+    </div>
+      <%= submit "Search", class: "btn btn-outline-primary" %>
+    <% end %>
+  </form>
+
+<br>
+
+<%= @inner_content %>
+
 </main>
