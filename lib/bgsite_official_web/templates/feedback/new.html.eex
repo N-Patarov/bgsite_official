@@ -1,5 +1,8 @@
-<h1>New Feedback</h1>
+<div>
+<h1>Обратна връзка</h1>
+
 
 <%= render "form.html", Map.put(assigns, :action, Routes.feedback_path(@conn, :create)) %>
 
-<span><%= link "Back", to: Routes.feedback_path(@conn, :index) %></span>
+<!-- <span><%= link "Back", to: Routes.feedback_path(@conn, :index) %></span> -->
+</div>

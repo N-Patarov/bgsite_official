@@ -5,15 +5,15 @@
     </div>
   <% end %>
 
-  <%= label f, :name %>
+  <label for="exampleInputEmail1">Вашето Име</label>
   <%= text_input f, :name, class: "form-control" %>
   <%= error_tag f, :name %>
 
-  <%= label f, :email %>
+  <label for="exampleInputEmail1">Имейл за обратна връзка</label>
   <%= text_input f, :email, class: "form-control" %>
   <%= error_tag f, :email %>
 
-  <%= label f, :text %>
+  <label for="exampleInputEmail1">Вашият текст</label>
   <%= text_input f, :text , class: "form-control"%>
   <%= error_tag f, :text %>
 <br>

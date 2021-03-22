@@ -4,23 +4,31 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-  <%= label f, :name %>
-  <%= text_input f, :name, class: "form-control" %>
-  <%= error_tag f, :name %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Вашето Име</label>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
 
-  <%= label f, :email %>
-  <%= text_input f, :email, class: "form-control" %>
-  <%= error_tag f, :email %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Имейл за обратна връзка</label>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
 
-  <%= label f, :url %>
-  <%= text_input f, :url, class: "form-control" %>
-  <%= error_tag f, :url %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Адрес на предлаган уебсайт</label>
+    <%= text_input f, :url, class: "form-control" %>
+    <%= error_tag f, :url %>
+  </div>
 
-  <%= label f, :description %>
-  <%= text_input f, :description, class: "form-control" %>
-  <%= error_tag f, :description %>
-
+  <div class="form-group">
+  <label for="exampleInputEmail1">Описане на сайт</label>
+    <%= text_input f, :description, class: "form-control" %>
+    <%= error_tag f, :description %>
+  </div>
+  <br>
   <div>
-    <%= submit "Save" %>
+    <%= submit "Изпрати", class: "btn btn-primary" %>
   </div>
 <% end %>

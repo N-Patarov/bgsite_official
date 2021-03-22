@@ -1,5 +1,7 @@
-<h1>New Request</h1>
+<div class="container">
+<h1>Нова заявка</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.request_path(@conn, :create)) %>
 
-<span><%= link "Back", to: Routes.request_path(@conn, :index) %></span>
+<!-- <span><%= link "Back", to: Routes.request_path(@conn, :index) %></span> -->
+</div>
