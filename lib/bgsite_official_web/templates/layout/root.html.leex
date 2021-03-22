@@ -145,8 +145,13 @@
 
     </section>
     <!-- Section: Social media -->
-    <%= link "Свържи се със Sites.bg", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
-
+    
+         <%= if @current_admin do %>
+          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
+          <%= link "Свържи се със Sites.bg", to: Routes.feedback_path(@conn, :index), class: "btn btn-outline-primary mx-2 blue-link-color" %>
+        <% else %>
+          <%= link "Свържи се със Sites.bg", to: Routes.feedback_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
+          <%end %>
   </div>
   <!-- Grid container -->
   <%= if @current_admin do %>

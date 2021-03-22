@@ -68,14 +68,14 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_admin]
-
+    
     resources "/websites", WebsitesController
     resources "/tags", TagController
   end
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
-
+    resources "/feedback", FeedbackController
     delete "/admin/log_out", AdminSessionController, :delete
     get "/admin/confirm", AdminConfirmationController, :new
     post "/admin/confirm", AdminConfirmationController, :create
