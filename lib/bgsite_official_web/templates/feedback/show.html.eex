@@ -1,0 +1,23 @@
+<h1>Show Feedback</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @feedback.name %>
+  </li>
+
+  <li>
+    <strong>Emai:</strong>
+    <%= @feedback.emai %>
+  </li>
+
+  <li>
+    <strong>Text:</strong>
+    <%= @feedback.text %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.feedback_path(@conn, :edit, @feedback) %></span>
+<span><%= link "Back", to: Routes.feedback_path(@conn, :index) %></span>

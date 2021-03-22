@@ -1,0 +1,30 @@
+<h1>Listing Feedback</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Emai</th>
+      <th>Text</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for feedback <- @feedback do %>
+    <tr>
+      <td><%= feedback.name %></td>
+      <td><%= feedback.emai %></td>
+      <td><%= feedback.text %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.feedback_path(@conn, :show, feedback) %></span>
+        <span><%= link "Edit", to: Routes.feedback_path(@conn, :edit, feedback) %></span>
+        <span><%= link "Delete", to: Routes.feedback_path(@conn, :delete, feedback), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Feedback", to: Routes.feedback_path(@conn, :new) %></span>
