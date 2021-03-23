@@ -4,7 +4,7 @@ defmodule BgsiteOfficial.Repo.Migrations.CreateFeedback do
   def change do
     create table(:feedback) do
       add :name, :string
-      add :email, :string
+      add :email, :email
       add :text, :string
 
       timestamps()
