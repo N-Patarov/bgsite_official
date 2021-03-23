@@ -78,11 +78,15 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_admin]
-    resources "/requests", RequestsController, except: [:new, :create]
+    resources "/requests", RequestController
     resources "/tags", TagController
-
   end
 
+  scope "/admin", BgsiteOfficialWeb do
+    pipe_through [:browser, :require_authenticated_admin]
+    resources "/requests", RequestController
+    resources "/tags", TagController
+  end
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
@@ -91,8 +95,10 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/confirm", AdminConfirmationController, :new
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
-    resources "/requests", RequestController
+
     resources "/websites", WebsitesController
+    get "/request/new", RequestController, :new
+    post "/requests", RequestController, :create
 
 
   end
