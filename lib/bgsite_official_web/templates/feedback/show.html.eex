@@ -1,4 +1,4 @@
-<h1>Show Feedback</h1>
+<%= if @current_admin do %>
 
 <ul>
 
@@ -21,3 +21,9 @@
 
 <span><%= link "Edit", to: Routes.feedback_path(@conn, :edit, @feedback) %></span>
 <span><%= link "Back", to: Routes.feedback_path(@conn, :index) %></span>
+
+<% else %>
+
+<meta http-equiv="refresh" content="5; URL=/" />
+
+<% end %>

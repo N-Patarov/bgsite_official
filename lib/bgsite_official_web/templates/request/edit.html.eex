@@ -1,5 +1,12 @@
+<%= if @current_admin do %>
+
 <h1>Edit Request</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.request_path(@conn, :update, @request)) %>
 
 <span><%= link "Back", to: Routes.request_path(@conn, :index) %></span>
+
+<% else %>
+<meta http-equiv="refresh" content="0; URL=/" />
+
+<% end %>
