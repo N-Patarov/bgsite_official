@@ -8,10 +8,10 @@
   <% end %>
 
   <%= label f, :email ,"Имейл" %>
-  <%= email_input f, :email, required: true,class: "form-control" %>
+  <%= email_input f, :email, required: true,class: "form-control", placeholder: "Имейл *" %>
 <br>
   <%= label f, :password, "Парола" %>
-  <%= password_input f, :password, required: true,class: "form-control" %>
+  <%= password_input f, :password, required: true,class: "form-control", placeholder: "Парола *" %>
 <br>
   <%= label f, :remember_me, "Запази ме за 60 дни" %>
   <%= checkbox f, :remember_me %>
@@ -19,8 +19,10 @@
     <%= submit "Вход", class: "btn btn-secondary" %>
   </div>
 <% end %>
-
+<br>
 <p>
-  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new) %>
+  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-info" %>
+
+  
+  <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-info" %>
 </p>
