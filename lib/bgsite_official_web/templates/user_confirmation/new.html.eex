@@ -1,15 +1,15 @@
-<h1>Resend confirmation instructions</h1>
+<h1>Препрати инструкции за потвърдение</h1>
 
-<%= form_for :user, Routes.user_confirmation_path(@conn, :create), fn f -> %>
+<%= form_for "Потребител", Routes.user_confirmation_path(@conn, :create), fn f -> %>
   <%= label f, :email %>
   <%= email_input f, :email, required: true %>
 
   <div>
-    <%= submit "Resend confirmation instructions" %>
+    <%= submit "Препрати инструкции за потвърдение" %>
   </div>
 <% end %>
 
 <p>
-  <%= link "", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
+  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new) %> |
+  <%= link "Вход", to: Routes.user_session_path(@conn, :new) %>
 </p>
