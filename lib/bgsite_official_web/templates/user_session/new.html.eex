@@ -1,4 +1,4 @@
-<h1>Log in</h1>
+<h1>Вход</h1>
 
 <%= form_for @conn, Routes.user_session_path(@conn, :create), [as: :user], fn f -> %>
   <%= if @error_message do %>
@@ -7,20 +7,20 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
+  <%= label f, :email ,"Имейл" %>
   <%= email_input f, :email, required: true,class: "form-control" %>
 <br>
-  <%= label f, :password %>
+  <%= label f, :password, "Парола" %>
   <%= password_input f, :password, required: true,class: "form-control" %>
 <br>
-  <%= label f, :remember_me, "Keep me logged in for 60 days" %>
+  <%= label f, :remember_me, "Запази ме за 60 дни" %>
   <%= checkbox f, :remember_me %>
   <div>
-    <%= submit "Log in", class: "btn btn-primary" %>
+    <%= submit "Вход", class: "btn btn-secondary" %>
   </div>
 <% end %>
 
 <p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new) %> |
+  <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new) %>
 </p>
