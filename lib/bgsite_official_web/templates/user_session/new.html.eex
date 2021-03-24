@@ -7,11 +7,11 @@
     </div>
   <% end %>
 
-  <%= label f, :email ,"Имейл" %>
-  <%= email_input f, :email, required: true,class: "form-control", placeholder: "Имейл *" %>
+  <%= label f, :email ,"Вашият Имейл*" %>
+  <%= email_input f, :email, required: true,class: "form-control", placeholder: "hi@sites.bg" %>
 <br>
-  <%= label f, :password, "Парола" %>
-  <%= password_input f, :password, required: true,class: "form-control", placeholder: "Парола *" %>
+  <%= label f, :password, "Вашата Парола" %>
+  <%= password_input f, :password, required: true,class: "form-control", placeholder: "" %>
 <br>
   <%= label f, :remember_me, "Запази ме за 60 дни" %>
   <%= checkbox f, :remember_me %>
@@ -23,5 +23,5 @@
 <% end %>
 <p>
 <br>
-<%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-success" %>
+<%= link "Нямаш акаунт?", to: Routes.user_registration_path(@conn, :new), class: "btn btn-success" %>
 </p>

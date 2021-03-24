@@ -3,27 +3,27 @@
 <%= form_for @changeset, Routes.user_registration_path(@conn, :create), fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Грешка</p>
+      <p>Моля, уверете се, че сте попълнили всичко :) </p>
     </div>
   <% end %>
-  <%= label f, :email, "Имейл" %>
-  <%= email_input f, :email, required: true, class: "form-control" %>
+  <%= label f, :email, "Вашият имейл*" %>
+  <%= email_input f, :email, required: true, class: "form-control", placeholder: "hi@sites.bg" %>
   <%= error_tag f, :email %>
 <br>
-  <%= label f, :password, "Парола" %>
-  <%= password_input f, :password, required: true,class: "form-control" %>
+  <%= label f, :password, "Парола*" %>
+  <%= password_input f, :password, required: true, class: "form-control", placeholder: "Моля, не предоставяйте важна за вас информация тук" %>
   <%= error_tag f, :password %>
-  <small id="emailHelp" class="form-text text-muted">Измисли нова парола за този сайт</small>
+  <small id="emailHelp" class="form-text text-muted">Паролата трябва да съдържа минимум 6 символа</small>
 <br>
   <div>
-    <%= submit "Регистрация",class: "btn btn-secondary" %>
+    <%= submit "Направи Регистрация",class: "btn btn-secondary" %>
 
-    <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-info" %>
+
   </div>
 <% end %>
 <br>
 <p>
-  <%= link "Вход", to: Routes.user_session_path(@conn, :new), class: "btn btn-success" %>
+  <%= link "Имаш акаунт?", to: Routes.user_session_path(@conn, :new), class: "btn btn-success" %>
 
 
 </p>
