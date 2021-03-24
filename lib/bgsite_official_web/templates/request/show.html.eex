@@ -3,7 +3,7 @@
 
 <ul>
 
-  <li>
+  <!--<li>
     <strong>Name:</strong>
     <%= @request.name %>
   </li>
@@ -11,17 +11,17 @@
   <li>
     <strong>Email:</strong>
     <%= @request.email %>
-  </li>
+  </li>-->
 
   <li>
     <strong>Url:</strong>
     <%= @request.url %>
   </li>
 
-  <li>
+ <!-- <li>
     <strong>Description:</strong>
     <%= @request.description %>
-  </li>
+  </li>-->
 
 </ul>
 
