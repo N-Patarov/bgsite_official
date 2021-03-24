@@ -4,5 +4,5 @@
 
 <%= render "form.html", Map.put(assigns, :action, Routes.feedback_path(@conn, :create)) %>
 
-<!-- <span><%= link "Back", to: Routes.feedback_path(@conn, :index) %></span> -->
+
 </div>

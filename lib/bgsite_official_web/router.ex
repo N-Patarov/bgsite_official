@@ -82,21 +82,15 @@ defmodule BgsiteOfficialWeb.Router do
     resources "/tags", TagController
   end
 
-  scope "/admin", BgsiteOfficialWeb do
-    pipe_through [:browser, :require_authenticated_admin]
-    # resources "/requests", RequestController
-    resources "/tags", TagController
-  end
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
-    resources "/feedback", FeedbackController
     delete "/admin/log_out", AdminSessionController, :delete
     get "/admin/confirm", AdminConfirmationController, :new
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
-
     resources "/websites", WebsitesController
+    resources "/feedback", FeedbackController
     resources "/requests", RequestController
     # get "/request/new", RequestController, :new
     # post "/requests", RequestController, :create
