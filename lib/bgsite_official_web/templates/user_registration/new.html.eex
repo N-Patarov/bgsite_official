@@ -21,6 +21,7 @@
 <% end %>
 <br>
 <p>
-  <%= link "Вход", to: Routes.user_session_path(@conn, :new) %> |
-  <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new) %>
+  <%= link "Вход", to: Routes.user_session_path(@conn, :new), class: "btn btn-info" %>
+  
+  <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-info" %>
 </p>
