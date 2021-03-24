@@ -17,11 +17,13 @@
 <br>
   <div>
     <%= submit "Регистрация",class: "btn btn-secondary" %>
+
+    <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-info" %>
   </div>
 <% end %>
 <br>
 <p>
-  <%= link "Вход", to: Routes.user_session_path(@conn, :new), class: "btn btn-info" %>
-  
-  <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-info" %>
+  <%= link "Вход", to: Routes.user_session_path(@conn, :new), class: "btn btn-success" %>
+
+
 </p>
