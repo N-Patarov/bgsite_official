@@ -4,10 +4,10 @@
 <table class = "table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
+      <!--<th>Name</th>
+      <th>Email</th>-->
       <th>Url</th>
-      <th>Description</th>
+      <!--<th>Description</th>-->
 
       <th></th>
     </tr>
@@ -15,10 +15,10 @@
   <tbody>
 <%= for request <- @requests do %>
     <tr>
-      <td><%= request.name %></td>
-      <td><%= request.email %></td>
+      <!--<td><%= request.name %></td>
+      <td><%= request.email %></td>-->
       <td><%= request.url %></td>
-      <td><%= request.description %></td>
+      <!--<td><%= request.description %></td>-->
 
       <td>
         <span><%= link "Show", to: Routes.request_path(@conn, :show, request) %></span>

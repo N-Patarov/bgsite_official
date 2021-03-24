@@ -15,6 +15,6 @@ defmodule BgsiteOfficial.Requests.Request do
   def changeset(request, attrs) do
     request
     |> cast(attrs, [:name, :email, :url, :description])
-    |> validate_required([:name, :email, :url, :description])
+    |> validate_required([:url])
   end
 end
