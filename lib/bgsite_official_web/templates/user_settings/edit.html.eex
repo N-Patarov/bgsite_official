@@ -1,6 +1,6 @@
-<h1>Settings</h1>
+<h1>Настройки</h1>
 
-<h3>Change email</h3>
+<h3>Промяна на имейл</h3>
 
 <%= form_for @email_changeset, Routes.user_settings_path(@conn, :update), fn f -> %>
   <%= if @email_changeset.action do %>
@@ -9,22 +9,22 @@
     </div>
   <% end %>
 
-  <%= hidden_input f, :action, name: "action", value: "update_email" %>
+  <%= hidden_input f, :action, name: "action", value: "update_email", class: "form-control" %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= label f, :email, "Имейл" %>
+  <%= email_input f, :email, required: true,class: "form-control" %>
   <%= error_tag f, :email %>
-
-  <%= label f, :current_password, for: "current_password_for_email" %>
-  <%= password_input f, :current_password, required: true, name: "current_password", id: "current_password_for_email" %>
+<br>
+  <%= label f, "Сегашна парола", for: "current_password_for_email" %>
+  <%= password_input f, :current_password, required: true, name: "current_password", id: "current_password_for_email",class: "form-control"%>
   <%= error_tag f, :current_password %>
 
   <div>
-    <%= submit "Change email" %>
+    <%= submit "Промяна на имейл", class: "btn btn-secondary" %>
   </div>
 <% end %>
-
-<h3>Change password</h3>
+<br>
+<h3>Промяна на паролата</h3>
 
 <%= form_for @password_changeset, Routes.user_settings_path(@conn, :update), fn f -> %>
   <%= if @password_changeset.action do %>
@@ -35,19 +35,19 @@
 
   <%= hidden_input f, :action, name: "action", value: "update_password" %>
 
-  <%= label f, :password, "New password" %>
+  <%= label f, :password, "Нова парола" %>
   <%= password_input f, :password, required: true,class: "form-control" %>
   <%= error_tag f, :password %>
 
-  <%= label f, :password_confirmation, "Confirm new password" %>
+  <%= label f, :password_confirmation, "Потвърди новата парола" %>
   <%= password_input f, :password_confirmation, required: true,class: "form-control" %>
   <%= error_tag f, :password_confirmation %>
 
-  <%= label f, :current_password, for: "current_password_for_password" %>
+  <%= label f, "Сегашна парола", for: "current_password_for_password" %>
   <%= password_input f, :current_password, required: true, name: "current_password", id: "current_password_for_password" %>
   <%= error_tag f, :current_password %>
 
   <div>
-    <%= submit "Change password", class: "btn btn-primary" %>
+    <%= submit "Промяна на паролата", class: "btn btn-secondary" %>
   </div>
 <% end %>
