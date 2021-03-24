@@ -11,7 +11,7 @@
           <img src="" class="card-img-top">
         <div class="card-body">
           <%=
-            link to: Routes.websites_path(@conn, :show, websites) do
+            link to: "https://#{websites.urls}", target: "_blank" do
               img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded"
             end
             %>
@@ -19,7 +19,7 @@
           <h5 class="card-title text-center"><%= link websites.title , to: Routes.websites_path(@conn, :show, websites) %></h5>
           <p class="card-text text-center"><%= websites.description %></p>
           <p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>
-          <p class="card-text "><small class="text-muted">URL: <%= websites.urls %></small></p>
+          <p class="card-text "><small class="text-muted">URL: <%= link websites.urls, to: "https://#{websites.urls}", target: "_blank" %></small></p>
         </div>
       </div>
     <br>
