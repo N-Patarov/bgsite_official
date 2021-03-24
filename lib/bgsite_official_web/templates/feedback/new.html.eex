@@ -1,0 +1,8 @@
+<div>
+<h1>Обратна връзка</h1>
+
+
+<%= render "form.html", Map.put(assigns, :action, Routes.feedback_path(@conn, :create)) %>
+
+
+</div>

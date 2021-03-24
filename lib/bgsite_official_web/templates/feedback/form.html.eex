@@ -1,0 +1,28 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Моля, уверете се, че сте попълнили всичко!</p>
+    </div>
+  <% end %>
+
+  <label for="exampleInputEmail1">Вашето Име</label>
+  <%= text_input f, :name, class: "form-control",placeholder: "Име *" %>
+  <%= error_tag f, :name %>
+<br>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Имейл за обратна връзка</label>
+    <%= email_input f, :email, class: "form-control",placeholder: "Имейл *" %>
+    <%= error_tag f, :email %>
+  </div>
+
+  <label for="exampleInputEmail1">Вашият текст</label>
+  <%= text_input f, :text , class: "form-control", placeholder: "Текст *" %>
+  <%= error_tag f, :text %>
+<br>
+
+  <div>
+    <%= submit "Save", class: "btn btn-secondary" %>
+  </div>
+  <br>
+<% end %>
