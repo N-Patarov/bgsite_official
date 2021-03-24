@@ -4,7 +4,7 @@ defmodule BgsiteOfficial.Repo.Migrations.CreateRequests do
   def change do
     create table(:requests) do
       add :name, :string
-      add :email, :email
+      add :email, :string
       add :url, :string
       add :description, :string
 
