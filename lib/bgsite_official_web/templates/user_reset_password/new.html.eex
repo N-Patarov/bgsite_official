@@ -1,15 +1,15 @@
-<h1>Forgot your password?</h1>
+<h1>Забравена парола</h1>
 
 <%= form_for :user, Routes.user_reset_password_path(@conn, :create), fn f -> %>
-  <%= label f, :email %>
+  <%= label f, :email, "Имейл" %>
   <%= email_input f, :email, required: true, class: "form-control" %>
 
   <div>
-    <%= submit "Send instructions to reset password", class: "btn btn-primary" %>
+    <%= submit "Изпрати инстукции", class: "btn btn-secondary" %>
   </div>
 <% end %>
 
 <p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
+  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new) %> |
+  <%= link "Вход", to: Routes.user_session_path(@conn, :new) %>
 </p>
