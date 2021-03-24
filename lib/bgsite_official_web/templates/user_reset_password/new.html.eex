@@ -10,7 +10,7 @@
 <% end %>
 <br>
 <p>
-  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-info" %>
+  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-success" %>
 
-  <%= link "Вход", to: Routes.user_session_path(@conn, :new),class: "btn btn-info" %>
+  <%= link "Вход", to: Routes.user_session_path(@conn, :new),class: "btn btn-success" %>
 </p>
