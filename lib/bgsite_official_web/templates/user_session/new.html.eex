@@ -17,12 +17,11 @@
   <%= checkbox f, :remember_me %>
   <div>
     <%= submit "Вход", class: "btn btn-secondary" %>
+
+<%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-primary" %>
   </div>
 <% end %>
-<br>
 <p>
-  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-info" %>
-
-  
-  <%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-info" %>
+<br>
+<%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-success" %>
 </p>
