@@ -21,7 +21,7 @@
 
     <header>
     <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
-        
+
          <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
       <div>
       <a class="navbar-brand" href="/">
@@ -42,7 +42,7 @@
     </div>
     <%= submit "Search"%>
   <%end%> -->
-  <form class="form-inline my-2 my-lg-0 btn-toolbar">
+  <!--<form class="form-inline my-2 my-lg-0 btn-toolbar">
         <%= if @current_admin do %>
           <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
           <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
@@ -51,6 +51,18 @@
         <% else %>
           <%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
           <%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
+        <% end %>
+      </form>-->
+      <!--<%= render "_user_menu.html", assigns %>-->
+      <form class="form-inline my-2 my-lg-0 btn-toolbar">
+        <%= if @current_user do %>
+          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_user.email %></li></button> -->
+          <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
+          <%= link "Log out", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
+
+        <% else %>
+          <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
+          <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
         <% end %>
       </form>
     </nav>
