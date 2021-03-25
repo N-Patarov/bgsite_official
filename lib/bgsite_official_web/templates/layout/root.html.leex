@@ -46,22 +46,25 @@
 
 
     <div class="mobile-navbar">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-left">
         <a class="navbar-brand" href="/">
     <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Sites.bg
   </a>
- <form class="form-inline my-2 my-lg-0 btn-toolbar">
-        <%= if @current_user do %>
-          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_user.email %></li></button> -->
+  <div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user-circle"></i>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right text-center my-2">
+  <%= if @current_user do %>
           <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
           <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
-
         <% else %>
           <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
           <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
         <% end %>
-      </form>
+  </div>
+</div>
         </button>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
