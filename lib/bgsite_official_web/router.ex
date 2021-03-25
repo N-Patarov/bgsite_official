@@ -105,7 +105,6 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
-
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
     get "/users/log_in", UserSessionController, :new
@@ -127,6 +126,7 @@ defmodule BgsiteOfficialWeb.Router do
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
 
+    resources "/feedback", FeedbackController
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
