@@ -18,6 +18,7 @@
       <!--<td><%= request.name %></td>
       <td><%= request.email %></td>-->
       <td><%= request.url %></td>
+      <td><%= @current_user.email %></td>
       <!--<td><%= request.description %></td>-->
 
       <td>
