@@ -47,9 +47,21 @@
 
     <div class="mobile-navbar">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="/">Sites.bg</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand" href="/">
+    <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Sites.bg
+  </a>
+ <form class="form-inline my-2 my-lg-0 btn-toolbar">
+        <%= if @current_user do %>
+          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_user.email %></li></button> -->
+          <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
+          <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
+
+        <% else %>
+          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
+          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
+        <% end %>
+      </form>
         </button>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -89,6 +101,7 @@
   <!-- Grid container -->
   <div class="container p-4 pb-0">
     <!-- Section: Social media -->
+
     <section class="mb-4">
       <!-- Facebook -->
       <a href = "https://www.facebook.com/Sitesbg-111987154307364"
@@ -128,8 +141,8 @@
 
     </section>
     <!-- Section: Social media -->
-
-
+<div class="mobile-navbar"><%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %></div>
+<br>
           <%= if @current_admin do %>
             <%= link "Register Admin", to: "/admin/register", class: "btn btn-outline-warning mx-2 blue-link-color" %>
             <br>
