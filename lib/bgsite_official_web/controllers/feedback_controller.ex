@@ -18,7 +18,7 @@ defmodule BgsiteOfficialWeb.FeedbackController do
     case Contacts.create_feedback(feedback_params) do
       {:ok, feedback} ->
         conn
-        |> put_flash(:info, "Feedback created successfully.")
+        |> put_flash(:info, "Успешно изпратихте съобщението :)")
         |> redirect(to: Routes.feedback_path(conn, :show, feedback))
 
       {:error, %Ecto.Changeset{} = changeset} ->

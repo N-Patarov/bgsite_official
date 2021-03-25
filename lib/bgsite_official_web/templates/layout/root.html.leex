@@ -133,13 +133,15 @@
 
 
           <%= if @current_admin do %>
+            <%= link "Register Admin", to: "/admin/register", class: "btn btn-outline-warning mx-2 blue-link-color" %>
+            <br>
             <%= link "Admin Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color my-2" %>
             <%= link "Admin Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color my-2", method: :delete %>
             <br>
-            <%= link "FeedBacks", to: "/feedback", class: "btn btn-outline-secondary mx-2 blue-link-color" %>
-            <%= link "Requests", to: "/requests", class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+            <%= link "FeedBacks", to: "/admin/feedback", class: "btn btn-outline-primary mx-2 blue-link-color" %>
+            <%= link "Requests", to: "/admin/requests", class: "btn btn-outline-primary mx-2 blue-link-color" %>
           <% else %>
-            <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
+            <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "btn btn-outline-warning mx-2 blue-link-color" %>
           <% end %>
 
   </div>
