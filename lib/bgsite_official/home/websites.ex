@@ -26,11 +26,15 @@ defmodule BgsiteOfficial.Home.Websites do
   #  |> cast(attrs, [])
   #  |> cast_attachments(attrs, [:banner])
   # end
-  def search(query, search_term)do
+  def search(query, search_term )do
     wildcard_search = "%#{search_term}"
 
     from websites in query,
-    where: ilike(websites.title,^wildcard_search),
+    #where: ilike(websites.title, ^wildcard_search),
+    where: fragment("? ~ ?", websites.title, ^wildcard_search ),
+    order_by: fragment("similarity(?, ?) DESC",websites.title,^wildcard_search),
     or_where: ilike(websites.description,^wildcard_search)
+
+
   end
 end
