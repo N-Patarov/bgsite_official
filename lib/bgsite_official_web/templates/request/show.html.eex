@@ -17,7 +17,6 @@
     <strong>Url:</strong>
     <%= @request.url %>
   </li>
-
  <!-- <li>
     <strong>Description:</strong>
     <%= @request.description %>
