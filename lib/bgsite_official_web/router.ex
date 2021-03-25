@@ -61,8 +61,7 @@ defmodule BgsiteOfficialWeb.Router do
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :redirect_if_admin_is_authenticated]
 
-    get "/admin/register", AdminRegistrationController, :new
-    post "/admin/register", AdminRegistrationController, :create
+
     get "/admin/log_in", AdminSessionController, :new
     post "/admin/log_in", AdminSessionController, :create
     get "/admin/reset_password", AdminResetPasswordController, :new
@@ -77,6 +76,8 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/settings", AdminSettingsController, :edit
     put "/admin/settings", AdminSettingsController, :update
     get "/admin/settings/confirm_email/:token", AdminSettingsController, :confirm_email
+    get "/admin/register", AdminRegistrationController, :new
+    post "/admin/register", AdminRegistrationController, :create
   end
 
   scope "/", BgsiteOfficialWeb do
@@ -93,8 +94,7 @@ defmodule BgsiteOfficialWeb.Router do
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
     resources "/websites", WebsitesController
-    resources "/feedback", FeedbackController
-    resources "/requests", RequestController
+
     # get "/request/new", RequestController, :new
     # post "/requests", RequestController, :create
 
@@ -117,10 +117,18 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_user]
-
+    resources "/feedback", FeedbackController
+    resources "/requests", RequestController
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+  end
+
+  scope "/admin", BgsiteOfficialWeb do
+    pipe_through [:browser, :require_authenticated_admin]
+    resources "/feedback", FeedbackController
+    resources "/requests", RequestController
+
   end
 
   scope "/", BgsiteOfficialWeb do

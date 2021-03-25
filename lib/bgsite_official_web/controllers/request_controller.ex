@@ -18,7 +18,7 @@ defmodule BgsiteOfficialWeb.RequestController do
     case Requests.create_request(request_params) do
       {:ok, request} ->
         conn
-        |> put_flash(:info, "Request created successfully.")
+        |> put_flash(:info, "Успешно предложихте сайт :)")
         |> redirect(to: Routes.request_path(conn, :show, request))
 
       {:error, %Ecto.Changeset{} = changeset} ->
