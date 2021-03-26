@@ -4,7 +4,6 @@
 
 
   <%= form_for @conn, Routes.websites_path(@conn, :index),[method: :get, class: "input-group d-flex justify-content-center"], fn f -> %>
-
     <div class="search input-group">
       <%= search_input f, :query, class: "form-control rounded text-center my-2", placeholder: "Намери Уебсайт" %>
     </div>
