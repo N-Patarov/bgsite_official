@@ -28,13 +28,14 @@ defmodule BgsiteOfficial.Home do
   #   Website.banner_changeset(user, %{})
   # end
 
-  def list_websites(params) do
-    search_term = get_in(params, ["query"])
+  def list_websites(params = %{"query" => search_term}) do
     Websites
     |>Websites.search(search_term)
     |>Repo.all()
   end
-
+  def list_websites(_params) do
+    Repo.all(Websites)
+  end
   @doc """
   Gets a single websites.
 
