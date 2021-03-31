@@ -13,16 +13,17 @@ defmodule BgsiteOfficialWeb.RequestController do
     changeset = Requests.change_request(%Request{})
     render(conn, "new.html", changeset: changeset)
   end
-
   def create(conn, %{"request" => request_params}) do
-    case Requests.create_request(request_params) do
+    %Plug.Conn{assigns: %{current_user: current_user}} = conn
+    request_params_with_email = Map.merge(request_params, %{"email" => current_user.email})
+    case Requests.create_request(request_params_with_email) do
       {:ok, request} ->
         conn
         |> put_flash(:info, "Успешно предложихте сайт :)")
         |> redirect(to: Routes.request_path(conn, :show, request))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+       render(conn, "new.html", changeset: changeset)
     end
   end
 
