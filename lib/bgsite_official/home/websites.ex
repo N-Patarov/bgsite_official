@@ -30,7 +30,9 @@ defmodule BgsiteOfficial.Home.Websites do
     wildcard_search = "%#{search_term}"
 
     from websites in query,
-    where: ilike(websites.title,^wildcard_search),
-    or_where: ilike(websites.description,^wildcard_search)
+    where: fragment("SIMILARITY(?, ?) > 0.4",  websites.title, ^wildcard_search),
+    order_by: fragment("LEVENSHTEIN(?, ?)", websites.title, ^wildcard_search),
+    or_where: fragment("SIMILARITY(?, ?) > 0.4",  websites.description, ^wildcard_search),
+    order_by: fragment("LEVENSHTEIN(?, ?)", websites.description, ^wildcard_search)
   end
 end

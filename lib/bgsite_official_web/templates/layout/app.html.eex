@@ -15,6 +15,7 @@
 <br>
 
 
-<%= @inner_content %>
+
 
 </main>
+<%= @inner_content %>
