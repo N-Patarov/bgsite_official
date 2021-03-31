@@ -18,7 +18,7 @@
   <div>
     <%= submit "Вход", class: "btn btn-secondary" %>
 
-<%= link "Забравена парола", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-primary" %>
+<!--<%= link "Забравена парола",to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-primary" %>-->
   </div>
 <% end %>
 <p>

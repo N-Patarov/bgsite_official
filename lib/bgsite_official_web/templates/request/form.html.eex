@@ -17,19 +17,19 @@
     <%= error_tag f, :email %>
   </div>-->
   <div class="form-group">
-    <label for="exampleInputEmail1">Адрес на предлаган уебсайт</label>
+    <label for="exampleInputEmail1">Адрес на предлаган уебсайт *</label>
           <div class="input-group-prepend">
           <div class="input-group-text">https</div>
 
-    <%= text_input f, :url, class: "form-control", placeholder: "Адрес *" %>
+    <%= text_input f, :url, class: "form-control", placeholder: "Адрес" %>
 </div>
     <%= error_tag f, :url %>
   </div>
-  <!--<div class="form-group">
-  <label for="exampleInputEmail1">Описане на сайт</label>
-    <%= text_input f, :description, class: "form-control", placeholder: "Описание *"%>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Допълнителна информация</label>
+    <%= text_input f, :description, class: "form-control", placeholder: "Описание (незадължително)"%>
     <%= error_tag f, :description %>
-  </div>-->
+  </div>
   <br>
   <div>
     <%= submit "Изпрати", class: "btn btn-primary" %>
