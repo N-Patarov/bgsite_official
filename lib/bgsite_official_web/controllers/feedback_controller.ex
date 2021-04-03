@@ -19,7 +19,7 @@ defmodule BgsiteOfficialWeb.FeedbackController do
       {:ok, feedback} ->
         conn
         |> put_flash(:info, "Успешно изпратихте съобщението :)")
-        |> redirect(to: Routes.feedback_path(conn, :show, feedback))
+        |> redirect(to: Routes.websites_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)

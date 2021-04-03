@@ -20,7 +20,7 @@ defmodule BgsiteOfficialWeb.RequestController do
       {:ok, request} ->
         conn
         |> put_flash(:info, "Успешно предложихте сайт :)")
-        |> redirect(to: Routes.request_path(conn, :show, request))
+        |> redirect(to: Routes.websites_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
        render(conn, "new.html", changeset: changeset)
