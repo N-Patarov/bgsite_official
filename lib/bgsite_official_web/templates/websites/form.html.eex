@@ -29,6 +29,10 @@
   <%= label f, :urls %>
   <%= text_input f, :urls, class: "form-control" %>
   <%= error_tag f, :urls %>
+
+  <%= label f, :tag %>
+  <%= text_input f, :tag, class: "form-control" %>
+  <%= error_tag f, :tag %>
 <br>
   <div>
     <%= submit "Save", class: "btn btn-secondary" %>
