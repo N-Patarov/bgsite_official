@@ -12,7 +12,7 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Имейл за обратна връзка*</label>
-    <%= email_input f, :email, class: "form-control",placeholder: "hi@sites.bg" %>
+    <%= email_input f, :email, class: "form-control",placeholder: "hi@izberi.site" %>
     <%= error_tag f, :email %>
   </div>
 

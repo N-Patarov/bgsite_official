@@ -8,7 +8,7 @@
   <% end %>
 
   <%= label f, :email ,"Вашият Имейл*" %>
-  <%= email_input f, :email, required: true,class: "form-control", placeholder: "hi@sites.bg" %>
+  <%= email_input f, :email, required: true,class: "form-control", placeholder: "hi@izberi.site" %>
 <br>
   <%= label f, :password, "Вашата Парола" %>
   <%= password_input f, :password, required: true,class: "form-control", placeholder: "" %>
