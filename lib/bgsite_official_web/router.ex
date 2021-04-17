@@ -2,7 +2,7 @@ defmodule BgsiteOfficialWeb.Router do
   use BgsiteOfficialWeb, :router
 
   import BgsiteOfficialWeb.UserAuth
-  use Kaffy.Routes, scope: "/admin", pipe_through: [:browser, :require_authenticated_admin]
+  #use Kaffy.Routes, scope: "/admin", pipe_through: [:browser, :require_authenticated_admin]
 
   import BgsiteOfficialWeb.AdminAuth
 
