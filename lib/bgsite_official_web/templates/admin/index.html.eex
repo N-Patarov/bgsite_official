@@ -1,1 +1,1 @@
-<%= def render(index.html)%>
+<h1> Testing Admin Template </h1>
