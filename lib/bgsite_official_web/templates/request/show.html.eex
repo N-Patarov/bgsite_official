@@ -1,0 +1,33 @@
+<%= if @current_admin do %>
+<h1>Show Request</h1>
+
+<ul>
+
+  <!--<li>
+    <strong>Name:</strong>
+    <%= @request.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @request.email %>
+  </li>-->
+
+  <li>
+    <strong>Url:</strong>
+    <%= @request.url %>
+  </li>
+ <!-- <li>
+    <strong>Description:</strong>
+    <%= @request.description %>
+  </li>-->
+
+</ul>
+
+<span><%= link "Edit", to: Routes.request_path(@conn, :edit, @request) %></span>
+<span><%= link "Back", to: Routes.request_path(@conn, :index) %></span>
+
+<% else %>
+<meta http-equiv="refresh" content="5; URL=/" />
+
+<% end %>

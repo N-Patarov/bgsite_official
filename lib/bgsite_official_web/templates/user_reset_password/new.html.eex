@@ -1,0 +1,16 @@
+<h1>Забравена парола</h1>
+
+<%= form_for :user, Routes.user_reset_password_path(@conn, :create), fn f -> %>
+  <%= label f, :email, "Имейл" %>
+  <%= email_input f, :email, required: true, class: "form-control" %>
+<br>
+  <div>
+    <%= submit "Изпрати инстукции", class: "btn btn-secondary" %>
+  </div>
+<% end %>
+<br>
+<p>
+  <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-success" %>
+
+  <%= link "Вход", to: Routes.user_session_path(@conn, :new),class: "btn btn-success" %>
+</p>

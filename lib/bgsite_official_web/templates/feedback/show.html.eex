@@ -1,0 +1,29 @@
+<%= if @current_admin do %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @feedback.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @feedback.email %>
+  </li>
+
+  <li>
+    <strong>Text:</strong>
+    <%= @feedback.text %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.feedback_path(@conn, :edit, @feedback) %></span>
+<span><%= link "Back", to: Routes.feedback_path(@conn, :index) %></span>
+
+<% else %>
+
+<meta http-equiv="refresh" content="5; URL=/" />
+
+<% end %>

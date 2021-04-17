@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "Sites.bg", suffix: "" %>
-
+    <%= live_title_tag assigns[:page_title] || "izberi.site", suffix: "" %>
+    <%= render "_analytics.html", assigns %>
+    <%= render "_adsense.html", assigns %>
+    <%= render "_cookies.html", assigns %>
     <!-- Footer -->
 
     <link rel="shortcut icon" type="image/jpg" href="images/favicon2.png"/>
@@ -18,27 +20,27 @@
   </head>
 
   <body class="d-flex flex-column h-100 bg-light">
-
     <header>
-
     <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
+          <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
       <div>
-        <%= link "Предложи сайт", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
-    </div>
       <a class="navbar-brand" href="/">
-        <!-- <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
-        SITES.BG
+        <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        IZBERI.SITE
       </a>
-      <form class="form-inline my-2 my-lg-0 btn-toolbar">
-        <%= if @conn.assigns[:current_admin] do %>
-          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_admin.email %></li></button> -->
+    </div>
 
-          <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
-          <%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
+
+      <!--<%= render "_user_menu.html", assigns %>-->
+      <form class="form-inline my-2 my-lg-0 btn-toolbar">
+        <%= if @current_user do %>
+          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_user.email %></li></button> -->
+          <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
+          <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
 
         <% else %>
-          <%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
-          <%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
+          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
+          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
         <% end %>
       </form>
     </nav>
@@ -46,10 +48,25 @@
 
 
     <div class="mobile-navbar">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="/">Sites.bg</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-left">
+        <a class="navbar-brand" href="/">
+    <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    IZBERI.SITE
+  </a>
+  <div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user-circle"></i>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right text-center my-2">
+  <%= if @current_user do %>
+          <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
+          <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
+        <% else %>
+          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
+          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
+        <% end %>
+  </div>
+</div>
         </button>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -89,12 +106,12 @@
   <!-- Grid container -->
   <div class="container p-4 pb-0">
     <!-- Section: Social media -->
+
     <section class="mb-4">
       <!-- Facebook -->
-      <a
+      <a href = "https://www.facebook.com/Sitesbg-111987154307364"
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
-        href="#!"
         target="_blank"
         role="button"
         ><i class="fab fa-facebook-f"></i
@@ -102,50 +119,55 @@
 
       <!-- Twitter -->
       <a
+        href = "https://twitter.com/bg_sites"
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
-        href="#!"
         target="_blank"
         role="button"
         ><i class="fab fa-twitter"></i
       ></a>
       <!-- Instagram -->
-      <a
+      <a href = "https://www.instagram.com/sites.bg/"
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
-        href="#!"
         target="_blank"
         role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
+        >
+        <i class="fab fa-instagram"></i>
+      </a>
       <!-- Github -->
-      <a
+      <a href = "https://github.com/N-Patarov/bgsite_official"
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
-        href="#!"
         target="_blank"
         role="button"
         ><i class="fab fa-github"></i
       ></a>
-      <!-- Bitcoin -->
-      <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #333333;"
-        href="https://www.binance.com/en/my/wallet/account/main/deposit/crypto/BTC"
-        target="_blank"
-        role="button"
-      ><i class="fab fa-bitcoin"></i>
-      </a>
+
     </section>
     <!-- Section: Social media -->
-    <%= link "Свържи се със Sites.bg", to: Routes.admin_session_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
+<div class="mobile-navbar"><%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %></div>
+<br>
+          <%= if @current_admin do %>
+            <%= link "Register Admin", to: "/admin/register", class: "btn btn-outline-warning mx-2 blue-link-color" %>
+            <br>
+            <%= link "Admin Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color my-2" %>
+            <%= link "Admin Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color my-2", method: :delete %>
+            <br>
+            <%= link "FeedBacks", to: "/admin/feedback", class: "btn btn-outline-primary mx-2 blue-link-color" %>
+            <%= link "Requests", to: "/admin/requests", class: "btn btn-outline-primary mx-2 blue-link-color" %>
+          <% else %>
+            <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "btn btn-outline-warning mx-2 blue-link-color" %>
+          <% end %>
 
   </div>
   <!-- Grid container -->
-  <%# <p><u> Logged as: <%= @current_admin.email %> </u></p> %>
+  <%= if @current_admin do %>
+  <p><u> Logged as: <%= @current_admin.email %> </u></p>
+  <% end %>
   <!-- Copyright -->
   <div class="text-center p-3" style="">
-    © 2021 Copyright | Sites.bg <br> All Rights Reserved
+    © 2021 Copyright | IZBERI.SITE <br> All Rights Reserved
   </div>
   <div class="text-muted p-3" style="text-muted;">
     Support us: 1eEM6yC9by4mS1wLQs8fQy99MheBcuP9u (BTC)

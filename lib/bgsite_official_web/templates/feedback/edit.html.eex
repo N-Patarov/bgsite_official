@@ -1,0 +1,11 @@
+<%= if @current_admin do %>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.feedback_path(@conn, :update, @feedback)) %>
+
+<span><%= link "Back", to: Routes.feedback_path(@conn, :index) %></span>
+
+<% else %>
+
+<meta http-equiv="refresh" content="0; URL=/" />
+
+<% end %>
