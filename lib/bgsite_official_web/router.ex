@@ -52,7 +52,6 @@ defmodule BgsiteOfficialWeb.Router do
     scope "/" do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: BgsiteOfficialWeb.Telemetry
-
     end
   end
 
@@ -128,7 +127,6 @@ defmodule BgsiteOfficialWeb.Router do
     pipe_through [:browser, :require_authenticated_admin]
     resources "/feedback", FeedbackController
     resources "/requests", RequestController
-
   end
 
   scope "/", BgsiteOfficialWeb do
@@ -139,5 +137,6 @@ defmodule BgsiteOfficialWeb.Router do
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :confirm
+    get "/test", AdminController, :index
   end
 end
