@@ -1,0 +1,99 @@
+<%= link "Register Admin", to: "/admin/register", class: "btn btn-outline-warning mx-2 blue-link-color" %>
+<%= link "Admin Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color my-2" %>
+<%= link "Admin Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color my-2", method: :delete %>
+
+<h1>Requested Websites</h1>
+<table class = "table">
+  <thead>
+    <tr>
+      <!--<th>Name</th>-->
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Url</th>
+      <th scope="col">Description</th>
+      <th scope="col">CRUD</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= @requests |> Enum.with_index |> Enum.map(fn({request, index}) ->  %>
+
+    <tr>
+      <!--<td><%= request.name %></td>-->
+      <th scope="row"><%= index %></th>
+      <td><%= request.email %></td>
+      <td><%= request.url %></td>
+      <td><%= request.description %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.request_path(@conn, :show, request) %></span>
+        <span><%= link "Edit", to: Routes.request_path(@conn, :edit, request) %></span>
+        <span><%= link "Delete", to: Routes.request_path(@conn, :delete, request), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end) %>
+
+
+  </tbody>
+</table>
+<br><br><br>
+<h1>Sent Feedbacks</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Text</th>
+      <th>CRUD</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= @feedback |> Enum.with_index |> Enum.map(fn({feedback, index}) ->  %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= feedback.name %></td>
+      <td><%= feedback.email %></td>
+      <td><%= feedback.text %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.feedback_path(@conn, :show, feedback) %></span>
+        <span><%= link "Edit", to: Routes.feedback_path(@conn, :edit, feedback) %></span>
+        <span><%= link "Delete", to: Routes.feedback_path(@conn, :delete, feedback), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end) %>
+  </tbody>
+</table>
+<br><br><br>
+<h1>Listing Tags</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>CRUD</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for tag <- @tags do %>
+    <tr>
+      <td><b><%= tag.title %></b></td>
+      <td><%= tag.description %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.tag_path(@conn, :show, tag) %></span>
+        <span><%= link "Edit", to: Routes.tag_path(@conn, :edit, tag) %></span>
+        <span><%= link "Delete", to: Routes.tag_path(@conn, :delete, tag), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

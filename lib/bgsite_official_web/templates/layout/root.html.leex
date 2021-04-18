@@ -146,19 +146,11 @@
 
     </section>
     <!-- Section: Social media -->
-<div class="mobile-navbar"><%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %></div>
-<br>
+          <div class="mobile-navbar"><%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %></div>
           <%= if @current_admin do %>
-            <%= link "Register Admin", to: "/admin/register", class: "btn btn-outline-warning mx-2 blue-link-color" %>
-            <br>
-            <%= link "Admin Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color my-2" %>
             <%= link "Admin Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color my-2", method: :delete %>
-            <br>
-            <%= link "FeedBacks", to: "/admin/feedback", class: "btn btn-outline-primary mx-2 blue-link-color" %>
-            <%= link "Requests", to: "/admin/requests", class: "btn btn-outline-primary mx-2 blue-link-color" %>
-          <% else %>
-            <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "btn btn-outline-warning mx-2 blue-link-color" %>
           <% end %>
+          <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "btn btn-outline-primary mx-2 blue-link-color" %>
 
   </div>
   <!-- Grid container -->
@@ -170,7 +162,7 @@
     © 2021 Copyright | IZBERI.SITE <br> All Rights Reserved
   </div>
   <div class="text-muted p-3" style="text-muted;">
-    Support us: 1eEM6yC9by4mS1wLQs8fQy99MheBcuP9u (BTC)
+    Support us<br> 1eEM6yC9by4mS1wLQs8fQy99MheBcuP9u (BTC)
   </div>
   <!-- Copyright -->
 </footer>

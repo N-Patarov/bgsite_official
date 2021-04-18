@@ -2,7 +2,7 @@ defmodule BgsiteOfficialWeb.Router do
   use BgsiteOfficialWeb, :router
 
   import BgsiteOfficialWeb.UserAuth
-  use Kaffy.Routes, scope: "/admin", pipe_through: [:browser, :require_authenticated_admin]
+  #use Kaffy.Routes, scope: "/admin", pipe_through: [:browser, :require_authenticated_admin]
 
   import BgsiteOfficialWeb.AdminAuth
 
@@ -52,7 +52,6 @@ defmodule BgsiteOfficialWeb.Router do
     scope "/" do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: BgsiteOfficialWeb.Telemetry
-
     end
   end
 
@@ -78,6 +77,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/settings/confirm_email/:token", AdminSettingsController, :confirm_email
     get "/admin/register", AdminRegistrationController, :new
     post "/admin/register", AdminRegistrationController, :create
+    get "/admin", AdminController, :index
   end
 
   scope "/", BgsiteOfficialWeb do
@@ -117,8 +117,10 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_user]
-    resources "/feedback", FeedbackController
-    resources "/requests", RequestController
+    get "/feedback/new", FeedbackController, :new
+    post "/feedback/new", FeedbackController, :create
+    get "/request/new", RequestController, :new
+    post "/request/new", RequestController, :create
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
@@ -126,18 +128,18 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/admin", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_admin]
-    resources "/feedback", FeedbackController
-    resources "/requests", RequestController
-
+    resources "/feedback", FeedbackController, except: [:create]
+    resources "/requests", RequestController, except: [:create]
   end
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
-
+    resources "/requests", RequestController
     resources "/feedback", FeedbackController
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :confirm
+
   end
 end
