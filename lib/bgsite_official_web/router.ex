@@ -77,6 +77,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/settings/confirm_email/:token", AdminSettingsController, :confirm_email
     get "/admin/register", AdminRegistrationController, :new
     post "/admin/register", AdminRegistrationController, :create
+    get "/admin", AdminController, :index
   end
 
   scope "/", BgsiteOfficialWeb do
@@ -137,6 +138,6 @@ defmodule BgsiteOfficialWeb.Router do
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :confirm
-    get "/admin", AdminController, :index
+
   end
 end
