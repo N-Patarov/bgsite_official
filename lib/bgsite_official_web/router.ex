@@ -117,8 +117,10 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_user]
-    resources "/feedback", FeedbackController
-    resources "/requests", RequestController
+    get "/feedback/new", FeedbackController, :new
+    post "/feedback/new", FeedbackController, :create
+    get "/request/new", RequestController, :new
+    post "/request/new", RequestController, :create
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
@@ -126,13 +128,13 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/admin", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_admin]
-    resources "/feedback", FeedbackController
-    resources "/requests", RequestController
+    resources "/feedback", FeedbackController, except: [:create]
+    resources "/requests", RequestController, except: [:create]
   end
 
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser]
-
+    resources "/requests", RequestController
     resources "/feedback", FeedbackController
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
