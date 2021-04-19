@@ -12,10 +12,10 @@ defmodule BgsiteOfficial.Websites.TagsInWebsites do
   @doc false
 
   def changeset(tags_in_websites, attrs) do
-    tag
+    @tag
     |> cast(attrs, [:title, :description])
     |> validate_required([:title])
-    |> cast(params, [:website_id, :tag_id])
+    |> cast(attrs, [:website_id, :tag_id])
     |> validate_required([:website_id, :tag_id])
   end
 end
