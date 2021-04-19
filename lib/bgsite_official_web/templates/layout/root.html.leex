@@ -39,8 +39,8 @@
           <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
 
         <% else %>
-          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
-          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
+          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-secondary mx-2" %>
+          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-outline-success" %>
         <% end %>
       </form>
     </nav>
