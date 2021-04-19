@@ -1,4 +1,4 @@
-defmodule BgsiteOfficial.Websites.TagsInWebsites do
+defmodule BgsiteOfficial.Websites.WebsiteTag do 
   use Ecto.Schema
   import Ecto.Changeset
 
