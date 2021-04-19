@@ -84,6 +84,7 @@ defmodule BgsiteOfficialWeb.Router do
     pipe_through [:browser, :require_authenticated_admin]
     # resources "/requests", RequestController
     resources "/tags", TagController
+    live "/website_live/:id", WebsiteLive
   end
 
 

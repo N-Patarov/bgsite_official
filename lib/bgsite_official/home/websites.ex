@@ -4,7 +4,7 @@ defmodule BgsiteOfficial.Home.Websites do
   use Waffle.Ecto.Schema
   import Ecto.Query, only: [from: 2]
 
-  @derive {Inspect, except: [:password]}
+  # @derive {Inspect, except: [:password]}
   schema "websites" do
     field :banner, BgsiteOfficial.BannerUploader.Type
     field :description, :string
@@ -14,7 +14,6 @@ defmodule BgsiteOfficial.Home.Websites do
     timestamps()
   end
 
-  @doc false
   def changeset(websites, attrs) do
     websites
     |> cast(attrs, [:title, :banner, :description, :likes, :urls])
