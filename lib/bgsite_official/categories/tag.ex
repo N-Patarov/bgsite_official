@@ -10,14 +10,14 @@ defmodule BgsiteOfficial.Categories.Tag do
     field :title, :string
 
     timestamps()
-  end
 
-  many_to_many(
-    :websites,
-    Websites,
-    join_through: "website_tag",
-    on_replace: :delete
-  )
+    many_to_many(
+      :websites,
+      Websites,
+      join_through: "website_tag",
+      on_replace: :delete
+    )
+  end
 
   @doc false
   def changeset(tag, attrs) do

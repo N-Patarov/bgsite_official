@@ -13,14 +13,14 @@ defmodule BgsiteOfficial.Home.Websites do
     field :title, :string
     field :urls, :string
     timestamps()
-  end
 
-  many_to_many(
-    :tags,
-    Tag,
-    join_through: "website_tag",
-    on_replace: :delete
-  )
+    many_to_many(
+      :tags,
+      Tag,
+      join_through: "website_tag",
+      on_replace: :delete
+    )
+  end
 
   def changeset(websites, attrs) do
     websites
@@ -28,7 +28,7 @@ defmodule BgsiteOfficial.Home.Websites do
     |> validate_required([:title, :description, :likes, :urls])
   end
 
-  def changeset_update_tags(%Websites{} = website, tags) do
+  def changeset_update_tags(website, tags) do
       website
       |> cast(%{}, @required_fields)
       # associate projects to the user
