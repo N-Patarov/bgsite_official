@@ -16,7 +16,7 @@ defmodule BgsiteOfficial.Home do
 
     with {:ok, struct} <-
       website
-      |> Websites.changeset_update_tags(project)
+      |> Websites.changeset_update_tags(website, tag)
       |> Repo.update() do
       {:ok, Websites.get_website(website.id) }
     else
