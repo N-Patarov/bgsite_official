@@ -23,4 +23,10 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
       )
     {:ok, socket}
   end
+
+  def handle_event("toggle_check", %{"id" => id}, socket) do
+    tag = Categories.get_tag!(id)
+    Categories.update_tag(tag, %{check: !tag.check})
+    {:noreply, socket}
+  end
 end
