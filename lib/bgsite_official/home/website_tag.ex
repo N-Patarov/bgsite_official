@@ -1,4 +1,4 @@
-defmodule BgsiteOfficial.Websites.WebsiteTag do 
+defmodule BgsiteOfficial.Websites.WebsiteTag do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -9,6 +9,7 @@ defmodule BgsiteOfficial.Websites.WebsiteTag do
 
     timestamps()
   end
+
   @doc false
 
   def changeset(website_tag, attrs) do

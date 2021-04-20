@@ -8,6 +8,24 @@ defmodule BgsiteOfficial.Home do
 
   alias BgsiteOfficial.Home.Websites
 
+  def upsert_website_tag(website, tag_id) do
+    tag =
+      Tags
+      |> where([tag], tag.id == ^tag_id)
+      |> Repo.all()
+
+    with {:ok, struct} <-
+      website
+      |> Websites.changeset_update_tags(project)
+      |> Repo.update() do
+      {:ok, Websites.get_website(website.id) }
+    else
+      error ->
+        error
+    end
+  end
+
+
   @doc """
   Returns the list of websites.
 
