@@ -28,8 +28,8 @@ defmodule BgsiteOfficial.Home do
   def get_tag_status_for(website, tag_id) do
     status = from(wt in WebsiteTag, where: wt.website_id == ^website.id and wt.tag_id == ^tag_id)
     |> Repo.one
-    if status, do: :true, else: false
-  end 
+    if status, do: :true, else: :false
+  end
 
   @doc """
   Returns the list of websites.
