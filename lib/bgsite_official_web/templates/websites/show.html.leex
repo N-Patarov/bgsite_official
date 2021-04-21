@@ -10,7 +10,7 @@
   <%= if @current_admin do %>
     <%= for tag <- @tags do %>
       <div class="form-check">
-        <%= checkbox(:tag, phx_click: "toggle_check", phx_value_id: tag.id), value: get_tag_status_for(website, tag_id) %>
+        <%= checkbox(:tag, phx_click: "toggle_check", phx_value_id: tag.id, value: BgsiteOfficial.Home.get_tag_status_for(website, tag_id)) %>
         <label class="form-check-label" for="defaultCheck1">
           <%= tag.title %>
         </label>
