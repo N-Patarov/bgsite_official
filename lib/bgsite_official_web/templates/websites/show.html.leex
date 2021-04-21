@@ -10,7 +10,7 @@
   <%= if @current_admin do %>
     <%= for tag <- @tags do %>
       <div class="form-check">
-        <%= checkbox(:tag, :check, phx_click: "toggle_check", phx_value_id: tag.id, value: tag.check) %>
+        <%= checkbox(:tag, phx_click: "toggle_check", phx_value_id: tag.id) %>
         <label class="form-check-label" for="defaultCheck1">
           <%= tag.title %>
         </label>
