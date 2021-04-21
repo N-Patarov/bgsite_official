@@ -5,6 +5,7 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
   alias BgsiteOfficial.Categories
   alias BgsiteOfficial.Home
   alias BgsiteOfficial.Accounts
+  alias BgsiteOfficial.Home.Websites
 
   def render(assigns) do
    render WebsitesView, "show.html", assigns
@@ -25,8 +26,9 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
   end
 
   def handle_event("toggle_check", %{"id" => id}, socket) do
-    tag = Categories.get_tag!(id)
-    Categories.update_tag(tag, %{check: !tag.check})
+    tag_id = Categories.get_tag!(id)
+    website = Home.get_website!(id)
+    Home.upsert_website_tag(website, tag_id)
     {:noreply, socket}
   end
 end
