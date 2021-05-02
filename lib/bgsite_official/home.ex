@@ -7,28 +7,46 @@ defmodule BgsiteOfficial.Home do
   alias BgsiteOfficial.Repo
 
   alias BgsiteOfficial.Home.Websites
+  alias BgsiteOfficial.Home.WebsiteTag
+  alias BgsiteOfficial.Categories.Tag
 
-  def upsert_website_tag(website, tag_id) do
-    tag =
-      Tags
-      |> where([tag], tag.id == ^tag_id)
-      |> Repo.all()
-
-    with {:ok, struct} <-
-      website
-      |> Websites.changeset_update_tags(website, tag)
-      |> Repo.update() do
-      {:ok, Websites.get_website(website.id) }
+  def toggle_website_tag(%Websites{} = website, tag_id) do
+    ww = website.id
+    query = from(wt in WebsiteTag, where: wt.websites_id == ^ww and wt.tag_id == ^tag_id)
+    records = Repo.all(query)
+    with records = [_|_] <-
+      %WebsiteTag{}
+      |> WebsiteTag.changeset(%{websites_id: website.id, tag_id: tag_id})
+      |> Repo.insert(),
+      records = %WebsiteTag{} <-
+      %WebsiteTag{}
+      |> WebsiteTag.changeset(%{websites_id: website.id, tag_id: tag_id})
+      |> Repo.delete() do
+      {:ok, website }
     else
-      error ->
-        error
+      {:error, reason} ->
+        {:error, reason}
     end
   end
 
-  def get_tag_status_for(website, tag_id) do
-    status = from(wt in WebsiteTag, where: wt.website_id == ^website.id and wt.tag_id == ^tag_id)
-    |> Repo.one
-    if status, do: :true, else: :false
+  def remove_website_tag(website, tag_id) do
+
+    with {:ok, _website} <-
+      %WebsiteTag{}
+      |> WebsiteTag.changeset(%{website_id: website.id, tag_id: tag_id})
+      |> Repo.delete() do
+      {:ok, website }
+    else
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
+
+  def get_tag_status_for(website_tags, tag_id) do
+    # status = from(wt in WebsiteTag, where: wt.website_id == Integer.parse(^website.id) and wt.tag_id == Integer.parse(^tag_id), select: wt.inserted_at)
+    # |> Repo.one
+    # if status, do: :true, else: :false
+    true
   end
 
   @doc """
@@ -51,11 +69,21 @@ defmodule BgsiteOfficial.Home do
   #   Website.banner_changeset(user, %{})
   # end
 
+  # def website_with_tag?(%Websites = website, tag_id) do
+  #
+  # end
+  def website_tags(%Websites{} = website) do
+    website_id = website.id
+    query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^website_id)
+    Repo.all(query_join_table)
+  end
+
   def list_websites(params = %{"query" => search_term}) do
     Websites
     |>Websites.search(search_term)
     |>Repo.all()
   end
+
   def list_websites(_params) do
     Repo.all(Websites)
   end
@@ -73,7 +101,10 @@ defmodule BgsiteOfficial.Home do
       ** (Ecto.NoResultsError)
 
   """
-  def get_websites!(id), do: Repo.get!(Websites, id)
+  def get_websites!(id) do
+    Repo.get!(Websites, id)
+    |> Repo.preload(:tags)
+  end
 
   @doc """
   Creates a websites.

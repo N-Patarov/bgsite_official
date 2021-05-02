@@ -1,20 +1,22 @@
-defmodule BgsiteOfficial.Websites.WebsiteTag do
+defmodule BgsiteOfficial.Home.WebsiteTag do
   use Ecto.Schema
   import Ecto.Changeset
+  alias BgsiteOfficial.Home.Websites
+  alias BgsiteOfficial.Categories.Tag
 
   schema "website_tag" do
 
-    field :website_id, :decimal
-    field :tag_id, :decimal
+    belongs_to :websites, Websites
+    belongs_to :tag, Tag
 
     timestamps()
   end
 
   @doc false
 
-  def changeset(website_tag, attrs) do
-    @tag
-    |> cast(attrs, [:website_id, :tag_id])
-    |> validate_required([:website_id, :tag_id])
+  def changeset(struct, attrs \\ %{}) do
+    struct
+    |> cast(attrs, [:websites_id, :tag_id])
+    |> validate_required([:websites_id, :tag_id])
   end
 end
