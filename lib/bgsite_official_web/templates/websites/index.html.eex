@@ -4,7 +4,7 @@
     <%= for websites <- @websites do %>
 
   <div class="col-sm rounded">
-
+    <br>
       <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
         <div class="card-body">
@@ -21,7 +21,8 @@
           <% end %>
           <p class="card-text text-center"><%= websites.description %></p>
           <!--<p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>-->
-          <p class="card-text text-center"><small class="text-muted"><%= link websites.urls, to: "https://#{websites.urls}", target: "_blank" %></small></p>
+          <!-- <p class="card-text text-center"><small class="text-muted"><%= link "Към Сайта", to: "https://#{websites.urls}", target: "_blank" %></small></p> -->
+
         </div>
         <br>
       </div>

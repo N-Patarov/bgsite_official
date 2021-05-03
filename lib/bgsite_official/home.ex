@@ -7,6 +7,22 @@ defmodule BgsiteOfficial.Home do
   alias BgsiteOfficial.Repo
 
   alias BgsiteOfficial.Home.Websites
+  alias BgsiteOfficial.Home.WebsiteTag
+  alias BgsiteOfficial.Categories.Tag
+
+  def toggle_website_tag(%Websites{} = website, tag_id) do
+    ww = website.id
+    query = from(wt in WebsiteTag, where: wt.websites_id == ^ww and wt.tag_id == ^tag_id)
+    assoc = Repo.one(query)
+    # require IEx; IEx.pry
+    if assoc == nil do
+      %WebsiteTag{}
+      |> WebsiteTag.changeset(%{websites_id: website.id, tag_id: tag_id})
+      |> Repo.insert()
+    else
+      Repo.delete(assoc)
+    end
+  end
 
   @doc """
   Returns the list of websites.
@@ -28,11 +44,21 @@ defmodule BgsiteOfficial.Home do
   #   Website.banner_changeset(user, %{})
   # end
 
+  # def website_with_tag?(%Websites = website, tag_id) do
+  #
+  # end
+  def website_tags(%Websites{} = website) do
+    website_id = website.id
+    query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^website_id)
+    Repo.all(query_join_table)
+  end
+
   def list_websites(params = %{"query" => search_term}) do
     Websites
     |>Websites.search(search_term)
     |>Repo.all()
   end
+
   def list_websites(_params) do
     Repo.all(Websites)
   end
@@ -50,7 +76,10 @@ defmodule BgsiteOfficial.Home do
       ** (Ecto.NoResultsError)
 
   """
-  def get_websites!(id), do: Repo.get!(Websites, id)
+  def get_websites!(id) do
+    Repo.get!(Websites, id)
+    |> Repo.preload(:tags)
+  end
 
   @doc """
   Creates a websites.

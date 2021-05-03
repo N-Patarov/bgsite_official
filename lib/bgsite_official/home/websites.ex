@@ -3,6 +3,8 @@ defmodule BgsiteOfficial.Home.Websites do
   import Ecto.Changeset
   use Waffle.Ecto.Schema
   import Ecto.Query, only: [from: 2]
+  alias BgsiteOfficial.Categories.Tag
+  alias BgsiteOfficial.Home.Websites
 
   # @derive {Inspect, except: [:password]}
   schema "websites" do
@@ -12,6 +14,13 @@ defmodule BgsiteOfficial.Home.Websites do
     field :title, :string
     field :urls, :string
     timestamps()
+
+    many_to_many(
+      :tags,
+      Tag,
+      join_through: "website_tag",
+      on_replace: :delete
+    )
   end
 
   def changeset(websites, attrs) do
