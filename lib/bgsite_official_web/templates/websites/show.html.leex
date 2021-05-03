@@ -8,6 +8,8 @@
   <p><%= @website.description %></p>
 
   <%= if @current_admin do %>
+    <h4> Checked tags: <%= length(@website_tags) %> </h4>
+    <br>
     <%= for tag <- @tags do %>
       <div class="form-check">
         <%= checkbox(:tag, :check, phx_click: "toggle_check", phx_value_tag_id: tag.id, value: Enum.member?(@website_tags, tag.id)) %>
@@ -21,4 +23,6 @@
     <span><%= link "Edit", to: Routes.websites_path(@socket, :edit, @website), class: "btn btn-primary" %></span>
     <span><%= link "Delete", to: Routes.websites_path(@socket, :delete, @website), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %></span>
   <% end %>
+  <br>
+  <br>
 </div>
