@@ -18,5 +18,7 @@ defmodule BgsiteOfficial.Home.WebsiteTag do
     struct
     |> cast(attrs, [:websites_id, :tag_id])
     |> validate_required([:websites_id, :tag_id])
+    # |> unique_constraint(:website_tag_unique, :website_tag_unique_index)
+    # :website_tag_unique_index
   end
 end

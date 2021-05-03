@@ -13,40 +13,15 @@ defmodule BgsiteOfficial.Home do
   def toggle_website_tag(%Websites{} = website, tag_id) do
     ww = website.id
     query = from(wt in WebsiteTag, where: wt.websites_id == ^ww and wt.tag_id == ^tag_id)
-    records = Repo.all(query)
-    with records = [_|_] <-
+    assoc = Repo.one(query)
+    # require IEx; IEx.pry
+    if assoc == nil do
       %WebsiteTag{}
       |> WebsiteTag.changeset(%{websites_id: website.id, tag_id: tag_id})
-      |> Repo.insert(),
-      records = %WebsiteTag{} <-
-      %WebsiteTag{}
-      |> WebsiteTag.changeset(%{websites_id: website.id, tag_id: tag_id})
-      |> Repo.delete() do
-      {:ok, website }
+      |> Repo.insert()
     else
-      {:error, reason} ->
-        {:error, reason}
+      Repo.delete(assoc)
     end
-  end
-
-  def remove_website_tag(website, tag_id) do
-
-    with {:ok, _website} <-
-      %WebsiteTag{}
-      |> WebsiteTag.changeset(%{website_id: website.id, tag_id: tag_id})
-      |> Repo.delete() do
-      {:ok, website }
-    else
-      {:error, reason} ->
-        {:error, reason}
-    end
-  end
-
-  def get_tag_status_for(website_tags, tag_id) do
-    # status = from(wt in WebsiteTag, where: wt.website_id == Integer.parse(^website.id) and wt.tag_id == Integer.parse(^tag_id), select: wt.inserted_at)
-    # |> Repo.one
-    # if status, do: :true, else: :false
-    true
   end
 
   @doc """
