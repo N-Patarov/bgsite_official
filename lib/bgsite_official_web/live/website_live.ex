@@ -18,6 +18,7 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
     tags = Categories.list_tags
     website_tags = Home.website_tags(website)
                    |>Enum.map(fn(x) -> x.tag_id end)
+
     admin = Accounts.get_admin_by_session_token(admin_token)
     socket = assign(
         socket,
@@ -33,6 +34,8 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
     website = socket.assigns[:website]
               |> Repo.preload(:tags)
     Home.toggle_website_tag(website, tag_id)
-    {:noreply, socket}
+    website_tags = Home.website_tags(website)
+                   |>Enum.map(fn(x) -> x.tag_id end)
+                   {:noreply, assign(socket, :website_tags, website_tags)}
   end
 end
