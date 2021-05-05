@@ -3,18 +3,16 @@
   <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
 
-  <%= form_for @conn, Routes.websites_path(@conn, :index),[method: :get, class: "input-group d-flex justify-content-center"], fn f -> %>
+  <!-- <%= form_for @conn, Routes.websites_path(@conn, :index),[method: :get, class: "input-group d-flex justify-content-center"], fn f -> %>
     <div class="search input-group">
       <%= search_input f, :query, class: "form-control rounded text-center my-2", placeholder: "Намери Уебсайт" %>
     </div>
 
       <%= submit "Търси!", class: "btn btn-outline-primary" %>
-    <% end %>
+    <% end %> -->
 
 
 <br>
-
+</main>
 
 <%= @inner_content %>
-
-</main>
