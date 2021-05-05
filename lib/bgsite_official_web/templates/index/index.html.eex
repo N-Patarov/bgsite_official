@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+
+    <%= for websites <- @websites do %>
+
+  <div class="col-sm rounded">
+    <br>
+      <div class="card rounded" style="width: 20rem;">
+          <img src="" class="card-img-top">
+        <div class="card-body">
+          <%=
+            link to: "https://#{websites.urls}", target: "_blank" do
+              img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded"
+            end
+            %>
+          <br><br>
+          <%= if @current_admin do %>
+          <h5 class="card-title text-center"><%= link websites.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, websites) %></h5>
+          <% else %>
+          <h5 class="card-title text-center"><%= link websites.title , to: "https://#{websites.urls}", target: "_blank" %></h5>
+          <% end %>
+          <p class="card-text text-center"><%= websites.description %></p>
+          <!--<p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>-->
+          <!-- <p class="card-text text-center"><small class="text-muted"><%= link "Към Сайта", to: "https://#{websites.urls}", target: "_blank" %></small></p> -->
+
+        </div>
+        <br>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= if @current_admin do %>
+  <span><%= link "New Website", to: Routes.websites_path(@conn, :new), class: "btn btn-secondary" %></span>
+  <br><br>
+<% end %>
