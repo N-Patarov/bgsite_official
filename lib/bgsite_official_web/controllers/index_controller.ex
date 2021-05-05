@@ -4,8 +4,8 @@ defmodule  BgsiteOfficialWeb.IndexController do
   alias BgsiteOfficial.Websites
 
   def index(conn, _params) do
-    render(conn, "index.html")
-
+    websites = Home.list_websites(_params)
+    render(conn, "index.html", websites: websites)
   end
 
 end
