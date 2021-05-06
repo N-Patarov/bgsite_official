@@ -2,7 +2,7 @@
 
 
 <hr class="my-5" />
-
+<h4 class="text-center">Онлайн търговия </h4>
 <div class="container">
   <!-- <h1 class="text-center"> ...Или разгледай всичките ни категории  </h1> -->
 
@@ -26,5 +26,30 @@
       </div>
     </div>
   <% end %>
+  </div>
 </div>
+
+<hr class="my-5" />
+<h4 class="text-center">Новини </h4>
+<div class="row">
+
+
+  <%= for tag <- @tags do %>
+
+<div class="col-sm rounded">
+  <br>
+    <div class="card rounded" style="width: 20rem;">
+        <img src="" class="card-img-top">
+      <div class="card-body text-center">
+          <i class="fas fa-jedi fa-3x"></i>
+        <br><br>
+
+        <h5 class="card-title text-center"><%= link tag.title , to: "/" %></h5>
+        <p class="card-text text-center"><%= tag.description %></p>
+
+      </div>
+      <br>
+    </div>
+  </div>
+<% end %>
 </div>
