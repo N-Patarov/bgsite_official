@@ -4,44 +4,41 @@
 
     <%= form_for @conn, Routes.websites_path(@conn, :index),[method: :get, class: "input-group d-flex justify-content-center"], fn f -> %>
       <div class="search input-group">
-        <%= search_input f, :query, class: "form-control rounded text-center my-2", placeholder: "Търси из 'Хранителни Магазини, Спорт, Мода, Авто' и още над #{length(@websites)} сайта  " %>
+        <%= search_input f, :query, class: "form-control rounded text-center my-2", placeholder: "Намери из 'Хранителни Магазини, Спорт, Мода, Авто' и още над #{length(@websites)} други  " %>
       </div>
 
         <%= submit "Търси!", class: "btn btn-outline-primary" %>
       <% end %>
+
+
 
   </div>
 </div>
 
 <div class="container">
   <h1 class="text-center"> ...Или разгледай всичките ни категории  </h1>
-    <div class="row">
-      <%= for websites <- @websites do %>
 
-      <div class="col-sm rounded">
-        <br>
-        <div class="card rounded" style="width: 20rem;">
+  <div class="row">
+
+    <%= for tag <- @tags do %>
+
+  <div class="col-sm rounded">
+    <br>
+      <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
-          <div class="card-body">
-            <%=
-              link to: "https://#{websites.urls}", target: "_blank" do
-                img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded"
-              end
-              %>
-              <br><br>
-              <%= if @current_admin do %>
-              <h5 class="card-title text-center"><%= link websites.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, websites) %></h5>
-              <% else %>
-              <h5 class="card-title text-center"><%= link websites.title , to: "https://#{websites.urls}", target: "_blank" %></h5>
-              <% end %>
-              <p class="card-text text-center"><%= websites.description %></p>
-              <!--<p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>-->
-              <!-- <p class="card-text text-center"><small class="text-muted"><%= link "Към Сайта", to: "https://#{websites.urls}", target: "_blank" %></small></p> -->
+        <div class="card-body">
+            <img class="card-img-top" src="/images/image-222.png" alt="Card image cap">
+          <br><br>
 
-            </div>
-            <br>
-          </div>
+          <h5 class="card-title text-center"><%= link tag.title , to: "/" %></h5>
+          <p class="card-text text-center"><%= tag.description %></p>
+
         </div>
-        <% end %>
+        <br>
       </div>
+    </div>
+  <% end %>
+</div>
+
+  
 </div>
