@@ -1,25 +1,10 @@
-<section id="hero">
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="text-center">Българските сайтове на едно място</h1>
-
-    <%= form_for @conn, Routes.websites_path(@conn, :index),[method: :get, class: "input-group d-flex justify-content-center"], fn f -> %>
-      <div class="search input-group">
-        <%= search_input f, :query, class: "form-control rounded text-center my-2", placeholder: "Намери из 'Хранителни Магазини, Спорт, Мода, Авто' и още над #{length(@websites)} други  " %>
-      </div>
-
-        <%= submit "Търси!", class: "btn btn-outline-primary" %>
-      <% end %>
+</main>
 
 
-
-  </div>
-</div>
-</section>
-
+<hr class="my-5" />
 
 <div class="container">
-  <h1 class="text-center"> ...Или разгледай всичките ни категории  </h1>
+  <!-- <h1 class="text-center"> ...Или разгледай всичките ни категории  </h1> -->
 
   <div class="row">
 
@@ -29,8 +14,8 @@
     <br>
       <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
-        <div class="card-body">
-            <img class="card-img-top" src="/images/image-222.png" alt="Card image cap">
+        <div class="card-body text-center">
+            <i class="fas fa-jedi fa-3x"></i>
           <br><br>
 
           <h5 class="card-title text-center"><%= link tag.title , to: "/" %></h5>
