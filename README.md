@@ -1,6 +1,6 @@
-# Sites.bg
+# izberi.site
 
-Sites.bg is a website displaying bulgarian websites sorted on categories. This way you can easily support bulgarian developers by using their products.
+izberi.site is a website displaying bulgarian websites sorted on categories. This way you can easily support bulgarian developers by using their products.
 
 
 
@@ -20,5 +20,4 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-![Screenshot](readmelogo.png)
 
