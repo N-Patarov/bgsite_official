@@ -8,15 +8,14 @@
 
   <div class="col-sm rounded">
     <br>
-      <div class="card rounded" style="width: 20rem;">
-          <img src="" class="card-img-top">
+      <div class="card rounded" style="width: 18rem;">
+        <%=
+          link to: "https://#{websites.urls}", target: "_blank" do
+            img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded card-img-top"
+          end
+          %>
         <div class="card-body">
-          <%=
-            link to: "https://#{websites.urls}", target: "_blank" do
-              img_tag BgsiteOfficial.BannerUploader.url(websites.banner, :thumb), class: "rounded"
-            end
-            %>
-          <br><br>
+
           <%= if @current_admin do %>
           <h5 class="card-title text-center"><%= link websites.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, websites) %></h5>
           <% else %>
