@@ -15,7 +15,7 @@
       <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
         <div class="card-body text-center">
-            <i class="fas fa-jedi fa-3x"></i>
+            <i class="<%= tag.banner %> fa-3x"></i>
           <br><br>
 
           <h5 class="card-title text-center"><%= link tag.title , to: "/" %></h5>
@@ -41,7 +41,7 @@
     <div class="card rounded" style="width: 20rem;">
         <img src="" class="card-img-top">
       <div class="card-body text-center">
-          <i class="fas fa-jedi fa-3x"></i>
+          <i class="<%= tag.banner %> fa-3x"></i>
         <br><br>
 
         <h5 class="card-title text-center"><%= link tag.title , to: "/" %></h5>
