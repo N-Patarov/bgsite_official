@@ -2,7 +2,7 @@
   <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
   <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-  <section id="hero">
+  <!-- <section id="hero">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="text-center">Българските сайтове на едно място</h1>
@@ -16,7 +16,7 @@
         <% end %>
       </div>
     </div>
-  </section>
+  </section> -->
 
 </main>
 
