@@ -23,6 +23,6 @@ defmodule BgsiteOfficial.Categories.Tag do
   def changeset(tag, attrs) do
     tag
     |> cast(attrs, [:title, :banner, :description, :likes])
-    |> validate_required([:title, :banner, :description, :likes])
+    |> validate_required([:title, :banner, :description])
   end
 end
