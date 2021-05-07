@@ -40,7 +40,7 @@ defmodule BgsiteOfficial.Home.Websites do
     from websites in query,
     where: fragment("SIMILARITY(?, ?) > 0.4",  websites.title, ^wildcard_search),
     order_by: fragment("LEVENSHTEIN(?, ?)", websites.title, ^wildcard_search),
-    or_where: fragment("SIMILARITY(?, ?) > 0.4",  websites.description, ^wildcard_search),
+    or_where: fragment("SIMILARITY(?, ?) > 0.1",  websites.description, ^wildcard_search),
     order_by: fragment("LEVENSHTEIN(?, ?)", websites.description, ^wildcard_search)
   end
 end
