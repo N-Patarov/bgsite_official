@@ -3,9 +3,13 @@ defmodule  BgsiteOfficialWeb.IndexController do
 
   alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
+  alias BgsiteOfficial.Categories
+  alias BgsiteOfficial.Categories.Tag
+
   def index(conn, _params) do
     websites = Home.list_websites(_params)
-    render(conn, "index.html", websites: websites)
+    tags = Categories.list_tags()
+    render(conn, "index.html", websites: websites, tags: tags)
   end
 
 end

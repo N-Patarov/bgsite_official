@@ -6,22 +6,24 @@
   <% end %>
 
   <%= label f, :title %>
-  <%= text_input f, :title %>
+  <%= text_input f, :title, class: "form-control" %>
   <%= error_tag f, :title %>
 
   <%= label f, :banner %>
-  <%= text_input f, :banner %>
+  <%= text_input f, :banner, class: "form-control", placeholder: "fas fa-jedi" %>
   <%= error_tag f, :banner %>
+  <small id="emailHelp" class="form-text text-muted">Fontawesome.com - from i class='fas fa-jedi fa-3x' to 'fas fa-jedi'></i></small>
 
   <%= label f, :description %>
-  <%= text_input f, :description %>
+  <%= text_input f, :description, class: "form-control" %>
   <%= error_tag f, :description %>
 
-  <%= label f, :likes %>
-  <%= number_input f, :likes %>
-  <%= error_tag f, :likes %>
-
+  <%# label f, :likes %>
+  <%# number_input f, :likes %>
+  <%# error_tag f, :likes %>
+  <br>
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-secondary" %>
   </div>
+  <br>
 <% end %>
