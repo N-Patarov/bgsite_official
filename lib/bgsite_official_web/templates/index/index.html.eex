@@ -36,7 +36,7 @@
             <i class="<%= tag.banner %> fa-3x"></i>
           <br><br>
 
-          <h5 class="card-title text-center"><%= link tag.title , to: "/" %></h5>
+          <%= link tag.title, to: Routes.tag_path(@conn, :show, tag) %>
           <p class="card-text text-center"><%= tag.description %></p>
 
         </div>
