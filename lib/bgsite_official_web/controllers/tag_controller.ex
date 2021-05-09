@@ -3,6 +3,7 @@ defmodule BgsiteOfficialWeb.TagController do
 
   alias BgsiteOfficial.Categories
   alias BgsiteOfficial.Categories.Tag
+  alias BgsiteOfficial.Home
 
   def index(conn, _params) do
     tags = Categories.list_tags()
@@ -27,9 +28,11 @@ defmodule BgsiteOfficialWeb.TagController do
   end
 
   def show(conn, %{"id" => id}) do
-    tag = Categories.get_tag!(id)
-    render(conn, "show.html", tag: tag)
-  end
+      tag = Categories.get_tag!(id)
+      websites = Home.websites_with_tag(tag)
+      render(conn, "show.html", tag: tag, websites_for_tag: websites)
+    end
+
 
   def edit(conn, %{"id" => id}) do
     tag = Categories.get_tag!(id)
