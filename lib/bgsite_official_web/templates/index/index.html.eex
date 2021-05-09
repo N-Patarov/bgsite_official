@@ -33,11 +33,16 @@
       <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
         <div class="card-body text-center">
-            <i class="<%= tag.banner %> fa-3x"></i>
-          <br><br>
 
-          <%= link tag.title, to: Routes.tag_path(@conn, :show, tag) %>
-          <p class="card-text text-center"><%= tag.description %></p>
+            <%= link to: Routes.tag_path(@conn, :show, tag), class: "blue-link-color" do %>
+
+              <i class='<%= tag.banner %> fa-3x' aria-hidden='true'></i>
+              <br><br>
+              <%= tag.title %>
+
+            <% end %>
+
+          <p class="card-text text-center"><%# tag.description %></p>
 
         </div>
         <br>
