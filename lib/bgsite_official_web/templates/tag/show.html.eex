@@ -1,0 +1,16 @@
+<div class="alert alert-info text-center">
+  <a href="/" class="blue-link-color"><%= @tag.title %>
+</div>
+<div class="container">
+  <div class="row">
+
+
+    <%= for websites <- @websites_for_tag.websites do %>
+
+    <%= websites.title %>
+
+    <% end %>
+
+
+ </div>
+</div>
