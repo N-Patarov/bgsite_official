@@ -2,6 +2,8 @@
 
 ## v.1.0.0-beta ETA: 15.05.2021
 
+![Screenshot](assets/static/image-222.png)
+
 Izberi.site is a website displaying bulgarian websites sorted on categories. This way you can easily support bulgarian developers by using their products.
 
 
