@@ -1,6 +1,6 @@
 # izberi.site
 
-## v.1.0.0-beta ETA: 15.05.2021
+## v.1.0.0-beta
 
 ![Screenshot](assets/static/image-222.png)
 
