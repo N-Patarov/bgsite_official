@@ -53,12 +53,6 @@ defmodule BgsiteOfficial.Home do
     Repo.all(query_join_table)
   end
 
-  def websites_with_tag(%Tag{} = tag) do
-    tag_id = tag.id
-    query_join_table = from(wt in WebsiteTag, where: wt.tag_id == ^tag_id)
-    Repo.all(query_join_table) |> Repo.preload(:websites)
-  end
-
   def list_websites(params = %{"query" => search_term}) do
     Websites
     |>Websites.search(search_term)
