@@ -5,7 +5,7 @@
   <div class="row">
 
 
-    <%= for websites <- @websites_for_tag.websites do %>
+    <%= for websites <- @websites_for_tag do %>
 
     <%= websites.title %>
 

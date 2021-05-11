@@ -31,8 +31,8 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through :browser
-    get "/websites", WebsitesController, :index
-    get "/", IndexController, :index
+    get "/", WebsitesController, :index
+    # get "/", IndexController, :index
   end
 
   # Other scopes may use custom stacks.
