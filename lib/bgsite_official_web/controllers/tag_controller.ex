@@ -3,6 +3,7 @@ defmodule BgsiteOfficialWeb.TagController do
 
   alias BgsiteOfficial.Categories
   alias BgsiteOfficial.Categories.Tag
+  alias BgsiteOfficial.Repo
 
   def index(conn, _params) do
     tags = Categories.list_tags()
@@ -28,9 +29,8 @@ defmodule BgsiteOfficialWeb.TagController do
 
   def show(conn, %{"id" => id}) do
     tag = Categories.get_tag!(id)
-    website = tag.websites
-    tags_for_website = website.tags
-    render(conn, "show.html", tag: tag, websites_for_tag: website, tags_for_website: tags_for_website)
+    website = websites = tag.websites |> Repo.preload(:tags)
+    render(conn, "show.html", tag: tag, websites_for_tag: website)
   end
 
 

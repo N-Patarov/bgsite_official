@@ -15,9 +15,10 @@
          end
          %>
        <div class="card-body">
-         <%= for tag <- @tags_for_website do %>
 
-         <% end %>
+         <!-- <%= for tag <- websites.tags do %>
+            <button type="button" class="btn btn-dark btn-sm my-1"> <%= tag.title %></button>
+         <% end %> -->
 
          <%= if @current_admin do %>
          <h5 class="card-title text-center"><%= link websites.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, websites) %></h5>
@@ -25,6 +26,7 @@
          <h5 class="card-title text-center"><%= link websites.title , to: "https://#{websites.urls}", target: "_blank" %></h5>
          <% end %>
          <p class="card-text text-center"><%= websites.description %></p>
+
          <!--<p class="card-text "><small class="text-muted">Likes count: <%= websites.likes %></small></p>-->
          <!-- <p class="card-text text-center"><small class="text-muted"><%= link "Към Сайта", to: "https://#{websites.urls}", target: "_blank" %></small></p> -->
 
