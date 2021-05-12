@@ -35,7 +35,10 @@ defmodule BgsiteOfficial.Categories do
       ** (Ecto.NoResultsError)
 
   """
-  def get_tag!(id), do: Repo.get!(Tag, id)
+  def get_tag!(id) do
+    Repo.get!(Tag, id)
+    |> Repo.preload(:websites)
+  end
 
   @doc """
   Creates a tag.
