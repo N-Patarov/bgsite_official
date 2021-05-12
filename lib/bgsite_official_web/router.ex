@@ -79,6 +79,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/register", AdminRegistrationController, :new
     post "/admin/register", AdminRegistrationController, :create
     get "/admin", AdminController, :index
+    get "/admin/websites", AdminController, :websites
   end
 
   scope "/", BgsiteOfficialWeb do
