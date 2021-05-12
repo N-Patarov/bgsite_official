@@ -15,6 +15,9 @@
          end
          %>
        <div class="card-body">
+         <%= for tag <- @tags_for_website do %>
+
+         <% end %>
 
          <%= if @current_admin do %>
          <h5 class="card-title text-center"><%= link websites.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, websites) %></h5>

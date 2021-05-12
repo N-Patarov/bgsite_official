@@ -28,8 +28,9 @@ defmodule BgsiteOfficialWeb.TagController do
 
   def show(conn, %{"id" => id}) do
     tag = Categories.get_tag!(id)
-    websites = tag.websites
-    render(conn, "show.html", tag: tag, websites_for_tag: websites)
+    website = tag.websites
+    tags_for_website = website.tags
+    render(conn, "show.html", tag: tag, websites_for_tag: website, tags_for_website: tags_for_website)
   end
 
 
