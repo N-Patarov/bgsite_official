@@ -29,8 +29,8 @@ defmodule BgsiteOfficialWeb.TagController do
 
   def show(conn, %{"id" => id}) do
     tag = Categories.get_tag!(id)
-    website = websites = tag.websites |> Repo.preload(:tags)
-    render(conn, "show.html", tag: tag, websites_for_tag: website)
+    websites = tag.websites |> Repo.preload(:tags)
+    render(conn, "show.html", tag: tag, websites_for_tag: websites)
   end
 
 
