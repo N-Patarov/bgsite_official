@@ -79,7 +79,6 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/register", AdminRegistrationController, :new
     post "/admin/register", AdminRegistrationController, :create
     get "/admin", AdminController, :index
-    get "/admin/websites", AdminController, :websites
   end
 
   scope "/", BgsiteOfficialWeb do
@@ -97,6 +96,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
     resources "/websites", WebsitesController
     resources "/tags", TagController, only: [:show]
+    get "/admin/websites", AdminController, :websites
 
     # get "/request/new", RequestController, :new
     # post "/requests", RequestController, :create
