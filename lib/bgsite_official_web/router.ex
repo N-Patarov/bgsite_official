@@ -94,9 +94,8 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/confirm", AdminConfirmationController, :new
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
-    resources "/websites", WebsitesController
     resources "/tags", TagController, only: [:show]
-    get "/admin/websites", AdminController, :websites
+    get "/websites", AdminController, :websites
 
     # get "/request/new", RequestController, :new
     # post "/requests", RequestController, :create
