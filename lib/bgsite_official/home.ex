@@ -62,6 +62,7 @@ defmodule BgsiteOfficial.Home do
   def list_websites(_params) do
     Repo.all(Websites)
   end
+  @spec get_websites!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
   @doc """
   Gets a single websites.
 
