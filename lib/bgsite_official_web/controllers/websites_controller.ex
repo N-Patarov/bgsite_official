@@ -60,7 +60,7 @@ defmodule BgsiteOfficialWeb.WebsitesController do
 
     conn
     |> put_flash(:info, "Websites deleted successfully.")
-    |> Routes.admin_path(conn, :websites))
+    |> Routes.admin_path(conn, :websites)
   end
 
   # S3
