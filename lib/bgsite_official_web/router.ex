@@ -79,6 +79,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/register", AdminRegistrationController, :new
     post "/admin/register", AdminRegistrationController, :create
     get "/admin", AdminController, :index
+    live "/website_live/:id", WebsiteLive
   end
 
   scope "/", BgsiteOfficialWeb do
@@ -86,7 +87,6 @@ defmodule BgsiteOfficialWeb.Router do
     resources "/tags", TagController, except: [:show]
     get "/websites/new", WebsitesController, :new
     post "/websites", WebsitesController, :create
-    live "/website_live/:id", WebsiteLive
   end
 
 

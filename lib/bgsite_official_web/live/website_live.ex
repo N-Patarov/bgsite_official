@@ -29,7 +29,9 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
       )
     {:ok, socket}
   end
-
+def inc_likes() do
+  
+end
   def handle_event("toggle_check", %{"tag-id" => tag_id}, socket) do
     website = socket.assigns[:website]
               |> Repo.preload(:tags)

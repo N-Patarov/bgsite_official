@@ -25,10 +25,16 @@
          <h5 class="card-title text-center"><%= link website.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, website) %></h5>
          <% else %>
          <h5 class="card-title text-center"><%= link website.title , to: "https://#{website.urls}", target: "_blank" %></h5>
+         <div class="float-right">
+          <a href="#" phx_click="like" phx-target=@myself>
+            <i class="far fa-heart"></i>
+          </a>
+         </div>
          <% end %>
 
          <%= for tag <- website.tags do %>
             <%= link tag.title, to: Routes.tag_path(@conn, :show, tag), class: "card-text text-center blue-link-color"%>
+
          <% end %>
 
          <!--<p class="card-text "><small class="text-muted">Likes count: <%= website.likes %></small></p>-->
@@ -38,8 +44,13 @@
        <br>
      </div>
    </div>
- <% end %>
 
+ <% end %>
 
  </div>
 </div>
+
+<%= def handle_event("like",_,socket) do
+    BgsiteOfficial.WebsiteLive.inc_likes(socket.assings.post)
+    {:noreply,socket}
+    end %>
