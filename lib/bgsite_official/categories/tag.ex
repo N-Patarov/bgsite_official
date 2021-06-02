@@ -8,6 +8,7 @@ defmodule BgsiteOfficial.Categories.Tag do
     field :description, :string
     field :likes, :integer
     field :title, :string
+    field :priority, :integer
 
     timestamps()
 
@@ -22,7 +23,7 @@ defmodule BgsiteOfficial.Categories.Tag do
   @doc false
   def changeset(tag, attrs) do
     tag
-    |> cast(attrs, [:title, :banner, :description, :likes])
-    |> validate_required([:title, :banner, :description])
+    |> cast(attrs, [:title, :banner, :description, :likes, :priority])
+    |> validate_required([:title, :banner, :description, :priority])
   end
 end
