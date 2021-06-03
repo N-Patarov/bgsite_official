@@ -34,7 +34,7 @@
           <img src="" class="card-img-top">
         <div class="card-body text-center">
 
-            <%= link to: Routes.tag_path(@conn, :show, tag), class: "blue-link-color" do %>
+            <%= link to: Routes.live_path(@conn, BgsiteOfficialWeb.TagLive, tag), class: "blue-link-color" do %>
 
               <i class='<%= tag.banner %> fa-3x' aria-hidden='true'></i>
               <br><br>
