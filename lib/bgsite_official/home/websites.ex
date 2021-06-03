@@ -10,8 +10,9 @@ defmodule BgsiteOfficial.Home.Websites do
   schema "websites" do
     field :banner, BgsiteOfficial.BannerUploader.Type
     field :description, :string
-    field :likes, :integer
     field :title, :string
+    field :likes, :integer
+    field :priority, :integer
     field :urls, :string
     timestamps()
 
@@ -25,8 +26,8 @@ defmodule BgsiteOfficial.Home.Websites do
 
   def changeset(websites, attrs) do
     websites
-    |> cast(attrs, [:title, :banner, :description, :likes, :urls])
-    |> validate_required([:title, :description, :likes, :urls])
+    |> cast(attrs, [:title, :banner, :description, :priority, :urls])
+    |> validate_required([:title, :description, :priority, :urls])
   end
 
   # def banner_changeset(website, attrs) do

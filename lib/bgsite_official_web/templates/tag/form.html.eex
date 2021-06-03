@@ -18,6 +18,10 @@
   <%= text_input f, :description, class: "form-control" %>
   <%= error_tag f, :description %>
 
+  <%= label f, :priority %>
+  <%= number_input f, :priority, class: "form-control" %>
+  <%= error_tag f, :priority %>
+
   <%# label f, :likes %>
   <%# number_input f, :likes %>
   <%# error_tag f, :likes %>
