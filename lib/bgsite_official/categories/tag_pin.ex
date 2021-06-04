@@ -5,7 +5,7 @@ defmodule BgsiteOfficial.Categories.TagPin do
   alias BgsiteOfficial.Accounts.User
   schema "tag_pin" do
     belongs_to :tag, Tag
-    belongs_to :user, User
+    belongs_to :users, User
     timestamps()
   end
   @doc false
