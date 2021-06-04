@@ -17,6 +17,12 @@ defmodule BgsiteOfficial.Categories.Tag do
       join_through: "website_tag",
       on_replace: :delete
     )
+    many_to_many(
+      :users,
+      User,
+      join_through: "tag_pin",
+      on_replace: :delete
+    )
   end
 
   @doc false

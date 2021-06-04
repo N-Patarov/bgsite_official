@@ -10,6 +10,12 @@ defmodule BgsiteOfficial.Accounts.User do
     field :confirmed_at, :naive_datetime
 
     timestamps()
+    many_to_many(
+      :tags,
+      Tag,
+      join_through: "tag_pin",
+      on_replace: :delete
+    )
   end
 
   @doc """
