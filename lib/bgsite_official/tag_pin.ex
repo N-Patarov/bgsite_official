@@ -4,7 +4,7 @@ defmodule BgsiteOfficial.TagPin do
   """
   import Ecto.Query, warn: false
   alias BgsiteOfficial.Repo
-  alias BgsiteOfficial.Categories.Tags
+  alias BgsiteOfficial.Categories.Tag
   alias BgsiteOfficial.TagPin
   alias BgsiteOfficial.Categories.TagPin
   @doc """
