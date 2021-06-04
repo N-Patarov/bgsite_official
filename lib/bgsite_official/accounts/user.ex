@@ -1,6 +1,7 @@
 defmodule BgsiteOfficial.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias BgsiteOfficial.Categories.Tag
 
   @derive {Inspect, except: [:password]}
   schema "users" do

@@ -2,7 +2,7 @@ defmodule BgsiteOfficial.Categories.Tag do
   use Ecto.Schema
   import Ecto.Changeset
   alias BgsiteOfficial.Home.Websites
-
+  alias BgsiteOfficial.Accounts.Admin
   schema "tags" do
     field :banner, :string
     field :description, :string
