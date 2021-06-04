@@ -16,6 +16,7 @@
         <label class="form-check-label" for="defaultCheck1">
           <%= tag.title %>
         </label>
+        <%= checkbox(:tag, :check, phx_click: "toggle_check", phx_value_tag_id: tag.id, value: Enum.member?(@website_tags, tag.id)) %>
       </div>
     <% end %>
 
