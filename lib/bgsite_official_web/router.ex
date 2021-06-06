@@ -31,7 +31,7 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through :browser
-    get "/", WebsitesController, :index
+    live "/", TagPin
     # get "/", IndexController, :index
   end
 
@@ -97,7 +97,7 @@ defmodule BgsiteOfficialWeb.Router do
     post "/admin/confirm", AdminConfirmationController, :create
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
     resources "/tags", TagController, only: [:show]
-    resources "/websites", WebsitesController, except: [:create]
+    resources "/websites", WebsitesController, except: [:create, :index]
     get "admin/websites", AdminController, :websites
 
     # get "/request/new", RequestController, :new
