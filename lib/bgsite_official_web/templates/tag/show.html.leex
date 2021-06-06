@@ -17,7 +17,7 @@
          <% end %> -->
          <%= if @current_admin do %>
           <div class="float-right">
-          <a href="#" phx_click="add_like" phx-target=@myself>
+          <a href="#" phx_click="add_like" phx-value-likevalue=1 phx-target=@myself>
             <i class="far fa-heart"></i>
             <p class="card-text "><small class="text-muted"><%= @likes %></small></p>
           </a>
@@ -25,9 +25,9 @@
          <% else %>
          <h5 class="card-title text-center"><%= link website.title , to: "https://#{website.urls}", target: "_blank" %></h5>
          <div class="float-right">
-          <a href="#" phx_click="like" phx-target=@myself>
+          <a href="#" phx_click="add_like" phx-value-likevalue=1 phx-target=@myself>
             <i class="far fa-heart"></i>
-            <
+
           </a>
          </div>
          <% end %>
