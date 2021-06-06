@@ -24,6 +24,17 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
+  def bump_site_likes(%Websites{} = website, likes) do
+    website = website.id
+    query = from(w in Websites, where: w.websites_id == ^website)
+    assoc = Repo.one(query)
+    if assoc == nil do
+      %Websites{}
+      |> Websites.changeset(%{website_id: website.id, likes: likes})
+      |> Repo.insert()
+    end
+  end
+
   @doc """
   Returns the list of websites.
 
