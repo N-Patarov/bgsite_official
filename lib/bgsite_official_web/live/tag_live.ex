@@ -26,11 +26,9 @@ defmodule BgsiteOfficialWeb.TagLive do
     {:ok, socket}
   end
 
-  def handle_event("like",_,socket)do
-    socket=update(socket,:likes, &(&1+1))
-    {:noreply,socket}
-
-
+  def handle_event("add_like", %{"website-id" => website_id}, socket) do
+    Categories.add_website_like(website_id)
+    {:noreply, socket}
   end
 
 end
