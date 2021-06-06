@@ -5,6 +5,7 @@ defmodule BgsiteOfficial.Categories do
 
   import Ecto.Query, warn: false
   alias BgsiteOfficial.Repo
+  alias BgsiteOfficial.Home.Websites
 
   alias BgsiteOfficial.Categories.Tag
 
@@ -40,6 +41,19 @@ defmodule BgsiteOfficial.Categories do
     |> Repo.preload(:websites)
   end
 
+
+  def add_website_like(%Websites{} = website, likes) do
+    website = website.id
+    query = from(w in Websites, where: w.websites_id == ^website and w.likes == ^likes)
+    assoc = Repo.one(query)
+    if assoc == nil do
+      %Websites{}
+      |> Websites.changeset(%{website_id: website.id, likes: likes})
+      |> Repo.insert()
+    else
+      Repo.delete(assoc)
+    end
+  end
   @doc """
   Creates a tag.
 
