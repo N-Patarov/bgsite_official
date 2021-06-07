@@ -1,4 +1,4 @@
-defmodule BgsiteOfficialWeb.TagLive do
+defmodule BgsiteOfficialWeb.WebsitesLike do
   use BgsiteOfficialWeb, :live_view
 
   alias BgsiteOfficial.Repo
@@ -24,11 +24,11 @@ defmodule BgsiteOfficialWeb.TagLive do
       )
     {:ok, socket}
   end
-
-  def handle_event("add_like", %{"website-id" => website_id}, socket) do
-    Home.bump_site_likes(website_id)
-    {:noreply, socket}
-  end
+  # 
+  # def handle_event("add_like", %{"website-id" => website_id}, socket) do
+  #   Home.bump_site_likes(website_id)
+  #   {:noreply, socket}
+  # end
 
 
 end

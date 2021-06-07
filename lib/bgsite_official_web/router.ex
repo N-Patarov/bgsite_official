@@ -100,7 +100,7 @@ defmodule BgsiteOfficialWeb.Router do
     resources "/websites", WebsitesController, except: [:create]
     get "admin/websites", AdminController, :websites
     live "/website_live/:id", WebsiteLive
-    live "/tag_live/:id",TagLive
+    live "/tag_live/:id", WebsitesLike
 
     # get "/request/new", RequestController, :new
     # post "/requests", RequestController, :create
