@@ -31,7 +31,7 @@ defmodule BgsiteOfficialWeb.Router do
 
   scope "/", BgsiteOfficialWeb do
     pipe_through :browser
-    live "/", TagPin
+    live "/", IndexLive
     # get "/", IndexController, :index
   end
 

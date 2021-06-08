@@ -1,4 +1,4 @@
-defmodule BgsiteOfficialWeb.TagPin do
+defmodule BgsiteOfficialWeb.IndexLive do
   use BgsiteOfficialWeb, :live_view
 
   alias BgsiteOfficial.Repo
@@ -13,13 +13,12 @@ defmodule BgsiteOfficialWeb.TagPin do
   end
 
   @impl true
-  def mount(conn, params, socket) do
+  def mount(params, _, socket) do
     websites = Home.list_websites(params)
     tags = Categories.list_tags()
 
     socket = assign(
         socket,
-        conn,
         websites: websites,
         tags: tags,
       )

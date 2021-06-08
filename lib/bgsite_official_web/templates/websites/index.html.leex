@@ -1,20 +1,4 @@
-</section>
-<section id="hero">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container text-center">
-      <h1>Българските сайтове на едно място</h1>
-      <p><span>Търси из повече от <%= length(@websites) %> уебсайта</span></p>
 
-      <%= form_for @conn, Routes.admin_path(@conn, :websites),[method: :get, class: "input-group d-flex justify-content-center"], fn f -> %>
-        <div class="search input-group">
-          <%= search_input f,  :query, class: "form-control rounded text-center my-2", placeholder: "Мода, Спорт, Хранителни магазини и още #{length(@tags)} категории" %>
-        </div>
-
-        <%= submit "Търси!", class: "btn btn-outline-primary" %>
-      <% end %>
-    </div>
-  </div>
-</section>
 
 <section class="container">
 
@@ -34,7 +18,7 @@
           <img src="" class="card-img-top">
         <div class="card-body text-center">
 
-            <%= link to: Routes.tag_path(@conn, :show, tag), class: "blue-link-color" do %>
+            <%= link to: Routes.tag_path(@socket, :show, tag), class: "blue-link-color" do %>
 
               <i class='<%= tag.banner %> fa-3x' aria-hidden='true'></i>
               <br><br>
