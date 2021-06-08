@@ -24,6 +24,18 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
+  def toggle_tag_pin(%Users{} = user, tag_id) do
+    ww = user.id
+    query = from(wt in TagPin, where: wt.user_id == ^ww and wt.tag_id == ^tag_id)
+    assoc = Repo.one(query)
+    if assoc == nil do
+      %Users{}
+      |> User.changeset(%{user_id: user.id, tag_id: tag_id})
+      |> Repo.insert()
+    else
+      Repo.delete(assoc)
+    end
+  end
   @doc """
   Returns the list of websites.
 
@@ -52,7 +64,12 @@ defmodule BgsiteOfficial.Home do
     query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^website_id)
     Repo.all(query_join_table)
   end
-
+  def tag_pin(%Users{} = user) do
+    user_id = user.id
+    query_join_table = from(wt in TagPin, where: wt.user_id == ^user_id)
+    Repo.all(query_join_table)
+  end
+  @spec list_websites(any) :: any
   def list_websites(params = %{"query" => search_term}) do
     Websites
     |>Websites.search(search_term)
