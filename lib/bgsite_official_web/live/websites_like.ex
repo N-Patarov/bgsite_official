@@ -27,10 +27,10 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
   end
 
   def handle_event("add_like", %{"website-id" => website_id}, socket) do
-     Home.bump_site_likes(website_id)
+     website = Home.get_websites!(website_id)
      current_likes_count = website.likes
-     new_likes_count = current_likes_count + 1
-     Home.update_websites(website, %{likes: new_likes_count})
+     updated_likes_count = current_likes_count + 1
+     Home.bump_likes(website, %{likes: updated_likes_count})
      {:noreply, socket}
    end
 

@@ -24,7 +24,7 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
-  def bump_site_likes(%Websites{} = website, likes) do
+  def bump_likes(%Websites{} = website, likes) do
     website = website.id
     query = from(w in Websites, where: w.websites_id == ^website)
     assoc = Repo.one(query)
@@ -123,7 +123,7 @@ defmodule BgsiteOfficial.Home do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_websites(%Websites{} = websites, attrs) do
+  def update_website(%Websites{} = websites, attrs) do
     websites
     |> Websites.changeset(attrs)
     |> Repo.update()
