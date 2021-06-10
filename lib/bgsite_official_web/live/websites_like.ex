@@ -7,6 +7,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
   alias BgsiteOfficial.Accounts
   alias BgsiteOfficial.Categories.Tag
   alias BgsiteOfficial.Home.Websites
+  alias BgsiteOfficial.Home
 
   def render(assigns) do
     render TagView, "show.html", assigns
@@ -26,7 +27,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
     {:ok, socket}
   end
 
-  def handle_event("add_like", %{"website-id" => website_id}, socket) do
+  def handle_event("addlike", %{"website-id" => website_id}, socket) do
      website = Home.get_websites!(website_id)
      updated_likes_count = website.likes + 1
      Home.bump_likes(website, %{likes: updated_likes_count})
