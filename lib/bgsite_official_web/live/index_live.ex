@@ -13,7 +13,7 @@ defmodule BgsiteOfficialWeb.IndexLive do
   end
 
   @impl true
-  
+
 def mount(params, %{"user_token" => user_token} = session, socket) do
   website = Home.get_websites!(params["id"])
   tags = Categories.list_tags

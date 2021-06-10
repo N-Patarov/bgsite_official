@@ -9,6 +9,8 @@ defmodule BgsiteOfficial.Home do
   alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Home.WebsiteTag
   alias BgsiteOfficial.Categories.Tag
+  alias BgsiteOfficial.Accounts.User
+  alias BgsiteOfficial.Categories.TagPin
 
   def toggle_website_tag(%Websites{} = website, tag_id) do
     ww = website.id
@@ -24,13 +26,13 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
-  def toggle_tag_pin(%Users{} = user, tag_id) do
-    ww = user.id
-    query = from(wt in TagPin, where: wt.user_id == ^ww and wt.tag_id == ^tag_id)
+  def toggle_tag_pin(%User{} = user, tag_id) do
+    uu = user.id
+    query = from(tp in TagPin, where: tp.user_id == ^uu and tp.tag_id == ^tag_id)
     assoc = Repo.one(query)
     if assoc == nil do
-      %Users{}
-      |> User.changeset(%{user_id: user.id, tag_id: tag_id})
+      %TagPin{}
+      |> TagPin.changeset(%{user_id: user.id, tag_id: tag_id})
       |> Repo.insert()
     else
       Repo.delete(assoc)
@@ -64,9 +66,9 @@ defmodule BgsiteOfficial.Home do
     query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^website_id)
     Repo.all(query_join_table)
   end
-  def tag_pin(%Users{} = user) do
+  def tag_pin(%User{} = user) do
     user_id = user.id
-    query_join_table = from(wt in TagPin, where: wt.user_id == ^user_id)
+    query_join_table = from(tp in TagPin, where: tp.user_id == ^user_id)
     Repo.all(query_join_table)
   end
   @spec list_websites(any) :: any
