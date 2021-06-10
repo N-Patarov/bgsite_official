@@ -16,7 +16,9 @@
            <div class="card-body text-center">
 
              <div class="float-right">
-               <i class="far fa-heart" phx_click: "add_like"></i>
+               <div phx-click = "add_like">
+                 <i class="far fa-heart"></i>
+               </div>
                <p class="card-text "><small class="text-muted"><%= website.likes %></small></p>
              </div>
              <%= if @current_admin do %>
