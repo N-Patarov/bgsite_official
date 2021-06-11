@@ -5,7 +5,7 @@ defmodule BgsiteOfficial.Home do
 
   import Ecto.Query, warn: false
   alias BgsiteOfficial.Repo
-
+  alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Home.WebsiteTag
   alias BgsiteOfficial.Categories.Tag
@@ -24,10 +24,9 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
-  def bump_likes(%Websites{} = websites, attrs) do
-    websites
-    |> Websites.changeset(attrs)
-    |> Repo.update()
+  def bump_likes(website_id) do
+    website = Home.get_website!(website_id)
+    Home.update_website(website_id, %{likes: website.likes + 1})
   end
 
   @doc """
