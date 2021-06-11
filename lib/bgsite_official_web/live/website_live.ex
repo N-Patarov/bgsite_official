@@ -14,7 +14,7 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
 
   @impl true
   def mount(params, %{"admin_token" => admin_token} = session, socket) do
-    website = Home.get_websites!(params["id"])
+    website = Home.get_website!(params["id"])
     tags = Categories.list_tags
     website_tags = Home.website_tags(website)
                    |>Enum.map(fn(x) -> x.tag_id end)

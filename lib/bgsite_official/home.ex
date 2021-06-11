@@ -24,15 +24,10 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
-  def bump_likes(%Websites{} = website, likes) do
-    website = website.id
-    query = from(w in Websites, where: w.websites_id == ^website)
-    assoc = Repo.one(query)
-    if assoc == nil do
-      %Websites{}
-      |> Websites.changeset(%{website_id: website.id, likes: likes})
-      |> Repo.insert()
-    end
+  def bump_likes(%Websites{} = websites, attrs) do
+    websites
+    |> Websites.changeset(attrs)
+    |> Repo.update()
   end
 
   @doc """
@@ -73,22 +68,9 @@ defmodule BgsiteOfficial.Home do
   def list_websites(_params) do
     Repo.all(Websites)
   end
-  @spec get_websites!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
-  @doc """
-  Gets a single websites.
+  @spec get_website!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
 
-  Raises `Ecto.NoResultsError` if the Websites does not exist.
-
-  ## Examples
-
-      iex> get_websites!(123)
-      %Websites{}
-
-      iex> get_websites!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_websites!(id) do
+  def get_website!(id) do
     Repo.get!(Websites, id)
     |> Repo.preload(:tags)
   end
