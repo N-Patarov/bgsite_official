@@ -26,7 +26,7 @@ defmodule BgsiteOfficial.Home do
 
   def bump_likes(website_id) do
     website = Home.get_website!(website_id)
-    Home.update_website(website_id, %{likes: website.likes + 1})
+    Home.update_website(website, %{likes: website.likes + 1})
   end
 
   @doc """
@@ -104,8 +104,8 @@ defmodule BgsiteOfficial.Home do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_website(%Websites{} = websites, attrs) do
-    websites
+  def update_website(%Websites{} = website, attrs) do
+    website
     |> Websites.changeset(attrs)
     |> Repo.update()
   end

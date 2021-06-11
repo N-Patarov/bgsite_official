@@ -43,7 +43,7 @@ defmodule BgsiteOfficialWeb.WebsitesController do
   def update(conn, %{"id" => id, "websites" => websites_params}) do
     websites = Home.get_website!(id)
 
-    case Home.update_websites(websites, websites_params) do
+    case Home.update_website(websites, websites_params) do
       {:ok, websites} ->
         conn
         |> put_flash(:info, "Websites updated successfully.")

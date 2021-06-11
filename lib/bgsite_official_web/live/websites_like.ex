@@ -29,7 +29,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
 
   def handle_event("addlike", %{"website-id" => website_id}, socket) do
      Home.bump_likes(website_id)
-     {:noreply, socket}
+     {:noreply, assign(socket, :website.likes)}
    end
 
 
