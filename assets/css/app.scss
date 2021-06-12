@@ -1,6 +1,11 @@
 @import "bootstrap/scss/bootstrap";
 @import "shards-ui/src/scss/shards";
 
+.like-pointer
+{
+  cursor: pointer;
+}
+
 main {
   margin-top: 5.5rem;
 }

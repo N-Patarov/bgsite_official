@@ -5,7 +5,7 @@ defmodule BgsiteOfficial.Home do
 
   import Ecto.Query, warn: false
   alias BgsiteOfficial.Repo
-
+  alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Home.WebsiteTag
   alias BgsiteOfficial.Categories.Tag
@@ -26,18 +26,11 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
-  def toggle_tag_pin(%User{} = user, tag_id) do
-    uu = user.id
-    query = from(tp in TagPin, where: tp.user_id == ^uu and tp.tag_id == ^tag_id)
-    assoc = Repo.one(query)
-    if assoc == nil do
-      %TagPin{}
-      |> TagPin.changeset(%{user_id: user.id, tag_id: tag_id})
-      |> Repo.insert()
-    else
-      Repo.delete(assoc)
-    end
+  def bump_likes(website_id) do
+    website = Home.get_website!(website_id)
+    Home.update_website(website, %{likes: website.likes + 1})
   end
+
   @doc """
   Returns the list of websites.
 
@@ -81,22 +74,9 @@ defmodule BgsiteOfficial.Home do
   def list_websites(_params) do
     Repo.all(Websites)
   end
-  @spec get_websites!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
-  @doc """
-  Gets a single websites.
+  @spec get_website!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
 
-  Raises `Ecto.NoResultsError` if the Websites does not exist.
-
-  ## Examples
-
-      iex> get_websites!(123)
-      %Websites{}
-
-      iex> get_websites!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_websites!(id) do
+  def get_website!(id) do
     Repo.get!(Websites, id)
     |> Repo.preload(:tags)
   end
@@ -131,8 +111,8 @@ defmodule BgsiteOfficial.Home do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_websites(%Websites{} = websites, attrs) do
-    websites
+  def update_website(%Websites{} = website, attrs) do
+    website
     |> Websites.changeset(attrs)
     |> Repo.update()
   end

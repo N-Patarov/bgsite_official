@@ -1,0 +1,36 @@
+<div class="alert alert-info text-center">
+  <%= @tag.title %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= for website <- @websites_for_tag do %>
+      <div class="col-sm rounded">
+        <br>
+        <div class="card rounded" style="width: 18rem;">
+         <%=
+           link to: "https://#{website.urls}", target: "_blank" do
+             img_tag BgsiteOfficial.BannerUploader.url(website.banner, :thumb), class: "rounded card-img-top"
+           end
+           %>
+           <div class="card-body text-center">
+
+             <div class="float-right">
+               <div class="like-pointer" phx-click="addlike" phx-value-website-id=<%= website.id%>>
+                 <i class="far fa-heart"></i>
+               </div>
+               <p class="card-text "><small class="text-muted"><%= website.likes %></small></p>
+             </div>
+             <%= if @current_admin do %>
+              <h5 class="card-title text-center"><%= link website.title , to: Routes.live_path(@socket, BgsiteOfficialWeb.WebsiteLive, website) %></h5>
+             <% else %>
+              <h5 class="card-title text-center"><%= link website.title , to: "https://#{website.urls}", target: "_blank" %></h5>
+             <% end %>
+              <p class = "card-text text-center blue-link-color"> <%= website.description %>
+           </div>
+           <br>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

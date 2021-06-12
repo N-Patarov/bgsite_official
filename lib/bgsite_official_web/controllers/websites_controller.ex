@@ -30,24 +30,24 @@ defmodule BgsiteOfficialWeb.WebsitesController do
   end
 
   def show(conn, %{"id" => id}) do
-    websites = Home.get_websites!(id)
+    websites = Home.get_website!(id)
     render(conn, "show.html", websites: websites)
   end
 
   def edit(conn, %{"id" => id}) do
-    websites = Home.get_websites!(id)
+    websites = Home.get_website!(id)
     changeset = Home.change_websites(websites)
     render(conn, "edit.html", websites: websites, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "websites" => websites_params}) do
-    websites = Home.get_websites!(id)
+    websites = Home.get_website!(id)
 
-    case Home.update_websites(websites, websites_params) do
+    case Home.update_website(websites, websites_params) do
       {:ok, websites} ->
         conn
         |> put_flash(:info, "Websites updated successfully.")
-        |> redirect(to: Routes.websites_path(conn, :show, websites))
+        |> redirect(to: Routes.websites_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", websites: websites, changeset: changeset)
@@ -55,7 +55,7 @@ defmodule BgsiteOfficialWeb.WebsitesController do
   end
 
   def delete(conn, %{"id" => id}) do
-    websites = Home.get_websites!(id)
+    websites = Home.get_website!(id)
     {:ok, _websites} = Home.delete_websites(websites)
 
     conn
