@@ -8,7 +8,6 @@ defmodule BgsiteOfficial.Home do
   alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Home.WebsiteTag
-  alias BgsiteOfficial.Categories.Tag
 
   def toggle_website_tag(%Websites{} = website, tag_id) do
     ww = website.id

@@ -4,7 +4,6 @@ defmodule BgsiteOfficialWeb.WebsitesController do
   alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Categories
-  alias BgsiteOfficial.Categories.Tags
 
   def index(conn, params) do
     websites = Home.list_websites(params)

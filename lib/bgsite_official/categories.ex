@@ -5,7 +5,6 @@ defmodule BgsiteOfficial.Categories do
 
   import Ecto.Query, warn: false
   alias BgsiteOfficial.Repo
-  alias BgsiteOfficial.Home.Websites
 
   alias BgsiteOfficial.Categories.Tag
 

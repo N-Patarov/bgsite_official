@@ -1,11 +1,8 @@
 defmodule  BgsiteOfficialWeb.AdminController do
   use BgsiteOfficialWeb, :controller
   alias BgsiteOfficial.Requests
-  alias BgsiteOfficial.Requests.Request
   alias BgsiteOfficial.Contacts
-  alias BgsiteOfficial.Contacts.Feedback
   alias BgsiteOfficial.Categories
-  alias BgsiteOfficial.Categories.Tag
   alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
 

@@ -6,7 +6,6 @@ defmodule BgsiteOfficialWeb.WebsiteLive do
   alias BgsiteOfficial.Categories
   alias BgsiteOfficial.Home
   alias BgsiteOfficial.Accounts
-  alias BgsiteOfficial.Home.Websites
 
   def render(assigns) do
    render WebsitesView, "show.html", assigns

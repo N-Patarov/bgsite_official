@@ -5,8 +5,6 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
   alias BgsiteOfficialWeb.TagView
   alias BgsiteOfficial.Categories
   alias BgsiteOfficial.Accounts
-  alias BgsiteOfficial.Categories.Tag
-  alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Home
 
   def render(assigns) do

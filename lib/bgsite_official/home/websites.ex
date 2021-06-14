@@ -4,7 +4,6 @@ defmodule BgsiteOfficial.Home.Websites do
   use Waffle.Ecto.Schema
   import Ecto.Query, only: [from: 2]
   alias BgsiteOfficial.Categories.Tag
-  alias BgsiteOfficial.Home.Websites
 
   # @derive {Inspect, except: [:password]}
   schema "websites" do
