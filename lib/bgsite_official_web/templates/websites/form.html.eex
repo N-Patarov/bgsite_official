@@ -22,6 +22,11 @@
   <%= text_input f, :description, class: "form-control" %>
   <%= error_tag f, :description %>
 
+  <%= label f, :likes %>
+  <%= number_input f, :likes, class: "form-control" %>
+  <small id="emailHelp" class="form-text text-muted">Null values are not acceptable!</small>
+  <%= error_tag f, :likes %>
+
   <%= label f, :urls %>
   <%= text_input f, :urls, class: "form-control" %>
   <%= error_tag f, :urls %>

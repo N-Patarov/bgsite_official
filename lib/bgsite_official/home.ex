@@ -5,7 +5,7 @@ defmodule BgsiteOfficial.Home do
 
   import Ecto.Query, warn: false
   alias BgsiteOfficial.Repo
-
+  alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Home.WebsiteTag
   alias BgsiteOfficial.Categories.Tag
@@ -22,6 +22,13 @@ defmodule BgsiteOfficial.Home do
     else
       Repo.delete(assoc)
     end
+  end
+
+  def bump_likes(website_id) do
+    website = Home.get_website!(website_id)
+    updated_likes_count = website.likes + 1
+    update_website(website, %{likes: updated_likes_count})
+    updated_likes_count
   end
 
   @doc """
@@ -63,22 +70,9 @@ defmodule BgsiteOfficial.Home do
     filter = from(w in Websites, order_by: [desc: w.priority])
     Repo.all(filter)
   end
-  @spec get_websites!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
-  @doc """
-  Gets a single websites.
+  @spec get_website!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
 
-  Raises `Ecto.NoResultsError` if the Websites does not exist.
-
-  ## Examples
-
-      iex> get_websites!(123)
-      %Websites{}
-
-      iex> get_websites!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_websites!(id) do
+  def get_website!(id) do
     Repo.get!(Websites, id)
     |> Repo.preload(:tags)
   end
@@ -113,9 +107,10 @@ defmodule BgsiteOfficial.Home do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_websites(%Websites{} = websites, attrs) do
-    websites
+  def update_website(%Websites{} = website, attrs) do
+    website
     |> Websites.changeset(attrs)
+    |> IO.inspect(label: "update website")
     |> Repo.update()
   end
 

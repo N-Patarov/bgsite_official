@@ -79,6 +79,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/register", AdminRegistrationController, :new
     post "/admin/register", AdminRegistrationController, :create
     get "/admin", AdminController, :index
+
   end
 
   scope "/", BgsiteOfficialWeb do
@@ -86,7 +87,6 @@ defmodule BgsiteOfficialWeb.Router do
     resources "/tags", TagController, except: [:show]
     get "/websites/new", WebsitesController, :new
     post "/websites", WebsitesController, :create
-    live "/website_live/:id", WebsiteLive
   end
 
 
@@ -99,6 +99,8 @@ defmodule BgsiteOfficialWeb.Router do
     resources "/tags", TagController, only: [:show]
     resources "/websites", WebsitesController, except: [:create]
     get "admin/websites", AdminController, :websites
+    live "/website_live/:id", WebsiteLive
+
 
     # get "/request/new", RequestController, :new
     # post "/requests", RequestController, :create
@@ -129,6 +131,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+    live "/tag_live/:id", WebsitesLike
   end
 
   scope "/admin", BgsiteOfficialWeb do

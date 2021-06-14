@@ -1,0 +1,50 @@
+<script>
+function boxHover() {
+  alert("За да харесате този уебсайт първо трябва да влезнете в своя акаунт");
+}
+
+</script>
+<br>
+<div class="alert alert-info text-center">
+  <%= @tag.title %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= for website <- @websites_for_tag do %>
+      <div class="col-sm rounded">
+        <br>
+        <div class="card rounded" style="width: 18rem;">
+         <%=
+           link to: "https://#{website.urls}", target: "_blank" do
+             img_tag BgsiteOfficial.BannerUploader.url(website.banner, :thumb), class: "rounded card-img-top"
+           end
+           %>
+           <div class="card-body text-center">
+
+             <div class="float-right">
+               <%= if @current_user do %>
+                <div class="like-pointer" phx-click="addlike" phx-value-website-id=<%= website.id%>>
+                  <i class="far fa-heart"></i>
+                </div>
+
+                <p class="card-text "><small class="text-muted"><%= @website_likes_for[website.id] %></small></p>
+               <% else %>
+                <div onclick="boxHover()" class="like-pointer" phx-click="addlike" phx-value-website-id=<%= website.id%>>
+                  <i class="far fa-heart"></i>
+                </div>
+                <p class="card-text "><small class="text-muted"><%= website.likes %></small></p>
+               <% end %>
+             </div>
+
+
+              <h5 class="card-title text-center"><%= link website.title , to: "https://#{website.urls}", target: "_blank" %></h5>
+              <p class = "card-text text-center blue-link-color"> <%= website.description %>
+           </div>
+           <br>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</section>

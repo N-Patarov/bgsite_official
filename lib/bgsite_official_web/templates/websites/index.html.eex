@@ -33,17 +33,22 @@
       <div class="card rounded" style="width: 20rem;">
           <img src="" class="card-img-top">
         <div class="card-body text-center">
-
+          <%= if @current_user do %>
+            <%= link to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsitesLike, tag), class: "blue-link-color" do %>
+              <i class='<%= tag.banner %> fa-3x' aria-hidden='true'></i>
+              <br><br>
+              <%= tag.title %>
+            <% end %>
+          <% else %>
             <%= link to: Routes.tag_path(@conn, :show, tag), class: "blue-link-color" do %>
-
               <i class='<%= tag.banner %> fa-3x' aria-hidden='true'></i>
               <br><br>
               <%= if @current_admin do %>
               <%= tag.priority %>
               <% end %>
               <%= tag.title %>
-
             <% end %>
+          <% end %>
 
           <p class="card-text text-center"><%# tag.description %></p>
 
