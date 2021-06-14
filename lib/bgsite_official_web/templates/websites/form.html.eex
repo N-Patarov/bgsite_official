@@ -24,6 +24,7 @@
 
   <%= label f, :likes %>
   <%= number_input f, :likes, class: "form-control" %>
+  <small id="emailHelp" class="form-text text-muted">Null values are not acceptable!</small>
   <%= error_tag f, :likes %>
 
   <%= label f, :urls %>
