@@ -43,6 +43,9 @@
             <%= link to: Routes.tag_path(@conn, :show, tag), class: "blue-link-color" do %>
               <i class='<%= tag.banner %> fa-3x' aria-hidden='true'></i>
               <br><br>
+              <%= if @current_admin do %>
+              <%= tag.priority %>
+              <% end %>
               <%= tag.title %>
             <% end %>
           <% end %>

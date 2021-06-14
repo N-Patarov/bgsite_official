@@ -22,7 +22,7 @@ defmodule BgsiteOfficialWeb.WebsitesController do
       {:ok, websites} ->
         conn
         |> put_flash(:info, "Websites created successfully.")
-        |> redirect(to: Routes.websites_path(conn, :index))
+        |> redirect(to: Routes.admin_path(conn, :websites))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -48,7 +48,7 @@ defmodule BgsiteOfficialWeb.WebsitesController do
       {:ok, websites} ->
         conn
         |> put_flash(:info, "Websites updated successfully.")
-        |> redirect(to: Routes.websites_path(conn, :index))
+        |> redirect(to: Routes.admin_path(conn, :websites))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", websites: websites, changeset: changeset)
@@ -61,7 +61,7 @@ defmodule BgsiteOfficialWeb.WebsitesController do
 
     conn
     |> put_flash(:info, "Websites deleted successfully.")
-    |> redirect(to: Routes.websites_path(conn, :index))
+    |> Routes.admin_path(conn, :websites)
   end
 
   # S3

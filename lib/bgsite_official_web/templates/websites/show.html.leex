@@ -7,6 +7,7 @@
   <br>
   <p><%= @website.description %></p>
   <%= if @current_admin do %>
+    <p> <%= @website.priority %> </p>
     <h4> Checked tags: <%= length(@website_tags) %> </h4>
     <br>
     <%= for tag <- @tags do %>

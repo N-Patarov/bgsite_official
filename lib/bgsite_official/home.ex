@@ -67,7 +67,8 @@ defmodule BgsiteOfficial.Home do
   end
 
   def list_websites(_params) do
-    Repo.all(Websites)
+    filter = from(w in Websites, order_by: [desc: w.priority])
+    Repo.all(filter)
   end
   @spec get_website!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
 
