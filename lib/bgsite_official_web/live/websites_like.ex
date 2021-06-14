@@ -16,21 +16,26 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
   @impl true
   def mount(params, %{"admin_token" => admin_token} = session, socket) do
     tag = Categories.get_tag!(params["id"])
-    website = tag.websites |> Repo.preload(:tags)
+    websites = tag.websites |> Repo.preload(:tags)
     admin = Accounts.get_admin_by_session_token(admin_token)
     socket = assign(
         socket,
         tag: tag,
-        websites_for_tag: website,
+        websites_for_tag: websites,
+        website_likes_for: Map.new(websites, fn w -> {w.id, w.likes} end),
         current_admin: admin
       )
+    # require IEx; IEx.pry
     {:ok, socket}
   end
 
   def handle_event("addlike", %{"website-id" => website_id}, socket) do
-     Home.bump_likes(website_id)
-     {:noreply, assign(socket, :website.likes)}
-   end
+    updated_likes_count = Home.bump_likes(website_id)
+    current_likes_map = socket.assigns.website_likes_for
+    updated_likes_map = %{current_likes_map | String.to_integer(website_id) => updated_likes_count}
+    socket = assign(socket, :website_likes_for, updated_likes_map)
+    {:noreply, socket}
+  end
 
 
 end

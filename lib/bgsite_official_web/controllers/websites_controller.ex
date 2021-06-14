@@ -30,8 +30,9 @@ defmodule BgsiteOfficialWeb.WebsitesController do
   end
 
   def show(conn, %{"id" => id}) do
-    websites = Home.get_website!(id)
-    render(conn, "show.html", websites: websites)
+    website = Home.get_website!(id)
+    tags = Categories.list_tags()
+    render(conn, "show_conn.html", website: website, website_tags: website.tags, tags: tags)
   end
 
   def edit(conn, %{"id" => id}) do

@@ -19,7 +19,7 @@
                <div class="like-pointer" phx-click="addlike" phx-value-website-id=<%= website.id%>>
                  <i class="far fa-heart"></i>
                </div>
-               <p class="card-text "><small class="text-muted"><%= website.likes %></small></p>
+               <p class="card-text "><small class="text-muted"><%= @website_likes_for[website.id] %></small></p>
              </div>
              <%= if @current_admin do %>
               <h5 class="card-title text-center"><%= link website.title , to: Routes.live_path(@socket, BgsiteOfficialWeb.WebsiteLive, website) %></h5>
