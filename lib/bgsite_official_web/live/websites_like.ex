@@ -14,16 +14,16 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
   end
 
   @impl true
-  def mount(params, %{"admin_token" => admin_token} = session, socket) do
+  def mount(params, %{"user_token" => user_token} = session, socket) do
     tag = Categories.get_tag!(params["id"])
     websites = tag.websites |> Repo.preload(:tags)
-    admin = Accounts.get_admin_by_session_token(admin_token)
+    user = Accounts.get_user_by_session_token(user_token)
     socket = assign(
         socket,
         tag: tag,
         websites_for_tag: websites,
         website_likes_for: Map.new(websites, fn w -> {w.id, w.likes} end),
-        current_admin: admin
+        current_user: user
       )
     # require IEx; IEx.pry
     {:ok, socket}
