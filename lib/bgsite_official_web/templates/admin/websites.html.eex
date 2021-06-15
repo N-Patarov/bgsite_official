@@ -18,6 +18,7 @@
 
           <%= if @current_admin do %>
           <h5 class="card-title text-center"><%= link websites.title , to: Routes.live_path(@conn, BgsiteOfficialWeb.WebsiteLive, websites) %></h5>
+          <h5 class="card-text text-center">Priority: <%= websites.priority %></h5>
           <% else %>
           <h5 class="card-title text-center"><%= link websites.title , to: "https://#{websites.urls}", target: "_blank" %></h5>
           <% end %>
