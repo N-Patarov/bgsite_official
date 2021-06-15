@@ -7,6 +7,7 @@ defmodule BgsiteOfficial.Categories do
   alias BgsiteOfficial.Repo
 
   alias BgsiteOfficial.Categories.Tag
+  alias BgsiteOfficial.Home.Websites
 
   @doc """
   Returns the list of tags.
@@ -40,6 +41,23 @@ defmodule BgsiteOfficial.Categories do
     |> Repo.preload(:websites)
   end
 
+def get_tag_2!(id) do
+  query =
+    from(
+      t in Tag,
+      where: t.id == ^id,
+      select: t,
+      preload: [
+        :websites,
+        websites:
+          ^from(
+            w in Websites,
+            order_by: [desc: w.priority]
+          )
+      ]
+    )
+  Repo.one!(query)
+end
 
   @doc """
   Creates a tag.
