@@ -41,7 +41,7 @@ defmodule BgsiteOfficial.Categories do
     |> Repo.preload(:websites)
   end
 
-def get_tag_2!(id) do
+def get_tag_order_websites!(id) do
   query =
     from(
       t in Tag,

@@ -13,7 +13,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
 
   @impl true
   def mount(params, %{"user_token" => user_token} = session, socket) do
-    tag = Categories.get_tag!(params["id"])
+    tag = Categories.get_tag_order_websites!(params["id"])
     websites = tag.websites |> Repo.preload(:tags)
     user = Accounts.get_user_by_session_token(user_token)
     socket = assign(

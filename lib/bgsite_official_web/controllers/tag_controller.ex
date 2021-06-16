@@ -29,7 +29,7 @@ defmodule BgsiteOfficialWeb.TagController do
   end
 
   def show(conn, %{"id" => id}) do
-    tag = Categories.get_tag_2!(id)
+    tag = Categories.get_tag_order_websites!(id)
     websites = tag.websites |> Repo.preload(:tags)
     render(conn, "show.html", tag: tag, websites_for_tag: websites)
   end
