@@ -20,7 +20,7 @@ defmodule BgsiteOfficial.MixProject do
   def application do
     [
       mod: {BgsiteOfficial.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :edeliver]
     ]
   end
 
@@ -58,7 +58,9 @@ defmodule BgsiteOfficial.MixProject do
       {:ex_aws, "~> 2.1.2"},
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
-      {:sweet_xml, "~> 0.6"}
+      {:sweet_xml, "~> 0.6"},
+      {:edeliver, "~> 1.4.3"},
+      {:distillery, "~> 1.4"}
     ]
   end
 
