@@ -59,8 +59,8 @@ defmodule BgsiteOfficial.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
-      {:edeliver, "~> 1.4.3"},
-      {:distillery, "~> 1.4"}
+      {:edeliver, "~> 1.8"},
+      {:distillery, "~> 2.1.1"}
     ]
   end
 

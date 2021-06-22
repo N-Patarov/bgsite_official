@@ -1,0 +1,18 @@
+APP="bgsite_official"
+
+BUILD_HOST="localhost"
+BUILD_USER="almeida"
+BUILD_AT="/home/almeida/app_build"
+
+PRODUCTION_HOSTS="localhost"
+PRODUCTION_USER="almeida"
+DELIVER_TO="/home/almeida/app_release"
+
+pre_erlang_get_and_update_deps() {
+  local _prod_secret_path="/home/almeida/app_config/prod.secret.exs"
+  if [ "$TARGET_MIX_ENV" = "prod" ]; then
+    __sync_remote "
+      ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+    "
+  fi
+}
