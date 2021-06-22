@@ -26,8 +26,8 @@ defmodule BgsiteOfficial.Home.Websites do
 
   def changeset(websites, attrs) do
     websites
-    |> cast(attrs, [:title, :banner, :description, :priority, :urls])
-    |> validate_required([:title, :description, :priority, :urls])
+    |> cast(attrs, [:title, :banner, :description, :priority, :likes, :urls])
+    |> validate_required([:title, :description, :priority, :likes, :urls])
   end
 
   # def banner_changeset(website, attrs) do
