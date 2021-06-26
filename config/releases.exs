@@ -11,6 +11,8 @@ database_url =
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
+config :bgsite_official, :secret_key, System.fetch_env!("MY_APP_SECRET_KEY")    
+
 config :bgsite_official, BgsiteOfficial.Repo,
   # ssl: true,
   url: database_url,
