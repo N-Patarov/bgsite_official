@@ -8,7 +8,7 @@ networks:
 
 services:
   app:
-    image: bratac18/izberi.site:0.1.0
+    image: bratac18/izberi.site:0.1.1
     ports:
       - "80:4000"
     env_file:
