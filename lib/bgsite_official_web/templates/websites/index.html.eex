@@ -7,7 +7,7 @@
 
       <%= form_for @conn, Routes.admin_path(@conn, :websites),[method: :get, class: "input-group d-flex justify-content-center"], fn f -> %>
         <div class="search input-group">
-          <%= search_input f,  :query, class: "form-control rounded text-center my-2", placeholder: "Мода, Спорт, Хранителни магазини и още #{length(@tags)} категории" %>
+          <%= search_input f,  :query, class: "form-control rounded text-center my-2", placeholder: "Намери твоя сайт..." %>
         </div>
 
         <%= submit "Търси!", class: "btn btn-outline-primary" %>
