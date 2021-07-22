@@ -19,8 +19,10 @@ defmodule BgsiteOfficial.Categories do
 
   """
   def list_tags do
-    Repo.all(Tag)
+    filter = from(t in Tag, order_by: [desc: t.priority])
+    Repo.all(filter)
   end
+
 
   @doc """
   Gets a single tag.
