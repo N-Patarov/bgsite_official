@@ -8,8 +8,9 @@ defmodule BgsiteOfficialWeb.WebsitesController do
 
   def index(conn, params) do
     websites = Home.list_websites(params)
+    website_top3 = Home.list_websites_top3(params)
     tags = Categories.list_tags()
-    render(conn, "index.html", websites: websites, tags: tags)
+    render(conn, "index.html", websites: websites, tags: tags, website_top3: website_top3)
   end
 
   def new(conn, _params) do

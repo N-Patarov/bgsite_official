@@ -70,6 +70,13 @@ defmodule BgsiteOfficial.Home do
     filter = from(w in Websites, order_by: [desc: w.priority])
     Repo.all(filter)
   end
+
+  def list_websites_top3(_params) do
+    filter = from(w in Websites, order_by: [desc: w.likes])
+    Repo.all(filter) |> Enum.take(3)
+  end
+
+
   @spec get_website!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
 
   def get_website!(id) do
