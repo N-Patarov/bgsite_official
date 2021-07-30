@@ -1,0 +1,32 @@
+<h1>Listing Promotions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Text</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for promotion <- @promotions do %>
+    <tr>
+      <td><%= promotion.url %></td>
+      <td><%= promotion.name %></td>
+      <td><%= promotion.email %></td>
+      <td><%= promotion.text %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.promotion_path(@conn, :show, promotion) %></span>
+        <span><%= link "Edit", to: Routes.promotion_path(@conn, :edit, promotion) %></span>
+        <span><%= link "Delete", to: Routes.promotion_path(@conn, :delete, promotion), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Promotion", to: Routes.promotion_path(@conn, :new) %></span>
