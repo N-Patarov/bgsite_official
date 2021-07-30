@@ -133,7 +133,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
     live "/tag_live/:id", WebsitesLike
     get "/user/profile", UserController, :index
-    resources "/promotions", PromotionController, only: [:create, :new, :index]
+    resources "/promotions", PromotionController, only: [:create, :new, :index, :edit, :delete]
 
   end
 
