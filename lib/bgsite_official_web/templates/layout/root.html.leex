@@ -45,7 +45,7 @@
                 <img class="mr-2 rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" height="40" alt="avatar">
             </a>
             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <a class="dropdown-item" href="javascript:void(0);">Моят Профил</a>
+                  <%= link "Моят Профил", to: Routes.user_path(@conn, :index), class: "dropdown-item" %>
                   <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "dropdown-item" %>
                   <%= link "Изход", to: Routes.user_session_path(@conn, :delete), class: "dropdown-item", method: :delete %>
             </ul>

@@ -132,6 +132,7 @@ defmodule BgsiteOfficialWeb.Router do
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
     live "/tag_live/:id", WebsitesLike
+    get "/user/profile", UserController, :index
   end
 
   scope "/admin", BgsiteOfficialWeb do
