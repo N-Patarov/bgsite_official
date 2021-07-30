@@ -21,116 +21,86 @@
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
 
-  <body class="d-flex flex-column h-100 bg-light">
-    <header>
+<body class="d-flex flex-column h-100 bg-light">
+  <header>
     <nav class="navbar navbar-light bg-light navbar-desktop fixed-top d-flex justify-content-between">
-          <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+      <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "btn btn-outline-secondary mx-2 blue-link-color" %>
+
       <div>
-      <a class="navbar-brand" href="/">
-        <img src="/images/image-222.png" width="230" height="23" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="/">
+          <img src="/images/image-222.png" width="230" height="23" class="d-inline-block align-top" alt="">
+        </a>
+      </div>
 
-      </a>
-    </div>
-
-
-      <!--<%= render "_user_menu.html", assigns %>-->
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
+        <div class="mx-4">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter mx-1"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-github mx-1"></i>
+        </div>
         <%= if @current_user do %>
-          <!-- <button type="button" class="btn btn-outline-info btn-sm">Logged as: <li><%= @current_user.email %></li></button> -->
-          <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
-          <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
-
+        <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+            <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+                <img class="mr-2 rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" height="40" alt="avatar">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <a class="dropdown-item" href="javascript:void(0);">Моят Профил</a>
+                  <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "dropdown-item" %>
+                  <%= link "Изход", to: Routes.user_session_path(@conn, :delete), class: "dropdown-item", method: :delete %>
+            </ul>
+        </div>
         <% else %>
-          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-secondary mx-2" %>
-          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-outline-success" %>
+          <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+              <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+                  <img class="mr-2 rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" height="40" alt="avatar">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <%= link "Вход", to: Routes.user_session_path(@conn, :new), class: "dropdown-item" %>
+                    <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "dropdown-item" %>
+              </ul>
+          </div>
+
         <% end %>
+
       </form>
     </nav>
 
 
 
-    <div class="mobile-navbar">
-      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-left">
-        <a class="navbar-brand" href="/">
-    <img src="/images/image-nobg.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    IZBERI.SITE
-  </a>
-  <div class="btn-group">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-user-circle"></i>
-  </button>
-  <div class="dropdown-menu dropdown-menu-right text-center my-2">
-  <%= if @current_user do %>
-          <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color" %>
-          <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
-        <% else %>
-          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success mx-2" %>
-          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
-        <% end %>
-  </div>
-</div>
+  <div class="mobile-navbar">
+
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a href="/">
+        <img src="/images/image-222.png" width="150" height="17" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Всички уебсайтове <span class="sr-only">(current)</span></a>
-          </li>
-          <%= if @current_admin do %>
-          <li class="nav-item">
-            <%= link "Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info my-2 blue-link-color" %>
-          </li>
-          <li class="nav-item">
-            <%= link "Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color", method: :delete %>
-          </li>
-          <% else %>
-          <li class="nav-item">
-            <%= link "Log in", to: Routes.admin_session_path(@conn, :new), class: "blue-link-color btn btn-outline-success my-2" %>
-          </li>
-          <li class="nav-item">
-            <%= link "Register", to: Routes.admin_registration_path(@conn, :new), class: "blue-link-color btn btn-success" %>
-          </li>
-          <% end %>
-        </ul>
-
-      </div>
-    </nav> -->
-
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <a href="/">
-      <img src="/images/image-222.png" width="150" height="17" class="d-inline-block align-top" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "nav-link" %>
-            <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "nav-link" %>
-          </li>
-        </ul>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <%= if @current_user do %>
-            <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info my-2 my-sm-0" %>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <%= link "Предложи сайт", to: Routes.request_path(@conn, :new), class: "nav-link" %>
+              <%= link "Обратна връзка", to: Routes.feedback_path(@conn, :new), class: "nav-link" %>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <%= if @current_user do %>
+              <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info my-2 my-sm-0" %>
+              <br>
+              <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger my-2 my-sm-0", method: :delete %>
+            </li>
+            <% else %>
+            <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "btn btn-outline-secondary my-2 my-sm-0" %>
             <br>
-            <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger my-2 my-sm-0", method: :delete %>
-          </li>
-          <% else %>
-          <%= link "Влез", to: Routes.user_session_path(@conn, :new), class: "btn btn-outline-secondary my-2 my-sm-0" %>
-          <br>
-          <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-outline-success my-2 my-sm-0" %>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-
-
+            <%= link "Регистрация", to: Routes.user_registration_path(@conn, :new), class: "btn btn-outline-success my-2 my-sm-0" %>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     </div>
-
-
   </header>
 
     <%= @inner_content %>
