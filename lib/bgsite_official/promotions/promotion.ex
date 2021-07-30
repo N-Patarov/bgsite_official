@@ -15,6 +15,6 @@ defmodule BgsiteOfficial.Promotions.Promotion do
   def changeset(promotion, attrs) do
     promotion
     |> cast(attrs, [:url, :name, :email, :text])
-    |> validate_required([:url, :name, :email, :text])
+    |> validate_required([:url, :name, :text])
   end
 end

@@ -15,11 +15,13 @@ defmodule BgsiteOfficialWeb.PromotionController do
   end
 
   def create(conn, %{"promotion" => promotion_params}) do
+    %Plug.Conn{assigns: %{current_user: current_user}} = conn
+    promotion_params_with_email = Map.merge(promotion_params, %{"email" => current_user.email})
     case Promotions.create_promotion(promotion_params) do
       {:ok, promotion} ->
         conn
-        |> put_flash(:info, "Promotion created successfully.")
-        |> redirect(to: Routes.promotion_path(conn, :show, promotion))
+        |> put_flash(:info, "Благодарим Ви за заявката! Екипът на izberi.site ще се свърже с вас възможно най-скоро!")
+        |> redirect(to: Routes.user_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
