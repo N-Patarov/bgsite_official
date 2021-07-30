@@ -16,4 +16,11 @@
 </div>
 
 <hr class="my-5" />
-<h2 class="text-center"> Промотирай уебсайт </h2>
+  <h2 class="text-center"> Промотирай уебсайт </h2>
+<div class="d-flex justify-content-center">
+  <%= link to: "/promotions/new" do %>
+    <button class="btn btn-primary mt-4">
+      Изпрати Заявка
+    </button>
+  <% end %>
+</div>
