@@ -88,6 +88,8 @@
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
               <%= if @current_user do %>
+              <%= link "Моят Профил", to: Routes.user_path(@conn, :index), class: "btn btn-outline-info my-2 my-sm-0" %>
+              <br>
               <%= link "Настройки", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-outline-info my-2 my-sm-0" %>
               <br>
               <%= link "Излез", to: Routes.user_session_path(@conn, :delete), class: "btn btn-outline-danger my-2 my-sm-0", method: :delete %>
