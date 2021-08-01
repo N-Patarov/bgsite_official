@@ -1,0 +1,28 @@
+<h1>Show Promotion</h1>
+
+<ul>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @promotion.url %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @promotion.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @promotion.email %>
+  </li>
+
+  <li>
+    <strong>Text:</strong>
+    <%= @promotion.text %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.promotion_path(@conn, :edit, @promotion) %></span>
+<span><%= link "Back", to: Routes.promotion_path(@conn, :index) %></span>

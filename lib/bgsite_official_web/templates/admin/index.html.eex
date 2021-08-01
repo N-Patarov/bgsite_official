@@ -1,16 +1,33 @@
-<%= link "New Website", to: Routes.websites_path(@conn, :new), class: "btn btn-primary" %>
-<%= link "All Websites", to: Routes.admin_path(@conn, :websites), class: "btn btn-primary" %>
+<h2 class="text-center"> Admin Dashboard </h2>
+<hr class="my-5" />
+<h3 class="text-center"> Admin Powers </h3>
+<div class="d-flex justify-content-center">
+  <%= link "Admin Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color my-2" %>
+  <%= link "Admin Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color my-2", method: :delete %>
+  <%= link "Register Admin", to: Routes.admin_registration_path(@conn, :new), class: "btn btn-outline-warning blue-link-color my-2 ml-2" %>
+</div>
+
+<hr class="my-5" />
+<h3 class="text-center"> Websites </h3>
+<strong><p class="text-center"> count: <%= length(@websites) %></p></strong>
+<div class="d-flex justify-content-center">
+  <%= link "New Website", to: Routes.websites_path(@conn, :new), class: "btn btn-outline-success mx-2" %>
+  <%= link "All Websites", to: Routes.admin_path(@conn, :websites), class: "btn btn-outline-primary" %>
+</div>
+
+<hr class="my-5" />
+<h3 class="text-center"> Tags </h3>
+<strong><p class="text-center"> count: <%= length(@tags) %></p></strong>
+<div class="d-flex justify-content-center">
+  <%= link "New Tag", to: Routes.tag_path(@conn, :new), class: "btn btn-outline-success mx-2" %>
+  <%= link "All Tags", to: Routes.tag_path(@conn, :index), class: "btn btn-outline-primary" %>
+</div>
+<hr class="my-5" />
+
+<h3 class="text-center"> Requests </h3>
+<strong><p class="text-center"> count: <%= length(@requests) %></p></strong>
 <br>
-<%= link "New Tag", to: Routes.tag_path(@conn, :new), class: "btn btn-primary" %>
-
-<%= link "Register Admin", to: "/admin/register", class: "btn btn-outline-warning mx-2 blue-link-color" %>
-<%= link "Admin Settings", to: Routes.admin_settings_path(@conn, :edit), class: "btn btn-outline-info mx-2 blue-link-color my-2" %>
-<%= link "Admin Log out", to: Routes.admin_session_path(@conn, :delete), class: "btn btn-outline-danger blue-link-color my-2", method: :delete %>
-
-
-
-<h1>Requested Websites</h1>
-<table class = "table">
+<table class = "table text-center">
   <thead>
     <tr>
       <!--<th>Name</th>-->
@@ -45,9 +62,48 @@
   </tbody>
 </table>
 <br><br><br>
-<h1>Sent Feedbacks</h1>
+<hr class="my-5" />
+<h3 class="text-center"> Promotions </h3>
+<strong><p class="text-center"> count: <%= length(@promotions) %></p></strong>
+<br>
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Text</th>
+      <th>CRUD</th>
 
-<table class="table">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= @promotions |> Enum.with_index |> Enum.map(fn({promotion, index}) ->  %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= promotion.name %></td>
+      <td><%= promotion.email %></td>
+      <td><%= promotion.text %></td>
+
+      <td>
+        
+        <span><%= link "Edit", to: Routes.promotion_path(@conn, :edit, promotion) %></span>
+        <span><%= link "Delete", to: Routes.promotion_path(@conn, :delete, promotion), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end) %>
+  </tbody>
+</table>
+
+
+<br><br><br>
+<hr class="my-5" />
+
+<h3 class="text-center"> Feedbacks </h3>
+<strong><p class="text-center"> count: <%= length(@feedback) %></p></strong>
+<br>
+<table class="table text-center">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -77,30 +133,3 @@
   </tbody>
 </table>
 <br><br><br>
-<h1>Listing Tags</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>CRUD</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for tag <- @tags do %>
-    <tr>
-      <td><b><%= tag.title %></b></td>
-      <td><%= tag.description %></td>
-
-      <td>
-        <span><%= link "Show", to: Routes.tag_path(@conn, :show, tag) %></span>
-        <span><%= link "Edit", to: Routes.tag_path(@conn, :edit, tag) %></span>
-        <span><%= link "Delete", to: Routes.tag_path(@conn, :delete, tag), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>

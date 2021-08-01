@@ -1,0 +1,26 @@
+<title> Моят Профил | Izberi.Site </title>
+<h2 class="text-center"> Моят Профил </h2>
+<hr class="my-5" />
+<div class="d-flex justify-content-around">
+  <div id = "profile info">
+    <h3> Имейл </h3>
+    <b><%= @current_user.email %></b>
+    <%= link to: Routes.user_settings_path(@conn, :edit) do %>
+      <i class="fas fa-edit fa-lg"></i>
+    <% end %>
+  </div>
+
+  <div id = "liked websites">
+    <h3> Харесани Уебсайтове </h3>
+  </div>
+</div>
+
+<hr class="my-5" />
+  <h2 class="text-center"> Промотирай уебсайт </h2>
+<div class="d-flex justify-content-center">
+  <%= link to: "/promotions/new" do %>
+    <button class="btn btn-primary mt-4">
+      Изпрати Заявка
+    </button>
+  <% end %>
+</div>

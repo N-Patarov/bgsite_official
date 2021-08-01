@@ -98,7 +98,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/confirm/:token", AdminConfirmationController, :confirm
     resources "/tags", TagController, only: [:show]
     resources "/websites", WebsitesController, except: [:create]
-    get "admin/websites", AdminController, :websites
+    get "/admin/websites", AdminController, :websites
     live "/website_live/:id", WebsiteLive
 
 
@@ -132,6 +132,9 @@ defmodule BgsiteOfficialWeb.Router do
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
     live "/tag_live/:id", WebsitesLike
+    get "/user/profile", UserController, :index
+    resources "/promotions", PromotionController, only: [:create, :new, :index, :edit, :delete]
+
   end
 
   scope "/admin", BgsiteOfficialWeb do
