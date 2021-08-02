@@ -35,13 +35,21 @@ defmodule BgsiteOfficial.Home.Websites do
   #  |> cast(attrs, [])
   #  |> cast_attachments(attrs, [:banner])
   # end
-  def search(query, search_term)do
-    wildcard_search = "%#{search_term}"
+  # def search(query, search_term) do
+  #   wildcard_search = "%#{search_term}"
+  #
+  #   from websites in query,
+  #   where: fragment("SIMILARITY(?, ?) > 0.4",  websites.title, ^wildcard_search),
+  #   order_by: fragment("LEVENSHTEIN(?, ?)", websites.title, ^wildcard_search),
+  #   or_where: fragment("SIMILARITY(?, ?) > 0.4",  websites.description, ^wildcard_search),
+  #   order_by: fragment("LEVENSHTEIN(?, ?)", websites.description, ^wildcard_search)
+  # end
+
+  def search(query, search_term) do
+    wildcard_search = "%#{search_term}%"
 
     from websites in query,
-    where: fragment("SIMILARITY(?, ?) > 0.4",  websites.title, ^wildcard_search),
-    order_by: fragment("LEVENSHTEIN(?, ?)", websites.title, ^wildcard_search),
-    or_where: fragment("SIMILARITY(?, ?) > 0.4",  websites.description, ^wildcard_search),
-    order_by: fragment("LEVENSHTEIN(?, ?)", websites.description, ^wildcard_search)
+    where: ilike(websites.title, ^wildcard_search),
+    or_where: ilike(websites.description, ^wildcard_search)
   end
 end
