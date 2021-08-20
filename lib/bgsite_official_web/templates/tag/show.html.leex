@@ -30,7 +30,7 @@ function boxHover() {
                 checkbox()
                 <p class="card-text "><small class="text-muted"><%= @website_likes_for[website.id] %></small></p>
                <% else %>
-                <%=checkbox(:user_like, :liked) %>
+                <%=checkbox(:user_like, :liked, phx_click: "addlike") %>
                 <p class="card-text "><small class="text-muted"><%= website.likes %></small></p>
                <% end %>
              </div>
