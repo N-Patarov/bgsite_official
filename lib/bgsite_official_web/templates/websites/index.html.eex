@@ -19,26 +19,18 @@
   </div>
 </section>
 
-<section class="container" id="ads">
-  <iframe
-	src="https://viewm.moonicorn.network/#%7B%22options%22%3A%7B%22publisherAddr%22%3A%220x63D97a0e058edE4aD0AC6411a6cf2d0B8A4211ba%22%2C%22whitelistedTokens%22%3A%5B%220x6B175474E89094C44Da98b954EedeAC495271d0F%22%5D%2C%22whitelistedType%22%3A%22legacy_300x250%22%2C%22randomize%22%3Atrue%2C%22targeting%22%3A%5B%5D%2C%22width%22%3A%22300%22%2C%22height%22%3A%22250%22%2C%22minPerImpression%22%3A%220%22%2C%22fallbackUnit%22%3Anull%2C%22marketSlot%22%3A%22QmTdFtEnZhMXhrXzyNtouj33DJErUQ2ZyEfg8iXQU5bf2h%22%7D%7D"
-	width="300"
-	height="250"
-	scrolling="no"
-	frameborder="0"
-	style="border: 0;"
-	onload="window.addEventListener('message', function(ev) {
-		if (ev.data.hasOwnProperty('adexHeight') && ('https://viewm.moonicorn.network' === ev.origin)) {
-			for (let f of document.getElementsByTagName('iframe')) {
-				if (f.contentWindow === ev.source) {
-					f.height = ev.data.adexHeight;
-				}
-			}
-		}
-	}, false)"
-></iframe>
-
-</section>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8041370207584636"
+     crossorigin="anonymous"></script>
+<!-- izberi-banner-1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8041370207584636"
+     data-ad-slot="7287403125"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 
 <section class="container ">

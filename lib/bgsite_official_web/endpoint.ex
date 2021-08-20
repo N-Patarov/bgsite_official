@@ -24,7 +24,7 @@ defmodule BgsiteOfficialWeb.Endpoint do
     at: "/",
     from: :bgsite_official,
     gzip: false,
-    only_matching: ~w(css fonts images js favicon robots.txt)
+    only_matching: ~w(css fonts images js favicon robots.txt ads.txt)
 
     plug Plug.Static,
     at: "/kaffy",
