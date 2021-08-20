@@ -10,6 +10,12 @@ defmodule BgsiteOfficial.Accounts.User do
     field :confirmed_at, :naive_datetime
 
     timestamps()
+    many_to_many(
+      :websites,
+      Websites,
+      join_through: "user_like",
+      on_replace: :delete
+    )
   end
 
   @doc """

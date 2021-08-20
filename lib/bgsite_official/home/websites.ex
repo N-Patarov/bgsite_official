@@ -22,6 +22,12 @@ defmodule BgsiteOfficial.Home.Websites do
       join_through: "website_tag",
       on_replace: :delete
     )
+    many_to_many(
+      :user,
+      Users,
+      join_through: "user_like",
+      on_replace: :delete
+    )
   end
 
   def changeset(websites, attrs) do
