@@ -1,7 +1,7 @@
 defmodule BgsiteOfficial.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
-
+  alias BgsiteOfficial.Home.Websites
   @derive {Inspect, except: [:password]}
   schema "users" do
     field :email, :string

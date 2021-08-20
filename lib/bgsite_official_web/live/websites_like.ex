@@ -7,6 +7,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
   alias BgsiteOfficial.Accounts
   alias BgsiteOfficial.Categories.Tag
   alias BgsiteOfficial.Home.Websites
+  alias BgsiteOfficial.Home.UserLike
   alias BgsiteOfficial.Home
 
   def render(assigns) do
@@ -37,5 +38,15 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
     {:noreply, socket}
   end
 
+  def handle_event("toggle_like", _, socket) do
+    website = socket.assigns[:website]
+    user = socket.assigns[:current_user]
+    user_id = user.id
+           |> Repo.preload(:users)
+    Home.toggle_user_like(website, user_id)
+    user_like = Home.user_like(website)
+                       |>Enum.map(fn(x) -> x.user_id end)
+                       {:noreply, assign(socket, :user_like, user_like)}
+  end
 
 end

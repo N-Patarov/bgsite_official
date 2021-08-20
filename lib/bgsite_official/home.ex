@@ -8,6 +8,7 @@ defmodule BgsiteOfficial.Home do
   alias BgsiteOfficial.Home
   alias BgsiteOfficial.Home.Websites
   alias BgsiteOfficial.Home.WebsiteTag
+  alias BgsiteOfficial.Home.UserLike
   alias BgsiteOfficial.Categories.Tag
 
   def toggle_website_tag(%Websites{} = website, tag_id) do
@@ -18,6 +19,20 @@ defmodule BgsiteOfficial.Home do
     if assoc == nil do
       %WebsiteTag{}
       |> WebsiteTag.changeset(%{websites_id: website.id, tag_id: tag_id})
+      |> Repo.insert()
+    else
+      Repo.delete(assoc)
+    end
+  end
+
+  def toggle_user_like(%Websites{} = website, user_id) do
+    ww = website.id
+    query = from(wt in UserLike, where: wt.websites_id == ^ww and wt.user_id == ^user_id)
+    assoc = Repo.one(query)
+    # require IEx; IEx.pry
+    if assoc == nil do
+      %UserLike{}
+      |> UserLike.changeset(%{websites_id: website.id, user_id: user_id})
       |> Repo.insert()
     else
       Repo.delete(assoc)
