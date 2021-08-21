@@ -30,7 +30,7 @@ defmodule BgsiteOfficial.Home do
 
   def website_tags(%Websites{} = website) do
     website_id = website.id
-    query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^website_id)
+    query_join_table = from(wt in WebsiteTag, where: wt.website_id == ^website_id)
     Repo.all(query_join_table)
   end
 
@@ -41,12 +41,12 @@ defmodule BgsiteOfficial.Home do
 
   def toggle_user_like(%User{} = user, website_id) do
     uu = user.id
-    query = from(ul in UserLike, where: ul.users_id == ^uu and ul.website_id == ^website_id)
+    query = from(ul in UserLike, where: ul.user_id == ^uu and ul.website_id == ^website_id)
     assoc = Repo.one(query)
     # require IEx; IEx.pry
     if assoc == nil do
       %UserLike{}
-      |> UserLike.changeset(%{websites_id: website_id, users_id: user.id})
+      |> UserLike.changeset(%{website_id: website_id, user_id: user.id})
       |> Repo.insert()
     else
       Repo.delete(assoc)
