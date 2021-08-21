@@ -10,6 +10,9 @@ defmodule BgsiteOfficial.Home do
   alias BgsiteOfficial.Home.WebsiteTag
   alias BgsiteOfficial.Home.UserLike
   alias BgsiteOfficial.Categories.Tag
+  alias BgsiteOfficial.Accounts.User
+
+  # Website_Tags Many_to_Many
 
   def toggle_website_tag(%Websites{} = website, tag_id) do
     ww = website.id
@@ -25,18 +28,35 @@ defmodule BgsiteOfficial.Home do
     end
   end
 
-  def toggle_user_like(%Websites{} = website, user_id) do
-    ww = website.id
-    query = from(wt in UserLike, where: wt.websites_id == ^ww and wt.user_id == ^user_id)
+  def website_tags(%Websites{} = website) do
+    website_id = website.id
+    query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^website_id)
+    Repo.all(query_join_table)
+  end
+
+  # -- End -- Website_Tags Many_to_Many
+
+  # User_Like (user_websites) Many_to_Many
+
+
+  def toggle_user_like(%User{} = user, website_id) do
+    uu = user.id
+    query = from(ul in UserLike, where: ul.users_id == ^uu and ul.website_id == ^website_id)
     assoc = Repo.one(query)
     # require IEx; IEx.pry
     if assoc == nil do
       %UserLike{}
-      |> UserLike.changeset(%{websites_id: website.id, user_id: user_id})
+      |> UserLike.changeset(%{websites_id: website_id, users_id: user.id})
       |> Repo.insert()
     else
       Repo.delete(assoc)
     end
+  end
+
+  def user_like(%User{} = user) do
+    user_id = user.id
+    query_join_table = from(ul in UserLike, where: ul.users_id == ^user_id)
+    Repo.all(query_join_table)
   end
 
   def bump_likes(website_id) do
@@ -46,34 +66,9 @@ defmodule BgsiteOfficial.Home do
     updated_likes_count
   end
 
-  @doc """
-  Returns the list of websites.
+  # -- End -- User_Like (user_websites) Many_to_Many
 
-  ## Examples
 
-      iex> list_websites()
-      [%Websites{}, ...]
-
-  """
-
-  # def update_websites_banner(%Website{} = website, attrs) do
-  #   user
-  #   |> Website.banner_changeset(attrs)
-  #   |> Repo.update()
-  # end
-  #
-  # def change_websites_banner(%Website{} = website) do
-  #   Website.banner_changeset(user, %{})
-  # end
-
-  # def website_with_tag?(%Websites = website, tag_id) do
-  #
-  # end
-  def website_tags(%Websites{} = website) do
-    website_id = website.id
-    query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^website_id)
-    Repo.all(query_join_table)
-  end
 
   def list_websites(params = %{"query" => search_term}) do
     Websites

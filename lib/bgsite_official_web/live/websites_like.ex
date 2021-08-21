@@ -30,6 +30,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
     {:ok, socket}
   end
 
+
   def handle_event("addlike", %{"website-id" => website_id}, socket) do
     updated_likes_count = Home.bump_likes(website_id)
     current_likes_map = socket.assigns.website_likes_for
@@ -38,15 +39,14 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
     {:noreply, socket}
   end
 
-  def handle_event("toggle_like", _, socket) do
-    website = socket.assigns[:website]
+  def handle_event("toggle_like", %{"website-id" => website_id}, socket) do
     user = socket.assigns[:current_user]
-    user_id = user.id
            |> Repo.preload(:users)
-    Home.toggle_user_like(website, user_id)
-    user_like = Home.user_like(website)
-                       |>Enum.map(fn(x) -> x.user_id end)
-                       {:noreply, assign(socket, :user_like, user_like)}
+    Home.toggle_user_like(user, website_id)
+    user_like = Home.user_like(user)
+                |>Enum.map(fn(x) -> x.user_id end)
+                {:noreply, assign(socket, :user_like, user_like)}
   end
+
 
 end
