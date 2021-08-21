@@ -41,7 +41,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
 
   def handle_event("toggle_like", %{"website-id" => website_id}, socket) do
     user = socket.assigns[:current_user]
-           |> Repo.preload(:users)
+           |> Repo.preload(:websites)
     Home.toggle_user_like(user, website_id)
     user_like = Home.user_like(user)
                 |>Enum.map(fn(x) -> x.user_id end)
