@@ -13,4 +13,13 @@ defmodule BgsiteOfficial.Home.UserLike do
 
     timestamps()
   end
+
+  def changeset(struct, attrs \\ %{}) do
+    struct
+    |> cast(attrs, [:websites_id, :user_id])
+    |> validate_required([:websites_id, :user_id])
+    # |> unique_constraint(:website_tag_unique, :website_tag_unique_index)
+    # :website_tag_unique_index
+  end
+
 end
