@@ -2,14 +2,14 @@ defmodule BgsiteOfficial.Home.UserLike do
   use Ecto.Schema
   import Ecto.Changeset
   alias BgsiteOfficial.Home.Websites
-  alias BgsiteOfficial.Home.Users
+  alias BgsiteOfficial.Accounts.User
 
 
 
   schema "user_like" do
 
-    belongs_to :websites, Websites
-    belongs_to :users, Users
+    belongs_to :website, Websites
+    belongs_to :user, User
 
     timestamps()
   end

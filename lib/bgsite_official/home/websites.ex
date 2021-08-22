@@ -5,7 +5,7 @@ defmodule BgsiteOfficial.Home.Websites do
   import Ecto.Query, only: [from: 2]
   alias BgsiteOfficial.Categories.Tag
   alias BgsiteOfficial.Home.Websites
-  alias BgsiteOfficial.Home.User
+  alias BgsiteOfficial.Accounts.User
 
   # @derive {Inspect, except: [:password]}
   schema "websites" do
@@ -25,7 +25,7 @@ defmodule BgsiteOfficial.Home.Websites do
     )
     many_to_many(
       :user,
-      Users,
+      User,
       join_through: "user_like",
       on_replace: :delete
     )
