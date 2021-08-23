@@ -24,7 +24,7 @@ defmodule BgsiteOfficial.Home.Websites do
       on_replace: :delete
     )
     many_to_many(
-      :user,
+      :users,
       User,
       join_through: "user_like",
       on_replace: :delete
