@@ -39,14 +39,14 @@ defmodule BgsiteOfficial.Home do
   # User_Like (user_websites) Many_to_Many
 
 
-  def toggle_user_like(%User{} = user, website_id) do
+  def toggle_user_like(%User{} = user, websites_id) do
     uu = user.id
-    query = from(ul in UserLike, where: ul.user_id == ^uu and ul.website_id == ^website_id)
+    query = from(ul in UserLike, where: ul.users_id == ^uu and ul.websites_id == ^websites_id)
     assoc = Repo.one(query)
     # require IEx; IEx.pry
     if assoc == nil do
       %UserLike{}
-      |> UserLike.changeset(%{website_id: website_id, user_id: user.id})
+      |> UserLike.changeset(%{websites_id: websites_id, users_id: user.id})
       |> Repo.insert()
     else
       Repo.delete(assoc)
