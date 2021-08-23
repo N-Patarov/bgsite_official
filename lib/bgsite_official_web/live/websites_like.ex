@@ -44,7 +44,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
     #      |> Repo.preload(:websites)
     Home.toggle_user_like(user, websites_id)
     user_like = Home.user_like(user)
-                |>Enum.map(fn(x) -> x.user_id end)
+                |>Enum.map(fn(x) -> x.users_id end)
                 {:noreply, assign(socket, :user_like, user_like)}
   end
 
