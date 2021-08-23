@@ -19,12 +19,15 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
     tag = Categories.get_tag!(params["id"])
     websites = tag.websites |> Repo.preload(:tags)
     user = Accounts.get_user_by_session_token(user_token)
+    user_like = Home.user_like(user)
+                |>Enum.map(fn(x) -> x.users_id end)
     socket = assign(
         socket,
         tag: tag,
         websites_for_tag: websites,
         website_likes_for: Map.new(websites, fn w -> {w.id, w.likes} end),
-        current_user: user
+        current_user: user,
+        user_like: user_like
       )
     # require IEx; IEx.pry
     {:ok, socket}

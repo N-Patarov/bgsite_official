@@ -27,7 +27,7 @@ function boxHover() {
 
              <div class="float-right">
                <%= if @current_user do %>
-                <%= checkbox(:user, :check, phx_click: "toggle_like", phx_value_website_id: website.id) %>
+                <%= checkbox(:user, :check, phx_click: "toggle_like", phx_value_website_id: website.id, value: Enum.member?(@user_like, website.id)) %>
                 <p class="card-text "><small class="text-muted"><%= @website_likes_for[website.id] %></small></p>
                <% else %>
 
