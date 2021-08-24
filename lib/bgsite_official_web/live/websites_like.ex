@@ -20,7 +20,7 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
     websites = tag.websites |> Repo.preload(:tags)
     user = Accounts.get_user_by_session_token(user_token)
     user_like = Home.user_like(user)
-                |>Enum.map(fn(x) -> x.users_id end)
+                |>Enum.map(fn(x) -> x.websites_id end)
     socket = assign(
         socket,
         tag: tag,
@@ -44,11 +44,11 @@ defmodule BgsiteOfficialWeb.WebsitesLike do
 
   def handle_event("toggle_like", %{"website-id" => websites_id}, socket) do
     user = socket.assigns[:current_user]
-    #      |> Repo.preload(:websites)
+         |> Repo.preload(:websites)
     Home.toggle_user_like(user, websites_id)
     user_like = Home.user_like(user)
-                |>Enum.map(fn(x) -> x.users_id end)
-                {:noreply, assign(socket, :user_like, user_like)}
+                |>Enum.map(fn(x) -> x.websites_id end)
+    {:noreply, assign(socket, :user_like, user_like)}
   end
 
 

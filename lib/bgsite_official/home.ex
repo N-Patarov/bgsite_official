@@ -41,12 +41,12 @@ defmodule BgsiteOfficial.Home do
 
   def toggle_user_like(%User{} = user, websites_id) do
     uu = user.id
-    query = from(ul in UserLike, where: ul.users_id == ^uu and ul.websites_id == ^websites_id)
+    query = from(ul in UserLike, where: ul.user_id == ^uu and ul.websites_id == ^websites_id)
     assoc = Repo.one(query)
     # require IEx; IEx.pry
     if assoc == nil do
       %UserLike{}
-      |> UserLike.changeset(%{websites_id: websites_id, users_id: user.id})
+      |> UserLike.changeset(%{websites_id: websites_id, user_id: user.id})
       |> Repo.insert()
     else
       Repo.delete(assoc)
@@ -55,7 +55,7 @@ defmodule BgsiteOfficial.Home do
 
   def user_like(%User{} = user) do
     user_id = user.id
-    query_join_table = from(ul in UserLike, where: ul.users_id == ^user_id)
+    query_join_table = from(ul in UserLike, where: ul.user_id == ^user_id)
     Repo.all(query_join_table)
   end
 
