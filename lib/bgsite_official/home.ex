@@ -59,9 +59,16 @@ defmodule BgsiteOfficial.Home do
     Repo.all(query_join_table)
   end
 
-  def bump_likes(website_id) do
-    website = Home.get_website!(website_id)
+  def bump_likes(websites_id) do
+    website = Home.get_website!(websites_id)
     updated_likes_count = website.likes + 1
+    update_website(website, %{likes: updated_likes_count})
+    updated_likes_count
+  end
+
+  def remove_likes(websites_id) do
+    website = Home.get_website!(websites_id)
+    updated_likes_count = website.likes - 1
     update_website(website, %{likes: updated_likes_count})
     updated_likes_count
   end
