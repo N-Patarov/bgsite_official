@@ -1,7 +1,7 @@
 defmodule BgsiteOfficial.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
-
+  alias BgsiteOfficial.Home.Websites
   @derive {Inspect, except: [:password]}
   schema "users" do
     field :email, :string
@@ -10,6 +10,12 @@ defmodule BgsiteOfficial.Accounts.User do
     field :confirmed_at, :naive_datetime
 
     timestamps()
+    many_to_many(
+      :websites,
+      Websites,
+      join_through: "user_like",
+      on_replace: :delete
+    )
   end
 
   @doc """
