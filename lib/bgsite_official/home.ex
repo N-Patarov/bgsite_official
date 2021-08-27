@@ -29,8 +29,8 @@ defmodule BgsiteOfficial.Home do
   end
 
   def website_tags(%Websites{} = website) do
-    website_id = website.id
-    query_join_table = from(wt in WebsiteTag, where: wt.website_id == ^website_id)
+    websites_id = website.id
+    query_join_table = from(wt in WebsiteTag, where: wt.websites_id == ^websites_id)
     Repo.all(query_join_table)
   end
 
