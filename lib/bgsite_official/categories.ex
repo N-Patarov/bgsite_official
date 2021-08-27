@@ -40,7 +40,7 @@ defmodule BgsiteOfficial.Categories do
   """
   def get_tag!(id) do
     Repo.get!(Tag, id)
-    |> Repo.preload(:websites)
+    |> Repo.preload([websites: (from w in Websites, order_by: [desc: w.likes])])
   end
 
 
