@@ -34,10 +34,18 @@
 
       <form class="form-inline my-2 my-lg-0 btn-toolbar">
         <div class="mx-4">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter mx-1"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-github mx-1"></i>
+          <%= link to: "https://www.facebook.com/Izberisite-111987154307364/", class: "blue-link-color", target: "_blank" do %>
+            <i class="fab fa-facebook"></i>
+          <% end %>
+          <%= link to: "https://twitter.com/izberi_site", class: "blue-link-color", target: "_blank" do %>
+            <i class="fab fa-twitter mx-1"></i>
+          <% end %>
+          <%= link to: "https://www.instagram.com/izberi.site/", class: "blue-link-color", target: "_blank" do %>
+            <i class="fab fa-instagram"></i>
+          <% end %>
+          <%= link to: "https://github.com/N-Patarov/bgsite_official", class: "blue-link-color", target: "_blank" do %>
+            <i class="fab fa-github mx-1"></i>
+          <% end %>
         </div>
         <%= if @current_user do %>
         <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
