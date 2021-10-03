@@ -70,6 +70,7 @@ defmodule BgsiteOfficialWeb.Router do
     put "/admin/reset_password/:token", AdminResetPasswordController, :update
   end
 
+  import Phoenix.LiveDashboard.Router
   scope "/", BgsiteOfficialWeb do
     pipe_through [:browser, :require_authenticated_admin]
 
