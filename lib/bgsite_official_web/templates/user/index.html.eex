@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<hr class="my-5" />
+<!-- <hr class="my-5" />
   <h2 class="text-center"> Промотирай уебсайт </h2>
 <div class="d-flex justify-content-center">
   <%= link to: "/promotions/new" do %>
@@ -23,4 +23,4 @@
       Изпрати Заявка
     </button>
   <% end %>
-</div>
+</div> -->

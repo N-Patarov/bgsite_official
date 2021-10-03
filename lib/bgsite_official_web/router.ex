@@ -79,6 +79,7 @@ defmodule BgsiteOfficialWeb.Router do
     get "/admin/register", AdminRegistrationController, :new
     post "/admin/register", AdminRegistrationController, :create
     get "/admin", AdminController, :index
+    live_dashboard "/dashboard", metrics: BgsiteOfficialWeb.Telemetry
 
   end
 
