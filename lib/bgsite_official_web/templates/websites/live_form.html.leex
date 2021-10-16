@@ -1,0 +1,14 @@
+<form phx-submit="create_website">
+
+
+  <%= text_input :website, :website_title, placeholder: "Something" %>
+  <%= text_input :website, :website_description, placeholder: "Something" %>
+  <%= number_input :website, :website_likes, placeholder: "Something" %>
+  <%= text_input :website, :website_url, placeholder: "Something" %>
+  <%= number_input :website, :website_priority, placeholder: "Something" %>
+
+
+  <%= submit "Add", phx_disable_with: "Adding...." %>
+
+
+</form>

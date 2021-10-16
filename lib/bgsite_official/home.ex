@@ -75,6 +75,19 @@ defmodule BgsiteOfficial.Home do
 
   # -- End -- User_Like (user_websites) Many_to_Many
 
+  # ---- NEW WEBSITE LIVE FORM ---
+
+  def live_create_website(title, description, likes, url, priority) do
+    %Websites{}
+    |> Websites.changeset(%{title: title, description: description, priority: priority, likes: likes, urls: url})
+    |> Repo.insert()
+  end
+
+
+
+
+
+
 
 
   def list_websites(params = %{"query" => search_term}) do
